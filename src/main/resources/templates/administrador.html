@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="estilos.css">
+
+    <title>Dashboar Administrador</title>
+  </head>
+  <body>
+    <section>
+      <!-- Menú -->
+      <div class="nav">
+        <ul>
+          <li>
+            <a href="#">
+              <span class="icono"><ion-icon name="layers-outline"></ion-icon></span>
+              <span class="titulo">TiendaRopa</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icono"><ion-icon name="home-outline"></ion-icon></span>
+              <span class="titulo">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icono"><ion-icon name="people-circle-outline"></ion-icon></span>
+              <span class="titulo">Clientes</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icono"><ion-icon name="cart-outline"></ion-icon></span>
+              <span class="titulo">Ventas</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icono"><ion-icon name="cube-outline"></ion-icon></span>
+              <span class="titulo">Stock</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icono"><ion-icon name="ticket-outline"></ion-icon></span>
+              <span class="titulo">Promociones</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icono"><ion-icon name="log-out-outline"></ion-icon></span>
+              <span class="titulo">Cerrar Sesión</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- Fin menú -->
+
+      <!-- Dashboard -->
+      <div class="container">
+        <!-- Barra superior (Topbar) -->
+        <div class="topbar">
+          <div class="toggle">
+            <ion-icon name="menu"></ion-icon>
+          </div>
+          <div class="buscar">
+            <label for="">
+              <input type="text" placeholder="Buscar..." name="" id="">
+              <ion-icon name="search"></ion-icon>
+            </label>
+          </div>
+          <div class="perfil-usuario">
+            <img src="imagenes/pexels-simon-robben-55958-614810.jpg" alt="">
+          </div>
+        </div>
+        <!-- Fin Barra superior (Topbar) -->
+
+        <!-- Cards -->
+        <div class="cards">
+          <div class="card">
+            <div>
+              <span class="card-numeros">1,450</span>
+              <span class="card-nombre">Visitas</span>
+            </div>
+            <div class="card-icono">
+              <ion-icon name="eye"></ion-icon>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <span class="card-numeros">320</span>
+              <span class="card-nombre">Mensajes</span>
+            </div>
+            <div class="card-icono">
+              <ion-icon name="card"></ion-icon>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <span class="card-numeros">1,345</span>
+              <span class="card-nombre">Ventas</span>
+            </div>
+            <div class="card-icono">
+              <ion-icon name="mail"></ion-icon>
+            </div>
+          </div>
+          <div class="card">
+            <div>
+              <span class="card-numeros">2,850$</span>
+              <span class="card-nombre">Ganancias</span>
+            </div>
+            <div class="card-icono">
+              <ion-icon name="trending-up"></ion-icon>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fin cards -->
+
+        <!-- Detalles -->
+        <div class="detalles">
+          <!-- Órdenes recientes -->
+          <div class="ordenes-recientes">
+            <div class="header">
+              <h2>Órdenes Recientes</h2>
+              <a href="#" class="boton">Ver todos</a>
+            </div>
+            <table>
+              <thead>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Pago</th>
+                <th>Estatus</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Camisa de cuadros</td>
+                  <td>14,95$</td>
+                  <td>Pendiente</td>
+                  <td><span class="estatus pendiente">Pendiente</span></td>
+                </tr>
+                <tr>
+                  <td>Camisa de cuadros</td>
+                  <td>14,95$</td>
+                  <td>Pendiente</td>
+                  <td><span class="estatus devuelto">Devuelto</span></td>
+                </tr>
+                <tr>
+                  <td>Camisa de cuadros</td>
+                  <td>14,95$</td>
+                  <td>Pendiente</td>
+                  <td><span class="estatus enviado">Enviado</span></td>
+                </tr>
+                <tr>
+                  <td>Camisa de cuadros</td>
+                  <td>14,95$</td>
+                  <td>Pendiente</td>
+                  <td><span class="estatus en-proceso">En proceso</span></td>
+                </tr>
+                <tr>
+                  <td>Camisa de cuadros</td>
+                  <td>14,95$</td>
+                  <td>Pendiente</td>
+                  <td><span class="estatus pendiente">Pendiente</span></td>
+                </tr>
+                <tr>
+                  <td>Camisa de cuadros</td>
+                  <td>14,95$</td>
+                  <td>Pendiente</td>
+                  <td><span class="estatus enviado">Enviado</span></td>
+                </tr>
+                <tr>
+                  <td>Camisa de cuadros</td>
+                  <td>14,95$</td>
+                  <td>Pendiente</td>
+                  <td><span class="estatus entregado">Entregado</span></td>
+                </tr>
+                <tr>
+                  <td>Camisa de cuadros</td>
+                  <td>14,95$</td>
+                  <td>Pendiente</td>
+                  <td><span class="estatus devuelto">Devuelto</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- Fin Órdenes recientes -->
+
+          <!-- Clientes -->
+          <div class="clientes">
+            <div class="header">
+              <h2>Clientes</h2>
+              <table>
+                <tr>
+                  <td><div class="imgBox"><img src="imagenes/pexels-hannah-nelson-390257-1065084.jpg" alt=""></div></td>
+                  <td><h4>Ana Hernandez</h4></td>
+                  <td>
+                    <a href="#"><ion-icon name="chatbox"></ion-icon></a>
+                    <a href="#"><ion-icon name="call"></ion-icon></a>
+                    <a href="#"><ion-icon name="settings"></ion-icon></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><div class="imgBox"><img src="imagenes/pexels-justin-shaifer-501272-1222271.jpg" alt=""></div></td>
+                  <td><h4>Ana Hernandez</h4></td>
+                  <td>
+                    <a href="#"><ion-icon name="chatbox"></ion-icon></a>
+                    <a href="#"><ion-icon name="call"></ion-icon></a>
+                    <a href="#"><ion-icon name="settings"></ion-icon></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><div class="imgBox"><img src="imagenes/pexels-olly-733872.jpg" alt=""></div></td>
+                  <td><h4>Ana Hernandez</h4></td>
+                  <td>
+                    <a href="#"><ion-icon name="chatbox"></ion-icon></a>
+                    <a href="#"><ion-icon name="call"></ion-icon></a>
+                    <a href="#"><ion-icon name="settings"></ion-icon></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><div class="imgBox"><img src="imagenes/pexels-olly-774909.jpg" alt=""></div></td>
+                  <td><h4>Ana Hernandez</h4></td>
+                  <td>
+                    <a href="#"><ion-icon name="chatbox"></ion-icon></a>
+                    <a href="#"><ion-icon name="call"></ion-icon></a>
+                    <a href="#"><ion-icon name="settings"></ion-icon></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><div class="imgBox"><img src="imagenes/pexels-pixabay-220453.jpg" alt=""></div></td>
+                  <td><h4>Ana Hernandez</h4></td>
+                  <td>
+                    <a href="#"><ion-icon name="chatbox"></ion-icon></a>
+                    <a href="#"><ion-icon name="call"></ion-icon></a>
+                    <a href="#"><ion-icon name="settings"></ion-icon></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td><div class="imgBox"><img src="imagenes/pexels-simon-robben-55958-614810.jpg" alt=""></div></td>
+                  <td><h4>Ana Hernandez</h4></td>
+                  <td>
+                    <a href="#"><ion-icon name="chatbox"></ion-icon></a>
+                    <a href="#"><ion-icon name="call"></ion-icon></a>
+                    <a href="#"><ion-icon name="settings"></ion-icon></a>
+                  </td>
+                </tr>
+              </table>
+          </div>
+          <!-- Fin nuevos clientes -->
+        </div>
+        <!-- Fin detalles -->
+      </div>
+      <!-- Fin Dashboard -->
+    </section>
+
+    <!-- Scripts librería Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- Script index.js -->
+    <script src="index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,479 @@
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* Variables CSS */
+:root {
+  --white: #fff6ff;
+  --green: #58a664;
+  --navyblue: #293340;
+  --black: #221824;
+  --font: "Raleway", sans-serif;
+}
+
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+  font-family: var(--font);
+}
+
+/* Body */
+body {
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+/* Section */
+section {
+  position: relative;
+  width: 100%;
+}
+
+/* Menú */
+.nav {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  background: var(--navyblue);
+  border-left: 10px solid var(--navyblue);
+  overflow: hidden;
+  transition: 0.4s;
+}
+
+.nav.active {
+  width: 80px;
+}
+
+.nav ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; 
+}
+
+.nav ul li {
+  position: relative;
+  width: 200%;
+  list-style: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.nav ul li:hover,
+.nav ul li.active {
+  background: var(--white);
+}
+
+.nav ul li:nth-child(1) {
+  margin-bottom: 40px;
+  pointer-events: none;
+}
+
+.nav ul li a {
+  position: relative;
+  display: flex;
+  width: 100%;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.nav ul li:hover a,
+.nav ul li.active a {
+  color: var(--green);
+}
+
+.nav ul li a .icono {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 75px;
+  text-align: center;
+}
+
+.nav ul li a .icono ion-icon {
+  font-size: 1.75em;
+}
+
+.nav ul li a .titulo {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+}
+
+/* Dashboard */
+.container {
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: var(--white);
+  transition: 0.4s;
+}
+
+.container.active {
+  width: calc(100% - 80px);
+  left: 80px;
+}
+
+/* Topbar */
+.container .topbar {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.container .topbar .toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5em;
+  cursor: pointer;
+}
+.container .topbar .buscar {
+  position: relative;
+  width: 400px;
+  margin: 0 10px;
+}
+
+.container .topbar .buscar label {
+  position: relative;
+  width: 100%;
+}
+
+.container .topbar .buscar label input {
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  padding: 5px 20px;
+  padding-left: 35px;
+  font-size: 1em;
+  outline: none;
+  border: 1px solid var(--navyblue);
+}
+
+.container .topbar .buscar label ion-icon {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: 1.2em;
+}
+
+.container .topbar .perfil-usuario {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.container .topbar .perfil-usuario img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Cards */
+.cards {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+}
+
+.cards .card {
+  position: relative;
+  background: var(--white);
+  padding: 30px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.cards .card:hover {
+  background: var(--green);
+}
+
+.cards .card .card-numeros {
+  position: relative;
+  font-weight: 700;
+  font-size: 2.5em;
+  color: var(--green);
+}
+
+.cards .card .card-nombre {
+  color: var(--navyblue);
+  font-size: 1.1em;
+  margin-top: 5px;
+  margin-right: 80px;
+}
+
+.cards .card .card-icono {
+  font-size: 3em;
+  color: var(--navyblue);
+}
+
+.cards .card:hover .card-numeros,
+.cards .card:hover .card-nombre,
+.cards .card:hover .card-icono {
+  color: var(--white);
+}
+
+/* Detalles */
+.detalles {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+  margin-top: 10px;
+}
+
+.detalles .ordenes-recientes {
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  background: var(--white);
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+
+.detalles .clientes {
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  background: var(--white);
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.header h2 {
+  font-weight: 700;
+  color: var(--green);
+}
+
+.boton {
+  position: relative;
+  padding: 5px 10px;
+  background: var(--green);
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 5px;
+}
+
+.detalles table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 100px;
+  text-align: left;
+}
+
+.detalles .ordenes-recientes table tr {
+  color: var(--black);
+  border-radius: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.detalles .ordenes-recientes table tr:hover {
+  background: var(--navyblue);
+  color: var(--white);
+}
+
+.detalles .ordenes-recientes table th,
+.detalles .ordenes-recientes table tr td {
+  padding: 10px;
+}
+
+.detalles .ordenes-recientes table th:last-child,
+.detalles .ordenes-recientes table tr td:last-child {
+  text-align: left;
+}
+
+.detalles .ordenes-recientes table th:nth-child(3),
+.detalles .ordenes-recientes table tr td:nth-child(3) {
+  text-align: left;
+}
+
+.estatus {
+  padding: 2px 10px;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.estatus.pendiente {
+  background: rgba(229, 206, 7, 0.3);
+  color: #e5ce07;
+}
+
+.estatus.devuelto {
+  background: rgba(227, 1, 1, 0.3);
+  color: #e03101;
+}
+
+.estatus.en-proceso {
+  background: rgba(1, 155, 227, 0.3);
+  color: #019be3;
+}
+
+.estatus.entregado {
+  background: rgba(141, 224, 44, 0.3);
+  color: #8de02c;
+}
+
+.estatus.enviado {
+  background: #9005d14d;
+  color: #000000;
+}
+
+.detalles .clientes .imgBox {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.detalles .clientes .imgBox img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detalles .clientes table tr:hover {
+  background: var(--navyblue);
+  color: var(--white);
+}
+
+.detalles .clientes table tr td:nth-child(1) {
+  width: 60px;
+}
+
+.detalles .clientes table tr td {
+  padding: 12px 10px;
+}
+
+.detalles .clientes table tr:hover td a {
+  color: var(--white);
+}
+
+/* Pantallas largas */
+@media only screen and (max-width: 1200px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Portátil */
+@media only screen and (max-width: 992px) {
+  .nav {
+    left: -300px;
+  }
+
+  .nav.active {
+    left: 0;
+    width: 300px;
+  }
+
+  .container {
+    width: 100%;
+    left: 0;
+  }
+
+  .container.active {
+    left: 300px;
+  }
+}
+
+/* Tablets */
+@media only screen and (max-width: 768px) {
+  .detalles {
+    grid-template-columns: 1fr, 1fr;
+  }
+
+  .ordenes-recientes .nuevos-clientes {
+    overflow: auto;
+  }
+
+  .estatus.en-proceso {
+    white-space: nowrap;
+  }
+}
+
+/* Móviles */
+@media only screen and (max-width: 400px) {
+  .nav {
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+  }
+
+  .nav.active {
+    width: 100%;
+    left: 0;
+  }
+
+  .container.active .toggle {
+    color: var(--white);
+  }
+
+  .toogle {
+    position: fixed;
+    left: initial;
+    right: 0;
+    z-index: 10000;
+  }
+
+  .cards {
+    grid-template-columns: repeat(1fr, 1fr);
+  }
+
+  .perfil-usuario {
+    min-width: 40px;
+  }
+
+  .header h2 {
+    font-size: 1.2em;
+  }
+
+  .detalles {
+    grid-template-columns: 1fr;
+  }
+
+  .detalles .nuevos-clientes table tr td a {
+    font-size: 1em;
+    margin-right: 5px;
+  }
+}

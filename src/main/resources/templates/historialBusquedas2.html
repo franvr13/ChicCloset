@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous"
+    />
+    <link
+            rel="stylesheet"
+            href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+            integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+            crossorigin="anonymous"
+    />
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"
+    ></script>
+    <title>Historial de Búsquedas</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../assets/css/templatemo.css" />
+    <link rel="stylesheet" href="../../assets/css/custom.css" />
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap"
+    />
+    <link rel="stylesheet" href="../../assets/css/fontawesome.min.css" />
+    <style>
+        /* Estilos para el botón de suscripción */
+        .subscribe-button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        .subscribe-button.clicked {
+            background-color: #ffc107;
+            color: black;
+        }
+
+        /* Reducir el tamaño del footer */
+        .footer {
+            padding: 10px 0;
+            background-color: #343a40;
+            color: #6c757d; /* Color del texto del footer */
+            font-family: 'Roboto', sans-serif;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+        }
+        .footer .footer-link-list {
+            padding-left: 0;
+            list-style: none;
+        }
+        .footer .footer-link-list li {
+            margin-bottom: 5px;
+        }
+
+        /* Espacio entre historial de búsqueda y footer */
+        .search-history-container {
+            margin-bottom: 20px;
+            padding-bottom: 60px;
+        }
+
+        /* Background del navbar igual que el footer */
+        .navbar {
+            background-color: #343a40;
+            color:#6c757d ; /* Color del texto del navbar */
+            font-family: 'Roboto', sans-serif;
+        }
+        .navbar-brand, .navbar-nav .nav-link {
+            color: #6c757d;
+        }
+        .navbar-brand:hover, .navbar-nav .nav-link:hover {
+            color: #fff;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var subscribeButton = document.querySelector('.subscribe-button');
+            subscribeButton.addEventListener('click', function () {
+                subscribeButton.classList.toggle('clicked');
+            });
+        });
+    </script>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="../../index.html">
+                TiendaOnline
+            </a>
+            <button
+                    class="navbar-toggler border-0"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#templatemo_main_nav"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+                    class="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between"
+                    id="templatemo_main_nav"
+            >
+                <div class="flex-fill">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                        <li class="nav-item ">
+                            <a class="nav-link text-light" href="../../index.html">Página Principal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="../About/about.html">Acerca de Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="shop.html">Tienda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="contact.html">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar align-self-center d-flex">
+                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ..." />
+                            <div class="input-group-text">
+                                <i class="fa fa-fw fa-search"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <a
+                            class="nav-icon d-none d-lg-inline"
+                            href="#"
+                            data-bs-toggle="modal"
+                            data-bs-target="#templatemo_search"
+                    >
+                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
+                    </a>
+                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
+                    </a>
+                    <a class="nav-icon position-relative text-decoration-none" href="../Info/Info.html">
+                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
+                    </a>
+                    <button type="button" class="btn btn-success">Login</button>
+                    <button type="button" class="btn btn-success">Register</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container mt-5 search-history-container">
+    <h2 class="text-center">Historial de Búsquedas</h2>
+    <div class="list-group">
+        <div th:each="busqueda : ${historial}" class="list-group-item list-group-item-action">
+            <div>
+                <strong>Término:</strong> <span th:text="${busqueda.terminoBusqueda}"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 pt-3">
+                <h2 class="h2 text-success border-bottom pb-2 border-light logo">TiendaOnline</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li><i class="fas fa-map-marker-alt fa-fw"></i> Madrid, España</li>
+                    <li><i class="fa fa-phone fa-fw"></i> <a class="text-decoration-none" href="tel:010-020-0340">123 456 789</a></li>
+                    <li><i class="fa fa-envelope fa-fw"></i> <a class="text-decoration-none" href="mailto:info@company.com">ayudacliente@tiendaonline.com</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 pt-3">
+                <h2 class="h2 text-light border-bottom pb-2 border-light">Productos</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li class="dropdown">
+                        <a class="text-decoration-none dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Ver Productos
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#">Ropa Hombre</a>
+                            <a class="dropdown-item" href="#">Ropa Mujer</a>
+                            <a class="dropdown-item" href="#">Ropa Niños</a>
+                            <a class="dropdown-item" href="#">Ropa Interior</a>
+                            <a class="dropdown-item" href="#">Zapatos Deportivos</a>
+                            <a class="dropdown-item" href="#">Vaqueros</a>
+                            <a class="dropdown-item" href="#">Abrigos</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4 pt-3">
+                <h2 class="h2 text-light border-bottom pb-2 border-light">Info Adicional</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li><a class="text-decoration-none" href="#">Página Principal</a></li>
+                    <li><a class="text-decoration-none" href="#">Acerca de Nosotros</a></li>
+                    <li><a class="text-decoration-none" href="#">FAQs</a></li>
+                    <li><a class="text-decoration-none" href="#">Contáctanos</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-dYvGF2AxskfCr9mCEW9z3V5hF6m0VomnM1syLprQgO5ixUzd5ffF5bJww0YvmuEG" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
