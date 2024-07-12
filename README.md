@@ -25,34 +25,34 @@ que los usuarios puedan escoger.
 
 # PROCESO DE FLUJOS
 
-- EN DESARROLLO
+- EN DESARROLLO...
 
 # ROADMAP
 
-- EN DESARROLLO
+- EN DESARROLLO...
 
 # MANUAL DE LA APLIACACIÓN WEB
 
-- EN DESARROLLO
+- EN DESARROLLO...
 
 # MANUAL DE LA APLICACIÓN WEB
 
-- EN DESARROLLO
+- EN DESARROLLO...
 
 # CONCLUSIONES
 
-- EN DESARROLLO
+- EN DESARROLLO...
 
 # INSTALACIÓN 
 
 Para proceder a la instalación y ejecución de la aplicación, debemos seguir los siguientes pasos:
 
  - Instalar Docker Desktop o Docker web.
- - Ejecutar el comando que hay en el archivo 'docker-run.txt' para crear el contenedor de la base de datos de el proyecto
+ - Ejecutar el comando que hay en el archivo 'docker-run.txt' para crear el contenedor de la base de datos de el proyecto.
 
 <img src="src/main/resources/static/img/desarrollo.png">
 
 # EJECUCIÓN 
 
-- Arrancar el proyecto con el perfil "Desarrollo" activado
-- Entar a http://localhost:8080/ con un navegador
+- Arrancar el proyecto con el perfil "Desarrollo" activado.
+- Entar a http://localhost:8080/ con un navegador.
