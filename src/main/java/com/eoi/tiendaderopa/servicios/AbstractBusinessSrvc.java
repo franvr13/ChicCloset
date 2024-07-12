@@ -28,6 +28,12 @@ public abstract class AbstractBusinessSrvc<E, ID, REPO extends JpaRepository<E, 
         return this.repo.findById(id);
     }
 
+    //he creado esta un poco diferente a la de arriba porque sino en las clases relacionadas me daba problemas
+    public E obtenerPorIdNoOp(ID id) {
+        Optional<E> optional = repo.findById(id);
+        return optional.orElse(null);
+    }
+
     public Page<E> buscarTodos(Pageable pageable) {
         return repo.findAll(pageable);
     }

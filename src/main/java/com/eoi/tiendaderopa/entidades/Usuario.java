@@ -24,25 +24,28 @@ public class Usuario  implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column (name ="nombre",length = 80)
-    private String nombre;
-
     @Column (name ="contraseña",length = 45)
     private String contraseña;
 
     @Column (name ="email",length = 70)
     private String email;
 
-    @Column (name ="dni",length = 70)
-    private String dni;
 
-    @Column (name ="fechaNaciemiento",length = 70)
-    private String fechaNaciemiento;
+    @OneToMany (mappedBy = "usuario")
+    private Set<DatosFacturacion> datosFacturacion;
 
     @OneToMany(mappedBy = "usuarioPedido", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Pedido> pedidoUsuario;
 
-    @OneToMany(mappedBy = "usuarioRol", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "usuario_roles",
+            joinColumns = @JoinColumn(name = "id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="rol_id", nullable = false)
+    )
     private Set<Rol> roles;
+
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private DetallesUsuario detalle;
 
 }

@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -25,8 +27,7 @@ public class Rol implements Serializable {
     @Column(nullable = false)
     private String rolNombre;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "usuario_id", foreignKey = @ForeignKey(name = "fk_rol_usuario"))
-    private Usuario usuarioRol;
+    @ManyToMany(mappedBy = "roles")
+    private Set<Usuario> usuarios = new HashSet<>();
 
 }
