@@ -1,10 +1,10 @@
 # Chic Closet
 
-Proyecto personal para Máster EOI 2024
+Proyecto personal para Máster Programación Java EOI 2024.
 
 # INTRODUCCIÓN
 
-- La siguiente iniciativa ha sido creada por el Grupo 2 como proyecto final para el
+- La siguiente iniciativa ha sido creada por el Grupo 2, formado por 4 personas, como proyecto final para el
 bootcamp de Java impartido por la EOI de abril a septiembre del 2024. A lo largo de
 los meses de curso se ha vertido todo el conocimiento adquirido en la creación de la
 siguiente aplicación web de venta de ropa combinando los conocimientos adquiridos
@@ -25,34 +25,34 @@ que los usuarios puedan escoger.
 
 # PROCESO DE FLUJOS
 
-- EN DESARROLLO
+- EN DESARROLLO...
 
 # ROADMAP
 
-- EN DESARROLLO
+- EN DESARROLLO...
 
 # MANUAL DE LA APLIACACIÓN WEB
 
-- EN DESARROLLO
+- EN DESARROLLO...
 
 # MANUAL DE LA APLICACIÓN WEB
 
-- EN DESARROLLO
+- EN DESARROLLO...
 
 # CONCLUSIONES
 
-- EN DESARROLLO
+- EN DESARROLLO...
 
 # INSTALACIÓN 
 
 Para proceder a la instalación y ejecución de la aplicación, debemos seguir los siguientes pasos:
 
  - Instalar Docker Desktop o Docker web.
- - Ejecutar el comando que hay en el archivo 'docker-run.txt' para crear el contenedor de la base de datos de el proyecto
+ - Ejecutar el comando que hay en el archivo 'docker-run.txt' para crear el contenedor de la base de datos de el proyecto.
 
 <img src="src/main/resources/static/img/desarrollo.png">
 
 # EJECUCIÓN 
 
-- Arrancar el proyecto con el perfil "Desarrollo" activado
-- Entar a http://localhost:8080/ con un navegador
+- Arrancar el proyecto con el perfil "Desarrollo" activado.
+- Entar a http://localhost:8080/ con un navegador.
