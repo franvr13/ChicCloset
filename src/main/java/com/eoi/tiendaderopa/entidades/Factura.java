@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "facturas")
-
 public class Factura implements Serializable {
 
     @Id

@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "pago")
-
 public class Pago implements Serializable{
 
     @Id

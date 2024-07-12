@@ -15,7 +15,6 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Table(name = "roles")
 public class Rol implements Serializable {
 

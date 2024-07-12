@@ -6,7 +6,6 @@ import com.eoi.tiendaderopa.entidades.Usuario;
 import com.eoi.tiendaderopa.repositorios.RepoUsuarioDetalles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service

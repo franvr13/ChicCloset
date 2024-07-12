@@ -2,12 +2,9 @@ package com.eoi.tiendaderopa.servicios;
 
 import com.eoi.tiendaderopa.entidades.*;
 import com.eoi.tiendaderopa.repositorios.RepoUsuario;
-import com.eoi.tiendaderopa.repositorios.RepoUsuarioDetalles;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 import java.util.Set;
 
 

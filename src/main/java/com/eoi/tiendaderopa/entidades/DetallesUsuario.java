@@ -8,11 +8,11 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-
 @Table(name = "detallesUsuario")
 public class DetallesUsuario implements Serializable {
 

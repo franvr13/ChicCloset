@@ -1,5 +1,4 @@
 package com.eoi.tiendaderopa.repositorios;
-
 import com.eoi.tiendaderopa.entidades.MetodoPago;
 import com.eoi.tiendaderopa.entidades.Pago;
 import org.springframework.data.jpa.repository.JpaRepository;

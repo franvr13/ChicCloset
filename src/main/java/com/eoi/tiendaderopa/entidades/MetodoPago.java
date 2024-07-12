@@ -14,7 +14,6 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Table(name = "metodoPago")
 public class MetodoPago implements Serializable {
 

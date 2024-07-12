@@ -16,7 +16,6 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "pedidos")
-
 public class Pedido implements Serializable {
 
     @Id
