@@ -1,10 +1,10 @@
 # Chic Closet
 
-Proyecto personal para Máster EOI 2024
+Proyecto personal para Máster Programación Java EOI 2024.
 
 # INTRODUCCIÓN
 
-- La siguiente iniciativa ha sido creada por el Grupo 2 como proyecto final para el
+- La siguiente iniciativa ha sido creada por el Grupo 2, formado por 4 personas, como proyecto final para el
 bootcamp de Java impartido por la EOI de abril a septiembre del 2024. A lo largo de
 los meses de curso se ha vertido todo el conocimiento adquirido en la creación de la
 siguiente aplicación web de venta de ropa combinando los conocimientos adquiridos
