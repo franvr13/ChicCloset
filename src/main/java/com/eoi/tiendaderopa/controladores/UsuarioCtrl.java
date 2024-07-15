@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class UsuarioCtrl {
 
@@ -50,21 +52,27 @@ public class UsuarioCtrl {
         return "detallesUsuario";
     }
 
-    @PostMapping("/busqueda")
-    public String buscar(@RequestParam String termino, @ModelAttribute("usuario") Usuario usuario) {
-        busquedaSrvc.GuardarBusqueda(termino, usuario);
+
+    @PostMapping("/busqueda/{idUsuario}")
+    public String guardarBusqueda(@RequestParam String termino, @PathVariable int idUsuario, Model model) {
+        busquedaSrvc.GuardarBusqueda(termino, usuarioSrvc.obtenerPorIdNoOp(idUsuario));
+        model.addAttribute("termino", termino);
+
+        //hace falta saber como va a ser la entidad de los resultados
+        //List resultados = busquedaSrvc.buscar(termino);
+       // model.addAttribute("resultados", resultados);
         return "resultadosBusqueda";
     }
 
-    @GetMapping("/historial")
-    public String verHistorial(@ModelAttribute("usuario") Usuario usuario, Model model) {
-        model.addAttribute("historial", busquedaSrvc.obtenerHistorialBusquedas(usuario));
+    @GetMapping("/historial/{idUsuario}")
+    public String verHistorial(@ModelAttribute("usuario") Usuario usuario, Model model, @PathVariable int idUsuario) {
+        model.addAttribute("historial", busquedaSrvc.obtenerHistorialBusquedas(usuarioSrvc.obtenerPorIdNoOp(idUsuario)));
         return "historialBusquedas";
     }
 
     @DeleteMapping("/cuenta/{id}")
     public String eliminarUsuario(@ModelAttribute("usuario") Usuario usuario, Integer idUsuario) {
-        usuarioSrv.eliminarPorId(idUsuario);
+        usuarioSrvc.eliminarPorId(idUsuario);
         return "redirect:/home";
     }
 }

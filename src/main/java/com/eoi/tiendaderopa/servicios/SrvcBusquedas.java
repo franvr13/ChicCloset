@@ -6,6 +6,7 @@ import com.eoi.tiendaderopa.repositorios.RepoBusquedas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SrvcBusquedas extends AbstractBusinessSrvc<HistorialBusquedas, Integer, RepoBusquedas> {
@@ -28,4 +29,11 @@ public class SrvcBusquedas extends AbstractBusinessSrvc<HistorialBusquedas, Inte
     public List<HistorialBusquedas> obtenerHistorialBusquedas(Usuario usuario) {
         return repoBusquedas.findByUsuario(usuario);
     }
+
+    //hace falta la entidad de las caracteristicas de producto
+   /* public List<DetallesProducto> buscar(String termino) {
+        return productos.stream()
+                .filter(detalle -> detalle.toLowerCase().contains(termino.toLowerCase()))
+                .collect(Collectors.toList());
+    }*/
 }
