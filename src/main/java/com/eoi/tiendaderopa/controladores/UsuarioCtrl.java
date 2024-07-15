@@ -10,20 +10,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-
-
-
 @Controller
-public class UsuarioControl {
+public class UsuarioCtrl {
 
     @Autowired
-    SrvcUsuario usuarioSrv;
+    SrvcUsuario usuarioSrvc;
 
     @Autowired
-    SrvcBusquedas busquedaSrv;
+    SrvcBusquedas busquedaSrvc;
 
     @Autowired
-    SrvcUsuarioDetalles usuarioDetallesSrv;
+    SrvcUsuarioDetalles usuarioDetallesSrvc;
 
     @GetMapping("/usuario/registro")
     public String mostrarFormularioRegistro(Model model) {
@@ -33,7 +30,7 @@ public class UsuarioControl {
     
     @PostMapping("/usuario/registro")
     public String registrarUsuario(@ModelAttribute("usuario") Usuario usuario) {
-        usuarioSrv.registrarUsuario(usuario);
+        usuarioSrvc.registrarUsuario(usuario);
         return "/registrosatisfactorio";
     }
     @GetMapping("/usuario/login")
@@ -43,25 +40,25 @@ public class UsuarioControl {
 
     @GetMapping("/detalles")
     public String mostrarDetallesUsuario(@ModelAttribute("usuario") Usuario usuario, Model model) {
-        model.addAttribute("detalles",usuarioDetallesSrv.obtenerDetallesUsuario(usuario));
+        model.addAttribute("detalles",usuarioDetallesSrvc.obtenerDetallesUsuario(usuario));
         return "detallesUsuario";
     }
 
     @PostMapping("/detalles/{idUsuario}")
     public String guardarDetallesUsuario(@ModelAttribute DetallesUsuario detalle, @PathVariable int idUsuario) {
-        usuarioSrv.guardarDetallesUsuario(idUsuario, detalle);
+        usuarioSrvc.guardarDetallesUsuario(idUsuario, detalle);
         return "detallesUsuario";
     }
 
     @PostMapping("/busqueda")
     public String buscar(@RequestParam String termino, @ModelAttribute("usuario") Usuario usuario) {
-        busquedaSrv.GuardarBusqueda(termino, usuario);
+        busquedaSrvc.GuardarBusqueda(termino, usuario);
         return "resultadosBusqueda";
     }
 
     @GetMapping("/historial")
     public String verHistorial(@ModelAttribute("usuario") Usuario usuario, Model model) {
-        model.addAttribute("historial", busquedaSrv.obtenerHistorialBusquedas(usuario));
+        model.addAttribute("historial", busquedaSrvc.obtenerHistorialBusquedas(usuario));
         return "historialBusquedas";
     }
 }
