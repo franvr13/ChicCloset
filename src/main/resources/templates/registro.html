@@ -8,10 +8,10 @@
 <div class="container">
     <h1>Registro</h1>
     <form th:action="@{/usuario/registro}" th:object="${usuario}" method="post">
-        <div class="form-group">
+       <!-- <div class="form-group">
             <label for="nombre">Nombre:</label>
             <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required/>
-        </div>
+        </div>  -->
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" class="form-control" id="email" th:field="*{email}" required/>
