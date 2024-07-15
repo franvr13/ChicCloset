@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
-public class UsuarioControl {
+public class UsuarioCtrl {
 
     @Autowired
     SrvcUsuario usuarioSrv;
@@ -63,6 +63,12 @@ public class UsuarioControl {
     public String verHistorial(@ModelAttribute("usuario") Usuario usuario, Model model) {
         model.addAttribute("historial", busquedaSrv.obtenerHistorialBusquedas(usuario));
         return "historialBusquedas";
+    }
+
+    @DeleteMapping("/cuenta/{id}")
+    public String eliminarUsuario(@ModelAttribute("usuario") Usuario usuario, Integer idUsuario) {
+        usuarioSrv.eliminarPorId(idUsuario);
+        return "redirect:/home";
     }
 }
 
