@@ -1,25 +1,24 @@
 package com.eoi.tiendaderopa.servicios;
 
 import com.eoi.tiendaderopa.entidades.DetallesUsuario;
-import com.eoi.tiendaderopa.entidades.HistorialBusquedas;
 import com.eoi.tiendaderopa.entidades.Usuario;
-import com.eoi.tiendaderopa.repositorios.RepoUsuarioDetalles;
+import com.eoi.tiendaderopa.repositorios.RepoDetallesUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class SrvcUsuarioDetalles extends AbstractBusinessSrvc<DetallesUsuario, Integer, RepoUsuarioDetalles> {
+public class SrvcDetallesUsuario extends AbstractBusinessSrvc<DetallesUsuario, Integer, RepoDetallesUsuario> {
 
     @Autowired
-    public SrvcUsuarioDetalles(RepoUsuarioDetalles usuarioDetallesRepo) {
+    public SrvcDetallesUsuario(RepoDetallesUsuario usuarioDetallesRepo) {
         super(usuarioDetallesRepo);
     }
 
     @Autowired
-    RepoUsuarioDetalles repoUsuarioDetalles;
+    RepoDetallesUsuario repoDetallesUsuario;
 
     public List<DetallesUsuario> obtenerDetallesUsuario(Usuario usuario) {
-        return repoUsuarioDetalles.findByUsuario(usuario);
+        return repoDetallesUsuario.findByUsuario(usuario);
     }
 }

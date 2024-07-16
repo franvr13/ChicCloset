@@ -22,8 +22,10 @@ public class Categoria implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @OneToMany(mappedBy = "categoria", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<SubCategoria> categoria;
+    @Column(name ="idPadre")
+    private long idPadre;
 
+    @Column(name ="nombre")
+    private String nombre;
 
 }

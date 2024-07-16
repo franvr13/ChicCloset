@@ -118,18 +118,18 @@
 							class="nav navbar-nav d-flex justify-content-between mx-lg-auto"
 						>
 							<li class="nav-item">
-								<a class="nav-link" href="index.html">Página Principal</a>
+								<a class="nav-link" href="/index">Página Principal</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="about.html"
+								<a class="nav-link" th:href="@{/about}"
 									>Acerca de Nosotros</a
 								>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="index.html">Tienda</a>
+								<a class="nav-link" href="/index">Tienda</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="contact.html">Contacto</a>
+								<a class="nav-link" href="/contacto">Contacto</a>
 							</li>
 						</ul>
 					</div>
@@ -932,12 +932,12 @@
 						</h2>
 						<ul class="list-unstyled text-light footer-link-list">
 							<li>
-								<a class="text-decoration-none" href="index.html">Página Principal</a>
+								<a class="text-decoration-none" href="/index">Página Principal</a>
 							</li>
 							<li>
-								<a class="text-decoration-none" href="about.html">Acerca de Nosotros</a>
+								<a class="text-decoration-none" th:href="@{/about}">Acerca de Nosotros</a>
 							</li>
-							<li><a class="text-decoration-none" href="preguntas_frecuentes.html">FAQs</a></li>
+							<li><a class="text-decoration-none" th:href="@{/faq}">FAQs</a></li>
 							<li><a class="text-decoration-none" href="#">Contáctanos</a></li>
 						</ul>
 					</div>
@@ -1032,11 +1032,11 @@
 		<!-- End Footer -->
 
 		<!-- Start Script -->
-		<script src="../static/js/jquery-1.11.0.min.js"></script>
-		<script src="../static/js/jquery-migrate-1.2.1.min.js"></script>
-		<script src="../static/js/bootstrap.bundle.min.js"></script>
-		<script src="../static/js/templatemo.js"></script>
-		<script src="../static/js/custom.js"></script>
+		<script src="../js/jquery-1.11.0.min.js"></script>
+		<script src="../js/jquery-migrate-1.2.1.min.js"></script>
+		<script src="../js/bootstrap.bundle.min.js"></script>
+		<script src="../js/templatemo.js"></script>
+		<script src="../js/custom.js"></script>
 		<!-- End Script -->
 	</body>
 </html>

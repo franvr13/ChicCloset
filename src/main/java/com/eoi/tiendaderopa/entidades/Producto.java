@@ -15,7 +15,6 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "producto")
-
 public class Producto implements Serializable {
     @Id
     @Column(name ="id")
@@ -42,22 +41,5 @@ public class Producto implements Serializable {
 
     @Column (name = "precio")
     private double precio;
-
-    @Column(name ="devoluciones_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long devoluciones_id;
-
-    @Column(name ="devoluciones_pedidos_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long devoluciones_pedidos_id;
-
-    @OneToMany(mappedBy = "producto", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<SubCategoria> producto;
-
-    @OneToMany(mappedBy = "producto_devoluciones", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<SubCategoria> producto_devoluciones;
-
-    @OneToMany(mappedBy = "producto_devoluciones_pedidos", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<SubCategoria> producto_devoluciones_pedidos;
 
 }

@@ -19,9 +19,9 @@ public class PagoCtrl {
 
     // Este parámetro sirve para mostrar una lista de pagos
     @GetMapping("/pagos")
-    public String listarPago(Model model) {
+    public String listarPagos(Model model) {
         List<Pago> pago = pagoSrvc.buscarEntidades();
-        model.addAttribute("pago", pago);
+        model.addAttribute("pagos", pago);
         return "pagos";
     }
 
