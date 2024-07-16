@@ -6,13 +6,12 @@ import com.eoi.tiendaderopa.repositorios.RepoBusquedas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
-public class SrvcBusquedas extends AbstractBusinessSrvc<HistorialBusquedas, Integer, RepoBusquedas> {
+public class SrvcBusqueda extends AbstractBusinessSrvc<HistorialBusquedas, Integer, RepoBusquedas> {
 
     @Autowired
-    public SrvcBusquedas(RepoBusquedas repo) {
+    public SrvcBusqueda(RepoBusquedas repo) {
         super(repo);
     }
 
