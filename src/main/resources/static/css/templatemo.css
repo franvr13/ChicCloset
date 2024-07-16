@@ -19,6 +19,8 @@ Table of contents
 14. Medium devices (tablets, 768px and up)
 15. Large devices (desktops, 992px and up)
 16. Extra large devices (large desktops, 1200px and up)
+17. Estilos para el botón de suscripción
+18.
 --------------------------------------------- */
 
 
@@ -321,4 +323,21 @@ body, ul, li, p, a, label, input, div {
 
 /* Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
+}
+
+/* Estilos para el botón de suscripción */
+.subscribe-button {
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+}
+.subscribe-button.clicked {
+    background-color: #ffc107;
+    color: black;
+}
+
+/* Espacio entre historial de búsqueda y footer */
+.search-history-container {
+    margin-bottom: 20px;
+    padding-bottom: 60px;
 }
