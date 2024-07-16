@@ -22,64 +22,15 @@
             crossorigin="anonymous"
     ></script>
     <title>Historial de Búsquedas</title>
-    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../../assets/css/templatemo.css" />
-    <link rel="stylesheet" href="../../assets/css/custom.css" />
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../static/css/templatemo.css" />
+    <link rel="stylesheet" href="../static/css/custom.css" />
     <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap"
     />
     <link rel="stylesheet" href="../../assets/css/fontawesome.min.css" />
-    <style>
-        /* Estilos para el botón de suscripción */
-        .subscribe-button {
-            background-color: #28a745;
-            color: white;
-            cursor: pointer;
-        }
-        .subscribe-button.clicked {
-            background-color: #ffc107;
-            color: black;
-        }
 
-        /* Reducir el tamaño del footer */
-        .footer {
-            padding: 10px 0;
-            background-color: #343a40;
-            color: #6c757d; /* Color del texto del footer */
-            font-family: 'Roboto', sans-serif;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-            left: 0;
-        }
-        .footer .footer-link-list {
-            padding-left: 0;
-            list-style: none;
-        }
-        .footer .footer-link-list li {
-            margin-bottom: 5px;
-        }
-
-        /* Espacio entre historial de búsqueda y footer */
-        .search-history-container {
-            margin-bottom: 20px;
-            padding-bottom: 60px;
-        }
-
-        /* Background del navbar igual que el footer */
-        .navbar {
-            background-color: #343a40;
-            color:#6c757d ; /* Color del texto del navbar */
-            font-family: 'Roboto', sans-serif;
-        }
-        .navbar-brand, .navbar-nav .nav-link {
-            color: #6c757d;
-        }
-        .navbar-brand:hover, .navbar-nav .nav-link:hover {
-            color: #fff;
-        }
-    </style>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var subscribeButton = document.querySelector('.subscribe-button');
@@ -93,7 +44,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
-            <a class="navbar-brand text-success logo h1 align-self-center" href="../../index.html">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
                 TiendaOnline
             </a>
             <button
@@ -114,13 +65,13 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item ">
-                            <a class="nav-link text-light" href="../../index.html">Página Principal</a>
+                            <a class="nav-link text-light" href="index.html">Página Principal</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="../About/about.html">Acerca de Nosotros</a>
+                            <a class="nav-link text-light" href="about.html">Acerca de Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="shop.html">Tienda</a>
+                            <a class="nav-link text-light" href="index.html">Tienda</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" href="contact.html">Contacto</a>
@@ -148,7 +99,7 @@
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="../Info/Info.html">
+                    <a class="nav-icon position-relative text-decoration-none" href="info.html">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                     </a>
@@ -204,9 +155,9 @@
             <div class="col-md-4 pt-3">
                 <h2 class="h2 text-light border-bottom pb-2 border-light">Info Adicional</h2>
                 <ul class="list-unstyled text-light footer-link-list">
-                    <li><a class="text-decoration-none" href="#">Página Principal</a></li>
-                    <li><a class="text-decoration-none" href="#">Acerca de Nosotros</a></li>
-                    <li><a class="text-decoration-none" href="#">FAQs</a></li>
+                    <li><a class="text-decoration-none" href="index.html">Página Principal</a></li>
+                    <li><a class="text-decoration-none" href="about.html">Acerca de Nosotros</a></li>
+                    <li><a class="text-decoration-none" href="preguntas_frecuentes.html">FAQs</a></li>
                     <li><a class="text-decoration-none" href="#">Contáctanos</a></li>
                 </ul>
             </div>
