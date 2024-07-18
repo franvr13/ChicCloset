@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Usuarios</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="apple-touch-icon" href="../img/apple-icon.png" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/templatemo.css" />
+    <link rel="stylesheet" href="../css/custom.css" />
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap"    />
+    <link rel="stylesheet" href="../css/fontawesome.min.css" />
+</head>
+<body>
+<h1>Aquí irá una lista de usuarios</h1>
+<div class="container">
+    <table class="table ">
+        <thead>
+        <tr>
+            <th>Email</th>
+            <th>Id</th>
+            <th>Contraseña</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tr th:each="usuario : ${usuarios}">
+            <td th:text="${usuario.email}"></td>
+            <td th:text="${usuario.id}"></td>
+            <td th:text="${usuario.contraseña}"></td>
+            <td><button type="button" class="btn btn-primary">Editar</button></td>
+            <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
