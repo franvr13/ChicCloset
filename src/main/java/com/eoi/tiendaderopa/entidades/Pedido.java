@@ -23,11 +23,6 @@ public class Pedido implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column (name ="cantidad")
-    private Integer cantidad;
-
-    @Column (name ="precio_unidad")
-    private double precio_unidad;
 
     @Column (name ="fecha_pedido")
     private LocalDateTime fecha_pedido;
@@ -52,3 +47,10 @@ public class Pedido implements Serializable {
     private Set<Factura> facturaPedido;
 
 }
+
+
+//@Column (name ="cantidad")
+//private Integer cantidad;
+//
+//@Column (name ="precio_unidad")
+//private double precio_unidad;
