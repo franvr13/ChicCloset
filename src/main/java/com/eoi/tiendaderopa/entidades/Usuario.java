@@ -24,6 +24,13 @@ import java.util.Set;
 @Table(name = "usuarios")
 public class Usuario  implements Serializable, UserDetails {
 
+    //Constructor creado para poder crear usuarios simples sin todo lo que necesita un usuario
+    public Usuario(int id, String contraseña, String email) {
+        this.id = id;
+        this.contraseña = contraseña;
+        this.email = email;
+    }
+
     @Id
     @Column(name ="id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,7 +47,7 @@ public class Usuario  implements Serializable, UserDetails {
     private Set<DatosFacturacion> datosFacturacion;
 
     @OneToMany(mappedBy = "usuarioPedido", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<Pedido> pedidoUsuario;
+    private Set<Pedido> pedidosUsuario;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "usuarioRol",

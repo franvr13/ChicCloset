@@ -5,18 +5,18 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<link rel="apple-touch-icon" href="../static/img/apple-icon.png" />
+		<link rel="apple-touch-icon" href="../img/apple-icon.png" />
 
-		<link rel="stylesheet" href="../static/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="../static/css/templatemo.css" />
-		<link rel="stylesheet" href="../static/css/custom.css" />
+		<link rel="stylesheet" href="../css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../css/templatemo.css" />
+		<link rel="stylesheet" href="../css/custom.css" />
 
 		<!-- Load fonts style after rendering the layout styles -->
 		<link
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap"
 		/>
-		<link rel="stylesheet" href="../static/css/fontawesome.min.css" />
+		<link rel="stylesheet" href="../css/fontawesome.min.css" />
 	</head>
 	<body>
 		<!-- Start Top Nav -->
@@ -74,7 +74,7 @@
 			<div class="container d-flex justify-content-between align-items-center">
 				<a
 						class="navbar-brand text-success logo h1 align-self-center"
-						href="index.html"
+						href="/tienda"
 				>
 					TiendaOnline
 				</a>
@@ -100,20 +100,26 @@
 								class="nav navbar-nav d-flex justify-content-between mx-lg-auto"
 						>
 							<li class="nav-item">
-								<a class="nav-link" href="index.html">Página Principal</a>
+								<a class="nav-link" th:href="@{/index}">Página Principal</a>
 							</li>
 							<li class="nav-item">
 								<a
 										class="nav-link"
-										href="about.html"
+										th:href="@{/about}"
 								>Acerca de Nosotros</a
 								>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="index.html">Tienda</a>
+								<a class="nav-link" th:href="@{/tienda}">Tienda</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="contact.html">Contacto</a>
+								<a class="nav-link" th:href="@{/contacto}">Contacto</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/usuarios}">Usuarios</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/productos}">Productos</a>
 							</li>
 						</ul>
 					</div>
@@ -143,7 +149,7 @@
 						</a>
 						<a
 								class="nav-icon position-relative text-decoration-none"
-								href="carrito.html"
+								href="/carrito"
 						>
 							<i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
 							<span
@@ -431,12 +437,12 @@
 						</h2>
 						<ul class="list-unstyled text-light footer-link-list">
 							<li>
-								<a class="text-decoration-none" href="index.html">Página Principal</a>
+								<a class="text-decoration-none" th:href="@{/}" Página Principal</a>
 							</li>
 							<li>
-								<a class="text-decoration-none" href="about.html">Acerca de Nosotros</a>
+								<a class="text-decoration-none" th:href="@{/about}">Acerca de Nosotros</a>
 							</li>
-							<li><a class="text-decoration-none" href="preguntas_frecuentes.html">FAQs</a></li>
+							<li><a class="text-decoration-none" th:href="@{/faq}">FAQs</a></li>
 							<li><a class="text-decoration-none" href="#">Contáctanos</a></li>
 						</ul>
 					</div>
@@ -530,11 +536,11 @@
 		</footer>
 		<!-- End Footer -->
 		<!-- Start Script -->
-		<script src="../static/js/jquery-1.11.0.min.js"></script>
-		<script src="../static/js/jquery-migrate-1.2.1.min.js"></script>
-		<script src="../static/js/bootstrap.bundle.min.js"></script>
-		<script src="../static/js/templatemo.js"></script>
-		<script src="../static/js/custom.js"></script>
+		<script src="../js/jquery-1.11.0.min.js"></script>
+		<script src="../js/jquery-migrate-1.2.1.min.js"></script>
+		<script src="../js/bootstrap.bundle.min.js"></script>
+		<script src="../js/templatemo.js"></script>
+		<script src="../js/custom.js"></script>
 		<!-- End Script -->
 	</body>
 </html>

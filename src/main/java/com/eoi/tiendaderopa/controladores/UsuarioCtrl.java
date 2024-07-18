@@ -4,39 +4,50 @@ import com.eoi.tiendaderopa.entidades.DetallesUsuario;
 import com.eoi.tiendaderopa.entidades.Usuario;
 import com.eoi.tiendaderopa.servicios.SrvcBusqueda;
 import com.eoi.tiendaderopa.servicios.SrvcUsuario;
-import com.eoi.tiendaderopa.servicios.SrvcUsuarioDetalles;
+import com.eoi.tiendaderopa.servicios.SrvcDetallesUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("/usuarios")
 public class UsuarioCtrl {
 
-    @Autowired
+    final
     SrvcUsuario usuarioSrvc;
 
-    @Autowired
+    final
     SrvcBusqueda busquedaSrvc;
 
-    @Autowired
-    SrvcUsuarioDetalles usuarioDetallesSrvc;
+    final
+    SrvcDetallesUsuario usuarioDetallesSrvc;
 
-    @GetMapping("/usuario/registro")
+    public UsuarioCtrl(SrvcUsuario usuarioSrvc, SrvcBusqueda busquedaSrvc, SrvcDetallesUsuario usuarioDetallesSrvc) {
+        this.usuarioSrvc = usuarioSrvc;
+        this.busquedaSrvc = busquedaSrvc;
+        this.usuarioDetallesSrvc = usuarioDetallesSrvc;
+    }
+
+    @GetMapping("")
+    public String mostrarListaUsuarios(Model model) {
+        model.addAttribute("usuarios", usuarioSrvc.buscarEntidades());
+        return "usuarios";
+    }
+
+
+    @GetMapping("/registro")
     public String mostrarFormularioRegistro(Model model) {
         model.addAttribute("usuario", new Usuario());
         return "registro";
     }
     
-    @PostMapping("/usuario/registro")
+    @PostMapping("/registro")
     public String registrarUsuario(@ModelAttribute("usuario") Usuario usuario) {
         usuarioSrvc.registrarUsuario(usuario);
         return "/registrosatisfactorio";
     }
-    @GetMapping("/usuario/login")
-    public String mostrarFormularioLogin() {
-        return "login";
-    }
+
 
     @GetMapping("/detalles")
     public String mostrarDetallesUsuario(@ModelAttribute("usuario") Usuario usuario, Model model) {
@@ -46,7 +57,12 @@ public class UsuarioCtrl {
 
     @PostMapping("/detalles/{idUsuario}")
     public String guardarDetallesUsuario(@ModelAttribute DetallesUsuario detalle, @PathVariable int idUsuario) {
-        usuarioSrvc.guardarDetallesUsuario(idUsuario, detalle);
+        detalle.setUsuario(usuarioSrvc.encuentraPorId(idUsuario).get());
+        try {
+            usuarioDetallesSrvc.guardar(detalle);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         return "detallesUsuario";
     }
 
