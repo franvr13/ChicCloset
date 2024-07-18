@@ -9,6 +9,7 @@ public class MainController {
 
     @GetMapping("/")
     public String indexPage(Model model) {
+        model.addAttribute("titulo", "Página Principal");
         return "index";
     }
 

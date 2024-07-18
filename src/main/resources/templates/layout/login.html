@@ -9,6 +9,7 @@
 <body>
 <div class="container">
     <h1>Login</h1>
+    <div th:replace="fragments/header :: header">...</div>
     <form action="/login" method="post">
         <div class="mb-3">
             <label for="username" class="form-label">Email</label>
