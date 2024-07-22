@@ -1,10 +1,12 @@
 package com.eoi.tiendaderopa.entidades;
 
+import com.eoi.tiendaderopa.dto.CarritoDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.format.datetime.standard.DateTimeContext;
 
 import java.io.Serializable;
@@ -20,10 +22,10 @@ public class Carrito {
     private Integer id;
 
     @Column(name = "user_id")
-    private @NotBlank Integer userId;
+    private @NotNull Integer userId;
 
     @Column(name = "producto_id")
-    private @NotBlank Long productoId;
+    private @NotNull Long productoId;
 
     @Column(name = "created_date")
     private Date createdDate;
@@ -39,7 +41,7 @@ public class Carrito {
     }
 
 
-    public Carrito(CartDto cartDto, Producto producto,int userId){
+    public Carrito(CarritoDTO cartDto, Producto producto, int userId){
         this.userId = userId;
         this.productoId = cartDto.getProductoId();
         this.quantity = cartDto.getQuantity();
@@ -47,14 +49,14 @@ public class Carrito {
         this.createdDate = new Date();
     }
 
-    public Carrito(@NotBlank Integer userId, @NotBlank Long productoId, int quantity) {
+    public Carrito(@NotNull Integer userId, @NotNull Long productoId, int quantity) {
         this.userId = userId;
         this.productoId = productoId;
         this.createdDate = new Date();
         this.quantity = quantity;
     }
 
-    public Carrito(CartDto cartDto, Producto producto) {
+    public Carrito(CarritoDTO cartDto, Producto producto) {
         this.productoId = cartDto.getProductoId();
         this.quantity = cartDto.getQuantity();
         this.producto = producto;
@@ -82,7 +84,7 @@ public class Carrito {
     }
 
     public void setProductId(long productId) {
-        this.productoId = productId;
+        this.productoId = productoId;
     }
 
     public DateTimeContext getCreatedDate() {
