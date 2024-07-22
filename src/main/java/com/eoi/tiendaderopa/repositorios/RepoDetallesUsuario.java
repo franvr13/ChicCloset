@@ -9,4 +9,5 @@ import java.util.List;
 public interface RepoDetallesUsuario extends JpaRepository<DetallesUsuario, Integer> {
 
     List<DetallesUsuario> findByUsuario(Usuario usuario);
+    List<DetallesUsuario> findByUsuarioId(Integer usuario);
 }
