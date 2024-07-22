@@ -54,11 +54,11 @@ public class CarritoDTO {
         this.quantity = quantity;
     }
     public Producto getProducto() {
-        return producto;
+        return product;
     }
 
     public void setProducto(Producto producto) {
-        this.producto = producto;
+        this.product = producto;
     }
 
 }

@@ -2,6 +2,7 @@ package com.eoi.tiendaderopa.servicios;
 
 import com.eoi.tiendaderopa.dto.AddToCarritoDTO;
 import com.eoi.tiendaderopa.dto.CarritoDTO;
+import com.eoi.tiendaderopa.dto.CartItemNotExistException;
 import com.eoi.tiendaderopa.dto.CosteCarrito;
 import com.eoi.tiendaderopa.entidades.Carrito;
 import com.eoi.tiendaderopa.entidades.Producto;
@@ -62,7 +63,7 @@ public class SrvcCarrito {
         carrito.setQuantity(carritoDTO.getQuantity());
         carrito.setUserId(userId);
         carrito.setId(carritoDTO.getId());
-        carrito.setProductoId(producto.getId());
+        carrito.setProductId(product.getId());
         carrito.setCreatedDate(new Date());
         repoCarrito.save(carrito);
     }
