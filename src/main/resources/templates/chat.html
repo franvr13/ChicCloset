@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="importmap">
+        {
+          "imports": {
+            "@stomp/stompjs": "ga.jspm.io/npm:@stomp/stompjs@7.0.0/esm6/index.js"
+          }
+        }
+    </script>
+</head>
+<body>
+<script type="module">
+    import { Client } from '@stomp/stompjs';
+    const client = new Client({
+        brokerURL: 'ws://localhost:8090/mensajes',
+        onConnect: () => {
+            client.subscribe('/grupo1', message =>
+                console.log(`Received: ${message.body}`)
+            );
+            client.publish({ destination: '/topic/test01', body: 'First Message' });
+        },
+    });
+    client.activate();
+</script>
+</body>
+</html>
