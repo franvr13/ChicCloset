@@ -15,7 +15,6 @@ public class WebSocket implements WebSocketMessageBrokerConfigurer {
     }
 
 
-
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
         //STOMP messages whose destination header begins with /app are routed to @MessageMapping methods in @Controller classes.
