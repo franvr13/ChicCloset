@@ -36,6 +36,9 @@ public class Producto implements Serializable {
     @Column (name = "descripcion", length = 250)
     private String descripcion;
 
+    @Column(name = "foto_url", length = 255)
+    private String fotoUrl;
+
     @Column (name = "cantidad_stock")
     private int cantidadStock;
 

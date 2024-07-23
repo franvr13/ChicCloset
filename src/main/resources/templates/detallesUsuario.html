@@ -1,41 +1,41 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="es">
-<head th:replace="fragments/head :: head">
-    <meta charset="UTF-8">
-    <title>DetallesUsuario</title>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Detalles Usuario</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-<div th:replace="fragments/header :: header">...</div>
+    <div th:replace="fragments/header :: header">...</div>
 
-<div class="container mt-5">
-    <h1 class="text-center">Detalles de Usuario</h1>
-    <form action="#" th:action="@{/usuarios/detalles}" method="post" th:object="${detalles}">
-        <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" th:field="*{usuario.nombre}" class="form-control" id="nombre" required readonly>
-        </div>
-        <div class="mb-3">
-            <label for="apellido" class="form-label">Apellido</label>
-            <input type="text" th:field="*{usuario.apellido}" class="form-control" id="apellido" required readonly>
-        </div>
-        <div class="mb-3">
-            <label for="direccion" class="form-label">Direccion</label>
-            <input type="text" th:field="*{usuario.direccion}" class="form-control" id="direccion" required readonly>
-        </div>
-        <div class="mb-3">
-            <label for="fechaNacimiento" class="form-label">Fecha Nacimiento</label>
-            <input type="text" th:field="*{usuario.fechaNacimiento}" class="form-control" id="fechaNacimiento" required readonly>
-        </div>
-        <div class="mb-3">
-            <label for="dni" class="form-label">DNI</label>
-            <input type="text" th:field="*{usuario.fechaNacimiento}" class="form-control" id="dni" required readonly>
-        </div>
+    <div class="container mt-5">
+        <h1 class="text-center">Detalles de Usuario</h1>
+        <form th:action="@{usuarios/detalles}" method="post" th:object="${detalles}">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" th:field="*{usuario.nombre}" class="form-control" id="nombre" required readonly>
+            </div>
+            <div class="mb-3">
+                <label for="apellido" class="form-label">Apellido</label>
+                <input type="text" th:field="*{usuario.apellido}" class="form-control" id="apellido" required readonly>
+            </div>
+            <div class="mb-3">
+                <label for="direccion" class="form-label">Direccion</label>
+                <input type="text" th:field="*{usuario.direccion}" class="form-control" id="direccion" required readonly>
+            </div>
+            <div class="mb-3">
+                <label for="fechaNacimiento" class="form-label">Fecha Nacimiento</label>
+                <input type="date" th:field="*{usuario.fechaNacimiento}" class="form-control" id="fechaNacimiento" required readonly>
+            </div>
+            <div class="mb-3">
+                <label for="dni" class="form-label">DNI</label>
+                <input type="text" th:field="*{usuario.dni}" class="form-control" id="dni" required readonly>
+            </div>
 
-        <button type="submit" class="btn btn-primary w-100">Guardar Cambios</button>
-    </form>
-</div>
+            <button type="submit" class="btn btn-primary w-100">Guardar Cambios</button>
+        </form>
+    </div>
 
-<div th:replace="fragments/footer :: footer">...</div>
+    <div th:replace="fragments/footer :: footer">...</div>
 
 </body>
 </html>

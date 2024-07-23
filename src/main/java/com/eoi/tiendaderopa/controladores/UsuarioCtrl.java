@@ -49,9 +49,10 @@ public class UsuarioCtrl {
     }
 
 
-    @GetMapping("/detalles")
-    public String mostrarDetallesUsuario(@ModelAttribute("usuario") Usuario usuario, Model model) {
-        model.addAttribute("detalles",usuarioDetallesSrvc.obtenerDetallesUsuario(usuario));
+    @GetMapping("/detalles/{idUsuario}")
+    public String mostrarDetallesUsuario(@ModelAttribute DetallesUsuario detalle,@PathVariable int idUsuario, Model model) {
+
+        model.addAttribute("detalles",usuarioDetallesSrvc.obtenerDetallesUsuarioporId(idUsuario));
         return "detallesUsuario";
     }
 
