@@ -71,11 +71,7 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
         usuarioRepo.save(usuario2);
         usuarioRepo.save(usuario3);
 
-        Producto producto = new Producto();
-        producto.setNombre("Producto1");
-        producto.setDescripcion("Producto1");
-        producto.setPrecio(10);
-        repoProducto.save(producto);
+
 
     }
 }

@@ -1,3 +1,36 @@
 /*
 Custom Css
 */
+@import "divider-text.css";
+@import "favoritos.css";
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* Paleta de colores de la aplicación */
+:root {
+    --white: #fff6ff;
+    --green: #58a664;
+    --navyblue: #293340;
+    --black: #221824;
+    --font: "Raleway", sans-serif;
+}
+
+.btn-facebook {
+    background-color: #405D9D;
+    color: #fff;
+}
+.btn-twitter {
+    background-color: #42AEEC;
+    color: #fff;
+}
+
+.bannerMain {
+    background-color: #58a664;
+}
+
+.listaProductos .card {
+    border-color: #58a664;
+}
+
+.about header {
+    background-color: yellow;
+}
