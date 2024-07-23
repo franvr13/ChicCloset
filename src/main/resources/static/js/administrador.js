@@ -1,3 +1,5 @@
+/* Función para activar el link cuando el cursor pase por encima de la opción del menú */
+
 var lista = document.querySelectorAll('.nav li');
 function activarLink() {
     lista.forEach((item) =>
