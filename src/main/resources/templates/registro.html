@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Registro</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <head th:replace="fragments/head :: head">
+    <meta charset="UTF-8" />
+        <title>Registro</title>
 </head>
 <body>
+<div th:replace="fragments/header :: header">...</div>
 <div class="container">
     <h1>Registro</h1>
     <form th:action="@{/usuario/registro}" th:object="${usuario}" method="post">
@@ -23,6 +25,14 @@
         <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
 </div>
+<div th:replace="fragments/footer :: footer">...</div>
+<!-- Start Script -->
+<script src="../js/jquery-1.11.0.min.js"></script>
+<script src="../js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/templatemo.js"></script>
+<script src="../js/custom.js"></script>
+<!-- End Script -->
 </body>
 </html>
 
