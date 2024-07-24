@@ -57,33 +57,55 @@ Para proceder a la instalación y ejecución de la aplicación, debemos seguir l
 - Arrancar el proyecto con el perfil "Desarrollo" activado.
 - Entrar a http://localhost:8080/ con un navegador.
 
-
-
 # PANTALLAS DE LA APLICACION
 
-## Pantalla principal
- - Header y footer standard
- - Banner de promoción
- - Se mostrarán algunos productos
+## Header 
+- Cambiar la dirección de correo electrónico: soportecliente@chiccloset.com
 
-## Productos
+## Inicio
+ - Header y footer standard
+ - Logo de la tienda que será responsive y redirije al inicio
+ - Carrousel con diferentes productos
+ - Banner de promoción
+ - Se mostrarán algunos productos (5 CARDS CON DIFERENTES PRODUCTOS)
+ - Cambiar las secciones del navbar que se muestran
+ - Cambiar la estética de los botones de Login y Registro
+
+## Pestaña Productos
 - Header y footer standard
-- Se mostrarán todos productos como tarjetas.
+- Botón responsive de lupa para buscar productos
+- Se mostrarán todos productos como tarjetas. (Usar filtros)
+- Sin mostrar el botón VIEW OPTIONS
 - Será una lista paginada
 - Cada producto llevará un botón de añadir a la cesta
 - Contendrá un botón para añadir a favoritos
 
-## Detalle de productos
+## Productos
 - Header y footer standard
+- Mostrará varias fotos del producto
 - Se mostrará al cliente una vista de todos los datos del producto
-- Permitirá también comprar el producto mediante un botón (añadir al carrito)
+- Permitirá también comprar el producto mediante un botón (AÑADIR AL CARRITO)
 - Contendrá un botón para añadir a favoritos
 
-## MisPedidos
+## Carrito 
+- Se muestra la lista de los productos que se quieren comprar con una foto
+- En los productos se muestra el precio y cantidad de los artículos
+- Botón para eliminar algún producto que no se quiera
+- Apartado para rellenar la información de dirección del pedido
+- Botón para continuar que redirije a la pasarela de pago
+- Apartado para rellenar la información de datos de pago y selección de método de pago
+
+## USUARIO/GESTIÓN DE MI USUARIO
+ES NECESARIO HACER LOGIN PARA VER ESTÁS SECCIONES.
+OCULTAR BOTONES DE LOGIN Y REGISTRO UNA VEZ SE HAYA INICIADO SESIÓN. 
+MENÚ/HAMBURGUESA CON VARIAS OPCIONES PARA EL USUARIO: CERRAR SESIÓN, MODIFICAR PERFIL,
+FAVORITOS.
+
+## Ver los pedidos
 - Proporciona un histórico de pedidos del cliente
 
 ## Facturas
-- Proporciona un histórico de pedidos del cliente
+- Proporciona un histórico de las facturas del cliente
 
 ## Favoritos
 - Proporciona una lista de los productos favoritos de un cliente
@@ -92,26 +114,36 @@ Para proceder a la instalación y ejecución de la aplicación, debemos seguir l
 - Es la página que mostramos cuando un usuario se quiere registrar
 
 ## RegistroSatisfactorio
-- Es la página que mostramos cuando un usuario se ha registrado
+- Es la página que mostramos cuando un usuario se ha registrado correctamente
 
 ## Login
 - Es la página donde el usuario introduce sus datos para hacer login
 
 ## ADMIN/PRODUCTOS
-
+- Gestionar los productos y su stock, eliminar o actualizar el los productos.
 ## ADMIN/USUARIOS
-
+- Gestionar los usuarios, eliminar.
 ## ADMIN/PEDIDOS
-
+- Gestionar los pedidos de cada usuario por id
 ## ADMIN/FACTURAS
-
-
-## Pantalla Sobre nosotros
-
-
+- Gestionar las facturas de cada usuario por id
 
 ## Pantalla Contacto
+- Se mostrará un correo electrónico de contacto de la tienda.
+- EXTRA: un botón que redirija a un chat de soporte controlado por un bot.
 
+## Acerca de nosotros
+- Se mostrarán fotos de los integrantes del desarrollo del proyecto, una breve descripción de
+cada uno o de sus funciones en el proyecto y sus redes de contacto.
+
+## Footer
+- Eliminar la dirección
+- Eliminar tiendaonline
+- Cambiar el correo electrónico: soportecliente@chiccloset.com
+- Cambiar los colores por los que se usan en las demás pantallas
+- Cambiar info adicional por acerca de nosotros
+- Eliminar apartado de rellenar correo electrónico porque no tenemos Newsletter
+- Organizar el tamaño una vez que estén listos los cambios
 
 
 
