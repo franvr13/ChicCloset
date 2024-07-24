@@ -14,14 +14,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/usuarios")
 public class UsuarioCtrl {
 
-    final
-    SrvcUsuario usuarioSrvc;
-
-    final
-    SrvcBusqueda busquedaSrvc;
-
-    final
-    SrvcDetallesUsuario usuarioDetallesSrvc;
+    final SrvcUsuario usuarioSrvc;
+    final SrvcBusqueda busquedaSrvc;
+    final SrvcDetallesUsuario usuarioDetallesSrvc;
 
     public UsuarioCtrl(SrvcUsuario usuarioSrvc, SrvcBusqueda busquedaSrvc, SrvcDetallesUsuario usuarioDetallesSrvc) {
         this.usuarioSrvc = usuarioSrvc;
@@ -49,9 +44,10 @@ public class UsuarioCtrl {
     }
 
 
-    @GetMapping("/detalles")
-    public String mostrarDetallesUsuario(@ModelAttribute("usuario") Usuario usuario, Model model) {
-        model.addAttribute("detalles",usuarioDetallesSrvc.obtenerDetallesUsuario(usuario));
+    @GetMapping("/detalles/{idUsuario}")
+    public String mostrarDetallesUsuario(@ModelAttribute DetallesUsuario detalle,@PathVariable int idUsuario, Model model) {
+
+        model.addAttribute("detalles",usuarioDetallesSrvc.obtenerDetallesUsuarioporId(idUsuario));
         return "detallesUsuario";
     }
 

@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<!doctype html>
+<html xmlns:th="thymeleaf.org" lang="es">
+<head th:replace="fragments/head :: head">
+    <title>Info</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" href="../img/apple-icon.png" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/templatemo.css" />
+    <link rel="stylesheet" href="../css/custom.css" />
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap" />
+    <link rel="stylesheet" href="../css/fontawesome.min.css" />
 </head>
 <body>
+<!-- Start Top Nav -->
+<div th:replace="fragments/header :: header">...</div>
+<!-- Close Header -->
 <h1>Aquí va una lista de pedidos</h1>
+<!-- Start Footer -->
+<div th:replace="fragments/footer :: footer">...</div>
+<!-- End Footer -->
 </body>
 </html>

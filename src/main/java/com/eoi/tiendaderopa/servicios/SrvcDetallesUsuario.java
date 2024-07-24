@@ -21,4 +21,9 @@ public class SrvcDetallesUsuario extends AbstractBusinessSrvc<DetallesUsuario, I
     public List<DetallesUsuario> obtenerDetallesUsuario(Usuario usuario) {
         return repoDetallesUsuario.findByUsuario(usuario);
     }
+
+    public List<DetallesUsuario> obtenerDetallesUsuarioporId(Integer idusuario) {
+        return repoDetallesUsuario.findByUsuarioId(idusuario);
+    }
+
 }

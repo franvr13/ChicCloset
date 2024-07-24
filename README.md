@@ -55,4 +55,65 @@ Para proceder a la instalación y ejecución de la aplicación, debemos seguir l
 # EJECUCIÓN 
 
 - Arrancar el proyecto con el perfil "Desarrollo" activado.
-- Entar a http://localhost:8080/ con un navegador.
+- Entrar a http://localhost:8080/ con un navegador.
+
+
+
+# PANTALLAS DE LA APLICACION
+
+## Pantalla principal
+ - Header y footer standard
+ - Banner de promoción
+ - Se mostrarán algunos productos
+
+## Productos
+- Header y footer standard
+- Se mostrarán todos productos como tarjetas.
+- Será una lista paginada
+- Cada producto llevará un botón de añadir a la cesta
+- Contendrá un botón para añadir a favoritos
+
+## Detalle de productos
+- Header y footer standard
+- Se mostrará al cliente una vista de todos los datos del producto
+- Permitirá también comprar el producto mediante un botón (añadir al carrito)
+- Contendrá un botón para añadir a favoritos
+
+## MisPedidos
+- Proporciona un histórico de pedidos del cliente
+
+## Facturas
+- Proporciona un histórico de pedidos del cliente
+
+## Favoritos
+- Proporciona una lista de los productos favoritos de un cliente
+
+## Registro
+- Es la página que mostramos cuando un usuario se quiere registrar
+
+## RegistroSatisfactorio
+- Es la página que mostramos cuando un usuario se ha registrado
+
+## Login
+- Es la página donde el usuario introduce sus datos para hacer login
+
+## ADMIN/PRODUCTOS
+
+## ADMIN/USUARIOS
+
+## ADMIN/PEDIDOS
+
+## ADMIN/FACTURAS
+
+
+## Pantalla Sobre nosotros
+
+
+
+## Pantalla Contacto
+
+
+
+
+
+
