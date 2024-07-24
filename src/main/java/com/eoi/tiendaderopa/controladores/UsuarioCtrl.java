@@ -14,14 +14,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/usuarios")
 public class UsuarioCtrl {
 
-    final
-    SrvcUsuario usuarioSrvc;
-
-    final
-    SrvcBusqueda busquedaSrvc;
-
-    final
-    SrvcDetallesUsuario usuarioDetallesSrvc;
+    final SrvcUsuario usuarioSrvc;
+    final SrvcBusqueda busquedaSrvc;
+    final SrvcDetallesUsuario usuarioDetallesSrvc;
 
     public UsuarioCtrl(SrvcUsuario usuarioSrvc, SrvcBusqueda busquedaSrvc, SrvcDetallesUsuario usuarioDetallesSrvc) {
         this.usuarioSrvc = usuarioSrvc;
