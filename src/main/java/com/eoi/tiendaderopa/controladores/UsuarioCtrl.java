@@ -43,7 +43,6 @@ public class UsuarioCtrl {
         return "/registrosatisfactorio";
     }
 
-
     @GetMapping("/detalles/{idUsuario}")
     public String mostrarDetallesUsuario(@ModelAttribute DetallesUsuario detalle,@PathVariable int idUsuario, Model model) {
 
