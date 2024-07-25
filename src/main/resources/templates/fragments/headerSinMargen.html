@@ -7,7 +7,7 @@
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:ayudacliente@tiendaonline.com">ayudacliente@tiendaonline.com</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:soportecliente@chiccloset.com">soportecliente@chiccloset.com</a>
                     <i class="fa fa-phone mx-2"></i>
                     <a class="navbar-sm-brand text-light text-decoration-none" href="tel: 123 456 789">123 456 789</a>
                 </div>
@@ -43,12 +43,7 @@
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
-            <a
-                    class="navbar-brand text-success logo h1 align-self-center"
-                    href="/tienda"
-            >
-                TiendaOnline
-            </a>
+            <a class="navbar-brand nav-link text-success logo h1 align-self-center" th:href="@{/}">ChicCloset</a>
 
             <button
                     class="navbar-toggler border-0"
@@ -67,31 +62,18 @@
                     id="templatemo_main_nav"
             >
                 <div class="flex-fill">
-                    <ul
-                            class="nav navbar-nav d-flex justify-content-between mx-lg-auto"
-                    >
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                        <li class="nav-item"></li>
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{/}">Página Principal</a>
-                        </li>
-                        <li class="nav-item">
-                            <a
-                                    class="nav-link"
-                                    th:href="@{/about}"
-                            >Acerca de Nosotros</a
-                            >
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/tienda}">Tienda</a>
+                            <a class="nav-link" th:href="@{/about}">Acerca de Nosotros</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/contacto}">Contacto</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{/usuarios}">Usuarios</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" th:href="@{/productos}">Productos</a>
                         </li>
+                        <li class="nav-item"></li>
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
@@ -127,7 +109,7 @@
                                 class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"
                         ></span>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="info.html">
+                    <a class="nav-icon position-relative text-decoration-none" th:href="@{/usuarios}">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         <span
                                 class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"

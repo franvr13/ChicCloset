@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,8 +24,8 @@ public class ProductoCtrl {
     // Este parámetro sirve para mostrar una lista de los pedidos
     @GetMapping("")
     public String listarProductos(Model model) {
-        List<Producto> entidades = productoService.buscarEntidades();
-        model.addAttribute("entidades", entidades);
+        List<Producto> productos = productoService.buscarEntidades();
+        model.addAttribute("productos", productos);
         return "productos";
     }
 

@@ -43,12 +43,7 @@
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
-            <a
-                    class="navbar-brand text-success logo h1 align-self-center"
-                    href="/tienda"
-            >
-                TiendaOnline
-            </a>
+            <a class=" navbar-brand nav-link text-success logo h1 align-self-center" th:href="@{/}">ChicCloset</a>
 
             <button
                     class="navbar-toggler border-0"
@@ -67,30 +62,20 @@
                     id="templatemo_main_nav"
             >
                 <div class="flex-fill">
-                    <ul
-                            class="nav navbar-nav d-flex justify-content-between mx-lg-auto"
-                    >
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{/}">Página Principal</a>
                         </li>
                         <li class="nav-item">
-                            <a
-                                    class="nav-link"
-                                    th:href="@{/about}"
-                            >Acerca de Nosotros</a
-                            >
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/tienda}">Tienda</a>
+                            <a class="nav-link" th:href="@{/about}">Acerca de Nosotros</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/contacto}">Contacto</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/usuarios}">Usuarios</a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/productos}">Productos</a>
+                        </li>
+                        <li class="nav-item">
                         </li>
                     </ul>
                 </div>
@@ -120,14 +105,14 @@
                     </a>
                     <a
                             class="nav-icon position-relative text-decoration-none"
-                            href="/carrito"
+                            th:href="@{/carrito}"
                     >
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span
                                 class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"
                         ></span>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="info.html">
+                    <a class="nav-icon position-relative text-decoration-none" th:href="@{/usuarios}">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         <span
                                 class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"
@@ -143,3 +128,4 @@
 </header>
 <!-- Start Top Nav -->
 </body>
+</html>
