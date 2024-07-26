@@ -48,7 +48,7 @@ que los usuarios puedan escoger.
 Para proceder a la instalación y ejecución de la aplicación, debemos seguir los siguientes pasos:
 
  - Instalar Docker Desktop o Docker web.
- - Ejecutar el comando que hay en el archivo 'docker-run.txt' para crear el contenedor de la base de datos de el proyecto.
+ - Ejecutar el comando que hay en el archivo 'docker-run.txt' en la ventana de cmd para crear el contenedor de la base de datos de el proyecto.
 
 <img src="src/main/resources/img/desarrollo.png">
 
