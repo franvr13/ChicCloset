@@ -137,12 +137,12 @@ FAVORITOS.
 cada uno o de sus funciones en el proyecto y sus redes de contacto.
 
 ## Footer
-- Eliminar la dirección
-- Eliminar tiendaonline
-- Cambiar el correo electrónico: soportecliente@chiccloset.com
+- Eliminar la dirección (Hecho)
+- Eliminar tiendaonline (Cambiado a ChicCloset)
+- Cambiar el correo electrónico: soportecliente@chiccloset.com (Hecho)
 - Cambiar los colores por los que se usan en las demás pantallas
-- Cambiar info adicional por acerca de nosotros
-- Eliminar apartado de rellenar correo electrónico porque no tenemos Newsletter
+- Cambiar info adicional por acerca de nosotros (Ya hecho)
+- Eliminar apartado de rellenar correo electrónico (y botón de Suscribirse) porque no tenemos Newsletter (Hecho)
 - Organizar el tamaño una vez que estén listos los cambios
 
 
