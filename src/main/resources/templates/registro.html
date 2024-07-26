@@ -9,7 +9,7 @@
 <div th:replace="fragments/header :: header">...</div>
 <div class="container">
     <h1>Registro</h1>
-    <form th:action="@{/usuario/registro}" th:object="${usuario}" method="post">
+    <form th:action="@{/usuarios/registro}" th:object="${usuario}" method="post">
        <!-- <div class="form-group">
             <label for="nombre">Nombre:</label>
             <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required/>

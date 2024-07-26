@@ -39,8 +39,12 @@ public class ProductoCtrl {
         if(producto.isPresent())
         {
             model.addAttribute("producto", producto.get());
+            return "detallesproducto";
+        }else {
+            // Manejo del caso en el que no se encuentra el producto (opcional)
+            return "redirect:/productos";
         }
-        return "detallesProducto";
+
     }
 
 

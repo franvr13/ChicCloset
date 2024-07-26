@@ -38,7 +38,7 @@ public class ADMINProductoCtrl {
         {
             model.addAttribute("producto", producto.get());
         }
-        return "admin/detallesProducto";
+        return "admin/detallesproducto";
     }
 
 
