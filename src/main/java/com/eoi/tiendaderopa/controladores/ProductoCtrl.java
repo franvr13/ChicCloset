@@ -19,7 +19,10 @@ public class ProductoCtrl {
 
     @Autowired
     private SrvcProducto productoService;
-    
+
+
+
+
 
     // Este parámetro sirve para mostrar una lista de los pedidos
     @GetMapping("")

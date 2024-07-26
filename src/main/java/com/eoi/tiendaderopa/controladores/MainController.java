@@ -6,8 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Controller
 public class MainController {
@@ -23,9 +23,23 @@ public class MainController {
     public String indexPage(Model model) {
         model.addAttribute("titulo", "Página Principal");
         List<Producto> productos = repoProducto.findAll();
+        List<List<Producto>> particiones = partitionList(productos, 3);
+        model.addAttribute("particiones", particiones);
         model.addAttribute("productos", productos);
+
         return "index";
     }
+
+
+
+    private <T> List<List<T>> partitionList(List<T> list, int size) {
+        List<List<T>> partitions = new ArrayList<>();
+        for (int i = 0; i < list.size(); i += size) {
+            partitions.add(list.subList(i, Math.min(i + size, list.size())));
+        }
+        return partitions;
+    }
+
 
     @GetMapping("/carrito")
     public String carrito(Model model) {

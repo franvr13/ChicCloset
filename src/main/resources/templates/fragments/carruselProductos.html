@@ -1,31 +1,35 @@
 <section class="carruselProductos py-5" th:fragment="carruselProductos" style="display: flex;  justify-content: center; align-items: center; overflow: hidden;">
-    <div id="carousel" class="carousel slide" data-bs-ride="carousel" style="max-width: 600px; width: 100%;">
+    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <!-- Aquí se renderizarán las diapositivas del carrusel -->
-            <div th:each="producto, iterStat : ${productos}" class="carousel-item" th:classappend="${iterStat.index == 0} ? 'active' : ''">
-                <a th:href="@{'/admin/productos/' + ${producto.id}}">
-                    <div class="card h-100">
-                        <!-- Product image -->
-                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                        <!-- Product details -->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name -->
-                                <h5 class="fw-bolder" th:text="${producto.nombre}">Fancy Product</h5>
-                                <!-- Product price -->
-                                <h5 th:text="${producto.precio}"></h5>
+            <div th:each="grupoProductos, iterStat : ${particiones}" class="carousel-item" th:classappend="${iterStat.index == 0} ? 'active' : ''">
+                <div class="row" display="flex">
+                    <div th:each="producto : ${grupoProductos}" class="col-md-4">
+                        <a th:href="@{'/admin/productos/' + ${producto.id}}">
+                            <div class="card h-100">
+                                <!-- Product image -->
+                                <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                                <!-- Product details -->
+                                <div class="card-body p-4">
+                                    <div class="text-center">
+                                        <!-- Product name -->
+                                        <h5 class="fw-bolder" th:text="${producto.nombre}">Fancy Product</h5>
+                                        <!-- Product price -->
+                                        <h5 th:text="${producto.precio}"></h5>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                </a>
+                </div>
             </div>
+
         </div>
         <!-- Carousel controls -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+        <button class="carousel-control-prev"  type="button" data-bs-target="#carousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+        <button class="carousel-control-next " type="button" data-bs-target="#carousel" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>

@@ -27,9 +27,24 @@ Custom Css
     background-color: #58a664;
 }
 
+#carousel {
+
+}
+
 .listaProductos .card {
     border-color: #58a664;
 }
+
+.carousel-control-next, .carousel-control-prev {
+    background-color: #58a664; !important;
+    height: 5em;
+    width: 5em;
+    border-radius: 50%;
+    top: 40%;
+
+}
+
+
 
 .about header {
     background-color: yellow;
