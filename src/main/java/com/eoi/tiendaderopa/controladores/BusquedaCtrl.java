@@ -34,19 +34,19 @@ public class BusquedaCtrl {
     public String mostrarBusqueda(@RequestParam String busqueda, Model model) {
 
 
-        CriteriaBuilder cb =entityManager.getCriteriaBuilder();
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Producto> cq = cb.createQuery(Producto.class);
         Root<Producto> productoRoot = cq.from(Producto.class);
-        Set<Predicate> predicates=new HashSet<>();
+        Set<Predicate> predicates = new HashSet<>();
 
         //Esto es para que cada palabra se recoja como un termino diferente
         String[] terminos = busqueda.split("\\s+");
 
-        for(String termino:terminos){
-            termino=termino.toLowerCase();
-            predicates.add(cb.or(cb.like(productoRoot.get("material"),"%"+termino+"%"),
-                    cb.like(productoRoot.get("color"),"%"+termino+"%"),
-                    cb.like(productoRoot.get("descripcion"),"%"+termino+"%")));
+        for (String termino : terminos) {
+            termino = termino.toLowerCase();
+            predicates.add(cb.or(cb.like(productoRoot.get("material"), "%" + termino + "%"),
+                    cb.like(productoRoot.get("color"), "%" + termino + "%"),
+                    cb.like(productoRoot.get("descripcion"), "%" + termino + "%")));
 
 
         }

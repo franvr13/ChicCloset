@@ -21,6 +21,6 @@ public class DatosFacturacion {
     private String Dni;
 
     @ManyToOne
-    @JoinColumn(name="id_usuario", nullable=false)
+    @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 }

@@ -2,9 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <head th:replace="fragments/head :: head">
-    <title>Usuarios</title>
-    <meta charset="UTF-8" />
-</head>
+        <title>Usuarios</title>
+        <meta charset="UTF-8"/>
+    </head>
 <body>
 <div th:replace="fragments/header :: header">...</div>
 <h1>Aquí irá una lista de usuarios</h1>
@@ -23,8 +23,12 @@
             <td th:text="${usuario.email}"></td>
             <td th:text="${usuario.id}"></td>
             <td th:text="${usuario.contraseña}"></td>
-            <td><button type="button" class="btn btn-primary">Editar</button></td>
-            <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+            <td>
+                <button type="button" class="btn btn-primary">Editar</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger">Eliminar</button>
+            </td>
         </tr>
     </table>
 </div>

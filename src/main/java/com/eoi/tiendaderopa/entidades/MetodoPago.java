@@ -18,14 +18,14 @@ import java.util.Set;
 public class MetodoPago implements Serializable {
 
     @Id
-    @Column(name ="id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column (name ="nombre", length = 45)
+    @Column(name = "nombre", length = 45)
     private String nombre;
 
-    @Column (name ="pago_externo", length = 45)
+    @Column(name = "pago_externo", length = 45)
     private String pago_externo;
 
     @OneToMany(mappedBy = "metodoPagoPago", fetch = FetchType.EAGER, cascade = CascadeType.ALL)

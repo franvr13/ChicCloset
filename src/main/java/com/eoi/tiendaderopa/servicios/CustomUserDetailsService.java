@@ -42,7 +42,7 @@ public class CustomUserDetailsService implements UserDetailsService {
      * Esto facilita la gestión de las dependencias y mejora la capacidad de prueba y mantenimiento del código.
      * </p>
      *
-     * @param usuarioRepo el repositorio de usuarios que se utilizará para recuperar los datos del usuario.
+     * @param usuarioRepo   el repositorio de usuarios que se utilizará para recuperar los datos del usuario.
      * @param messageSource el componente de Spring utilizado para la internacionalización de mensajes.
      */
 
@@ -64,11 +64,11 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Usuario usuario = repoUsuario.findByEmail(username);
-        if (usuario==null){
-            throw new UsernameNotFoundException("Usuario no encontrado"+ username);
+        if (usuario == null) {
+            throw new UsernameNotFoundException("Usuario no encontrado" + username);
         }
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        for (Rol rol: usuario.getRoles()){
+        for (Rol rol : usuario.getRoles()) {
             grantedAuthorities.add(new SimpleGrantedAuthority(rol.getRolNombre()));
         }
         return new org.springframework.security.core.userdetails.User(usuario.getEmail(), usuario.getPassword(), grantedAuthorities);

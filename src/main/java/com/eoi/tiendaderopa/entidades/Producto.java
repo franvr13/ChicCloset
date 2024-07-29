@@ -17,32 +17,32 @@ import java.util.Set;
 @Table(name = "producto")
 public class Producto implements Serializable {
     @Id
-    @Column(name ="id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column (name ="nombre", length = 45)
+    @Column(name = "nombre", length = 45)
     private String nombre;
 
-    @Column (name ="proveedor", length = 45)
+    @Column(name = "proveedor", length = 45)
     private String proveedor;
 
-    @Column (name ="material", length = 45)
+    @Column(name = "material", length = 45)
     private String material;
 
-    @Column (name ="color", length = 45)
+    @Column(name = "color", length = 45)
     private String color;
 
-    @Column (name = "descripcion", length = 250)
+    @Column(name = "descripcion", length = 250)
     private String descripcion;
 
     @Column(name = "foto_url", length = 255)
     private String fotoUrl;
 
-    @Column (name = "cantidad_stock")
+    @Column(name = "cantidad_stock")
     private int cantidadStock;
 
-    @Column (name = "precio")
+    @Column(name = "precio")
     private double precio;
 
 }

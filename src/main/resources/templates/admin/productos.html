@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
+<html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
 <head>
     <title>Productos</title>
 </head>
@@ -18,8 +19,12 @@
         <tr th:each="producto : ${entidades}">
 
             <td th:text="${producto.getNombre()}"></td>
-            <td><a th:href="@{'/admin/productos/' + ${producto.id}}"><button type="button" class="btn btn-primary">Editar</button></a></td>
-            <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+            <td><a th:href="@{'/admin/productos/' + ${producto.id}}">
+                <button type="button" class="btn btn-primary">Editar</button>
+            </a></td>
+            <td>
+                <button type="button" class="btn btn-danger">Eliminar</button>
+            </td>
         </tr>
     </table>
 </div>

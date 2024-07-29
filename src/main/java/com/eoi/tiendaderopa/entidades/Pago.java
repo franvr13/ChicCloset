@@ -15,20 +15,20 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "pago")
-public class Pago implements Serializable{
+public class Pago implements Serializable {
 
     @Id
-    @Column(name ="id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column (name ="metodoPago",length = 45)
+    @Column(name = "metodoPago", length = 45)
     private String metodoPago;
 
-    @Column (name ="fechaPago")
+    @Column(name = "fechaPago")
     private LocalDateTime fechaPago;
 
-    @Column (name ="total")
+    @Column(name = "total")
     private Double total;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

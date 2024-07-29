@@ -19,24 +19,24 @@ import java.util.Set;
 public class Pedido implements Serializable {
 
     @Id
-    @Column(name ="id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
 
-    @Column (name ="fecha_pedido")
+    @Column(name = "fecha_pedido")
     private LocalDateTime fecha_pedido;
 
-    @Column (name ="fecha_entrega")
+    @Column(name = "fecha_entrega")
     private LocalDateTime fecha_entrega;
 
-    @Column (name ="estado",length = 45)
+    @Column(name = "estado", length = 45)
     private String estado;
 
-    @Column (name ="codigo_cliente")
+    @Column(name = "codigo_cliente")
     private Integer codigo_cliente;
 
-    @Column (name ="comentario",length = 255)
+    @Column(name = "comentario", length = 255)
     private String comentario;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

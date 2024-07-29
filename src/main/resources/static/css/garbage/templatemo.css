@@ -332,6 +332,7 @@ body, ul, li, p, a, label, input, div {
     color: white;
     cursor: pointer;
 }
+
 .subscribe-button.clicked {
     background-color: #ffc107;
     color: black;
@@ -348,6 +349,7 @@ body, ul, li, p, a, label, input, div {
     cursor: pointer;
     color: #bbb; /* Color gris para estrellas sin seleccionar */
 }
+
 .star.selected,
 .star.hovered {
     color: #f2b600; /* Color dorado para estrellas seleccionadas */

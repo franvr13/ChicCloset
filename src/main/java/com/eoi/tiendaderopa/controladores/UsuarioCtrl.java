@@ -36,7 +36,7 @@ public class UsuarioCtrl {
         model.addAttribute("usuario", new Usuario());
         return "registro";
     }
-    
+
     @PostMapping("/registro")
     public String registrarUsuario(@ModelAttribute("usuario") Usuario usuario) {
         usuarioSrvc.registrarUsuario(usuario);
@@ -44,9 +44,9 @@ public class UsuarioCtrl {
     }
 
     @GetMapping("/detalles/{idUsuario}")
-    public String mostrarDetallesUsuario(@ModelAttribute DetallesUsuario detalle,@PathVariable int idUsuario, Model model) {
+    public String mostrarDetallesUsuario(@ModelAttribute DetallesUsuario detalle, @PathVariable int idUsuario, Model model) {
 
-        model.addAttribute("detalles",usuarioDetallesSrvc.obtenerDetallesUsuarioporId(idUsuario));
+        model.addAttribute("detalles", usuarioDetallesSrvc.obtenerDetallesUsuarioporId(idUsuario));
         return "detallesUsuario";
     }
 
@@ -69,7 +69,7 @@ public class UsuarioCtrl {
 
         //hace falta saber como va a ser la entidad de los resultados
         //List resultados = busquedaSrvc.buscar(termino);
-       // model.addAttribute("resultados", resultados);
+        // model.addAttribute("resultados", resultados);
         return "resultadosBusqueda";
     }
 

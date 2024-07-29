@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head">
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
     <title>Pagos</title>
 </head>
@@ -25,8 +25,12 @@
             <td th:text="${pago.getId()}"></td>
             <td th:text="${pago.fechaPago}"></td>
             <td th:text="${pago.getTotal()}"></td>
-            <td><button type="button" class="btn btn-primary">Editar</button></td>
-            <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+            <td>
+                <button type="button" class="btn btn-primary">Editar</button>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger">Eliminar</button>
+            </td>
         </tr>
     </table>
 </div>
