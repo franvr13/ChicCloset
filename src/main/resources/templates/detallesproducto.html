@@ -1,33 +1,86 @@
-<!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: head">
-	<meta charset="UTF-8">
+<!doctype html>
+<html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
+<head>
 	<title th:text="'Detalles del Producto - ' + ${producto.nombre}"></title>
 </head>
 <body>
-<header th:replace="fragments/header :: header"></header>
-
+<div layout:fragment="content">
 <section class="bg-light">
 	<div class="container pb-5">
 		<div class="row">
+			<!-- Imagen del Producto -->
 			<div class="col-lg-5 mt-5">
 				<div class="card mb-3">
 					<img class="card-img img-fluid" th:src="${producto.fotoUrl}" alt="Imagen del producto"/>
-				</div>
-			</div>
-			<div class="col-lg-7 mt-5">
-				<div class="card">
-					<div class="card-body">
-						<h1 class="h2" th:text="${producto.nombre}">Nombre del Producto</h1>
-						<p class="h3 py-2" th:text="${producto.precio}">$0.00</p>
-						<p th:text="${producto.descripcion}">Descripción del Producto</p>
+					<div class="card-body text-center">
+						<button class="btn btn-heart" >
+							<svg type="button" xmlns="http://www.w3.org/2000/svg" width="30" height="40" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+								<path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+							</svg>
+						</button>
 					</div>
 				</div>
+
+			</div>
+
+			<!-- Detalles del Producto -->
+			<div class="col-lg-7 mt-5">
+				<div class="card">
+					<div class="card-body text-center">
+						<h1 class="h2" th:text="${producto.nombre}"></h1>
+						<p class="h3 py-2" th:text="${producto.precio}"></p>
+						<p th:text="${producto.descripcion}"></p>
+					</div>
+				</div>
+
+				<!-- Especificaciones -->
+				<div class="card mt-4">
+					<div class="card-body">
+						<h5>Especificaciones</h5>
+						<ul class="list-unstyled">
+							<li th:text="'Proveedor: ' + ${producto.proveedor}"></li>
+							<li th:text="'Material: ' + ${producto.material}"></li>
+							<li th:text="'Color: ' + ${producto.color}"></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="card-body text-center" style="margin-top: 30px">
+					<button class="btn btn-success ms-9" id="addToCartButton" type="button" data-id="${producto.id}">
+						<i class="bi bi-cart"></i>
+					</button>
+				</div>
+
 			</div>
 		</div>
 	</div>
 </section>
+</div>
+<script>
+	document.getElementById('addToCartButton').addEventListener('click', function() {
+		var productId = this.getAttribute('data-id');
+		fetch('/carrito/agregar', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'X-CSRF-TOKEN': /* Thymeleaf syntax for CSRF token */ [[${_csrf.token}]]
+			},
+			body: JSON.stringify({ id: productId })
+		})
+				.then(response => response.json())
+				.then(data => {
+					if(data.success) {
+						alert('Producto agregado al carrito exitosamente');
+					} else {
+						alert('Hubo un problema al agregar el producto al carrito');
+					}
+				})
+				.catch(error => {
+					console.error('Error:', error);
+					alert('Hubo un problema al agregar el producto al carrito');
+				});
+	});
+</script>
 
-<footer th:replace="fragments/footer :: footer"></footer>
 </body>
 </html>

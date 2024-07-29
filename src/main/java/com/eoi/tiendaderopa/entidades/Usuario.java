@@ -58,6 +58,7 @@ public class Usuario  implements Serializable, UserDetails {
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
     private DetallesUsuario detalle;
 
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<GrantedAuthority> authorities = new HashSet<>();

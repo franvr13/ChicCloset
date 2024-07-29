@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head th:replace="fragments/head :: head">
-	<meta charset="UTF-8">
-	<title>Pagos</title>
+<!doctype html>
+<html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
+<head>
+	<title>Registro</title>
 </head>
-
-	<body>
-		<div th:replace="fragments/header :: header"></div>
+<body>
+	<div layout:fragment="content">
 		<!-- Código del Carrito -->
 
 		<div class="container">
@@ -34,64 +31,46 @@
 										<div class="accordion" id="accordionExample">
 											<div class="card border-0">
 												<div
-													class="card-header d-flex justify-content-between"
-													id="headingOne"
+														class="card-header d-flex justify-content-between"
+														id="headingOne"
 												>
-													<h2 class="mb-0">
-														<button
-															id="turnbf"
-															class="btn btn-link d-flex turnaf clps"
-															type="button"
-															data-toggle="collapse"
-															data-target="#collapseOne"
-															aria-expanded="true"
-															aria-controls="collapseOne"
-														>
-															<p class="clps-btn-style">
-																Productos seleccionados
-															</p>
-															<span class="mx-1"
-																><i class="far fa-chevron-double-down"></i
-															></span>
-														</button>
-													</h2>
 													<span class="my-2 text-danger h4">100€</span>
 												</div>
 												<div
-													id="collapseOne"
-													class="collapse show"
-													aria-labelledby="headingOne"
-													data-parent="#accordionExample"
+														id="collapseOne"
+														class="collapse show"
+														aria-labelledby="headingOne"
+														data-parent="#accordionExample"
 												>
 													<div class="card-body p-0">
 														<div>
 															<table class="table table-sm">
 																<thead>
-																	<tr class="ml-3">
-																		<th></th>
-																		<th></th>
-																		<th class="text-left" width="50%">
-																			Producto
-																		</th>
-																		<th class="text-center" width="45%">
-																			Cantidad
-																		</th>
-																		<th>Subtotal</th>
-																	</tr>
+																<tr class="ml-3">
+																	<th></th>
+																	<th></th>
+																	<th class="text-left" width="50%">
+																		Producto
+																	</th>
+																	<th class="text-center" width="45%">
+																		Cantidad
+																	</th>
+																	<th>Subtotal</th>
+																</tr>
 																</thead>
 																<tbody>
-																	<tr>
-																		<td class="align-middle text-center">
-																			<a
+																<tr>
+																	<td class="align-middle text-center">
+																		<a
 																				href="#delete"
 																				data-toggle="modal"
 																				data-title="Delete your product ?"
-																			>
-																				<i class="fal fa-trash-alt"></i>
-																			</a>
-																		</td>
-																		<td>
-																			<div
+																		>
+																			<i class="fal fa-trash-alt"></i>
+																		</a>
+																	</td>
+																	<td>
+																		<div
 																				class="rounded"
 																				style="
 																					background-image: url(https://unsplash.com/photos/ZBwQ2bCbJjw/download?force=true&w=640);
@@ -99,26 +78,26 @@
 																					height: 60px;
 																					background-size: cover;
 																				"
-																			></div>
-																		</td>
-																		<td class="align-middle text-left">
-																			Traje
-																		</td>
-																		<td class="align-middle text-center">1</td>
-																		<td class="align-middle text-right">50€</td>
-																	</tr>
-																	<tr>
-																		<td class="align-middle text-center">
-																			<a
+																		></div>
+																	</td>
+																	<td class="align-middle text-left">
+																		Traje
+																	</td>
+																	<td class="align-middle text-center">1</td>
+																	<td class="align-middle text-right">50€</td>
+																</tr>
+																<tr>
+																	<td class="align-middle text-center">
+																		<a
 																				href="#delete"
 																				data-toggle="modal"
 																				data-title="Delete your product ?"
-																			>
-																				<i class="fal fa-trash-alt"></i>
-																			</a>
-																		</td>
-																		<td>
-																			<div
+																		>
+																			<i class="fal fa-trash-alt"></i>
+																		</a>
+																	</td>
+																	<td>
+																		<div
 																				class="rounded"
 																				style="
 																					background-image: url(https://unsplash.com/photos/vOwj38HFrJ1/download?force=true&w=640);
@@ -126,26 +105,26 @@
 																					height: 60px;
 																					background-size: cover;
 																				"
-																			></div>
-																		</td>
-																		<td class="align-middle text-left">
-																			Pañuelo
-																		</td>
-																		<td class="align-middle text-center">1</td>
-																		<td class="align-middle text-right">30€</td>
-																	</tr>
-																	<tr>
-																		<td class="align-middle text-center">
-																			<a
+																		></div>
+																	</td>
+																	<td class="align-middle text-left">
+																		Pañuelo
+																	</td>
+																	<td class="align-middle text-center">1</td>
+																	<td class="align-middle text-right">30€</td>
+																</tr>
+																<tr>
+																	<td class="align-middle text-center">
+																		<a
 																				href="#delete"
 																				data-toggle="modal"
 																				data-title="Delete your product ?"
-																			>
-																				<i class="fal fa-trash-alt"></i>
-																			</a>
-																		</td>
-																		<td>
-																			<div
+																		>
+																			<i class="fal fa-trash-alt"></i>
+																		</a>
+																	</td>
+																	<td>
+																		<div
 																				class="rounded"
 																				style="
 																					background-image: url(https://unsplash.com/photos/FxraOMAkLOs/download?force=true&w=640);
@@ -154,31 +133,31 @@
 																					background-size: cover;
 																					background-position: center center;
 																				"
-																			></div>
-																		</td>
-																		<td class="align-middle text-left">
-																			Botas
-																		</td>
-																		<td class="align-middle text-center">1</td>
-																		<td class="align-middle text-right">20€</td>
-																	</tr>
-																	<tr>
-																		<td
+																		></div>
+																	</td>
+																	<td class="align-middle text-left">
+																		Botas
+																	</td>
+																	<td class="align-middle text-center">1</td>
+																	<td class="align-middle text-right">20€</td>
+																</tr>
+																<tr>
+																	<td
 																			colspan="4"
 																			class="align-middle text-right"
-																		>
-																			Total
-																		</td>
-																		<td class="align-middle text-right">100</td>
-																	</tr>
+																	>
+																		Total
+																	</td>
+																	<td class="align-middle text-right">100</td>
+																</tr>
 																</tbody>
 															</table>
 														</div>
 													</div>
 												</div>
 												<div
-													class="alert alert-secondary border-0 h4 text-center bg-alert rounded-0"
-													role="alert"
+														class="alert alert-secondary border-0 h4 text-center bg-alert rounded-0"
+														role="alert"
 												>
 													Información de envío
 												</div>
@@ -187,11 +166,11 @@
 														<div class="col-md-4 mb-3">
 															<label for="name">Nombre</label>
 															<input
-																type="text"
-																class="form-control space"
-																id="name"
-																placeholder="Introduzca su nombre"
-																required
+																	type="text"
+																	class="form-control space"
+																	id="name"
+																	placeholder="Introduzca su nombre"
+																	required
 															/>
 															<div class="valid-feedback">Formato correcto</div>
 															<div class="invalid-feedback">
@@ -201,11 +180,11 @@
 														<div class="col-md-4 mb-3">
 															<label for="email">Email</label>
 															<input
-																type="text"
-																class="form-control space"
-																id="email"
-																placeholder="Introduzca su email"
-																required
+																	type="text"
+																	class="form-control space"
+																	id="email"
+																	placeholder="Introduzca su email"
+																	required
 															/>
 															<div class="valid-feedback">Formato correcto</div>
 															<div class="invalid-feedback">
@@ -215,11 +194,11 @@
 														<div class="col-md-4 mb-3">
 															<label for="tel">Teléfono</label>
 															<input
-																type="tel"
-																class="form-control space"
-																id="email"
-																placeholder="Introduzca su teléfono"
-																required
+																	type="tel"
+																	class="form-control space"
+																	id="email"
+																	placeholder="Introduzca su teléfono"
+																	required
 															/>
 															<div class="valid-feedback">Formato correcto</div>
 															<div class="invalid-feedback">
@@ -231,9 +210,9 @@
 														<div class="col-md-4 mb-3">
 															<label for="country">País</label>
 															<select
-																class="form-control"
-																id="country . . ."
-																required
+																	class="form-control"
+																	id="country . . ."
+																	required
 															>
 																<option>España</option>
 																<option>Italia</option>
@@ -247,11 +226,11 @@
 														<div class="col-md-4 mb-3">
 															<label for="city">Ciudad</label>
 															<input
-																type="text"
-																class="form-control space"
-																id="city"
-																placeholder="Indique su ciudad"
-																required
+																	type="text"
+																	class="form-control space"
+																	id="city"
+																	placeholder="Indique su ciudad"
+																	required
 															/>
 															<div class="valid-feedback">Formato correcto</div>
 															<div class="invalid-feedback">
@@ -261,11 +240,11 @@
 														<div class="col-md-12 mb-3">
 															<label for="address">Dirección</label>
 															<input
-																type="text"
-																class="form-control space"
-																id="address"
-																placeholder="Introduzca su dirección"
-																required
+																	type="text"
+																	class="form-control space"
+																	id="address"
+																	placeholder="Introduzca su dirección"
+																	required
 															/>
 															<div class="valid-feedback">Formato correcto</div>
 															<div class="invalid-feedback">
@@ -280,16 +259,16 @@
 													</div>
 												</form>
 												<div
-													class="list-group mt-5 p-0 justify-content-center"
-													id="allList"
-													role="tablist"
-													style="flex-direction: row"
+														class="list-group mt-5 p-0 justify-content-center"
+														id="allList"
+														role="tablist"
+														style="flex-direction: row"
 												>
 													<a
-														href="#step2"
-														class="list-group-item-dark w-35 py-2 rounded text-center btns"
-														data-toggle="list"
-														role="tab"
+															href="#step2"
+															class="list-group-item-dark w-35 py-2 rounded text-center btns"
+															data-toggle="list"
+															role="tab"
 													>
 														Siguiente paso
 														<i class="fal fa-arrow-circle-right"></i>
@@ -328,20 +307,20 @@
 													<ul class="nav nav-tabs card-header-tabs">
 														<li class="nav-item">
 															<a
-																class="nav-link active"
-																href="#act1"
-																data-toggle="tab"
-																role="tab"
+																	class="nav-link active"
+																	href="#act1"
+																	data-toggle="tab"
+																	role="tab"
 															>
 																<p class="card-bg h6">Tarjeta</p>
 															</a>
 														</li>
 														<li class="nav-item">
 															<a
-																class="nav-link"
-																href="#act2"
-																data-toggle="tab"
-																role="tab"
+																	class="nav-link"
+																	href="#act2"
+																	data-toggle="tab"
+																	role="tab"
 															>
 																<p class="card-bg h6">Bizum</p>
 															</a>
@@ -351,7 +330,7 @@
 												<div class="tab-content">
 													<div class="tab-pane active" id="act1">
 														<div
-															class="card-body border border-top-0 rounded-bottom"
+																class="card-body border border-top-0 rounded-bottom"
 														>
 															<div class="d-sm-flex justify-content-around">
 																<i class="fab fa-cc-visa fa-7x icons"></i>
@@ -364,11 +343,11 @@
 													</div>
 													<div class="tab-pane" id="act2">
 														<div
-															class="card-body border border-top-0 rounded-bottom"
+																class="card-body border border-top-0 rounded-bottom"
 														>
 															<form
-																action=""
-																class="d-sm-flex justify-content-around"
+																	action=""
+																	class="d-sm-flex justify-content-around"
 															>
 																<p>
 																	Se le enviará el pago a su número de teléfono
@@ -385,32 +364,32 @@
 										<form id="card-form">
 											<label for="card-number">Número de Tarjeta:</label>
 											<input
-												type="text"
-												id="card-number"
-												name="card-number"
-												class="form-control"
+													type="text"
+													id="card-number"
+													name="card-number"
+													class="form-control"
 											/><br />
 											<label for="card-holder">Nombre del Titular:</label>
 											<input
-												type="text"
-												id="card-holder"
-												name="card-holder"
-												class="form-control"
+													type="text"
+													id="card-holder"
+													name="card-holder"
+													class="form-control"
 											/><br />
 											<label for="expiry-date">Fecha de Expiración:</label>
 											<input
-												type="text"
-												id="expiry-date"
-												name="expiry-date"
-												class="form-control"
-												placeholder="MM/AA"
+													type="text"
+													id="expiry-date"
+													name="expiry-date"
+													class="form-control"
+													placeholder="MM/AA"
 											/><br />
 											<label for="cvv">CVV:</label>
 											<input
-												type="text"
-												id="cvv"
-												name="cvv"
-												class="form-control"
+													type="text"
+													id="cvv"
+													name="cvv"
+													class="form-control"
 											/><br />
 											<button type="submit" class="btn btn-primary">
 												Enviar
@@ -418,24 +397,24 @@
 										</form>
 									</div>
 									<div
-										class="list-group my-5 p-0 justify-content-center"
-										id="allList"
-										role="tablist"
-										style="flex-direction: row"
+											class="list-group my-5 p-0 justify-content-center"
+											id="allList"
+											role="tablist"
+											style="flex-direction: row"
 									>
 										<a
-											href="#step1"
-											class="list-group-item-dark mr-3 w-35 px-0 py-2 rounded text-center btns"
-											data-toggle="list"
-											role="tab"
+												href="#step1"
+												class="list-group-item-dark mr-3 w-35 px-0 py-2 rounded text-center btns"
+												data-toggle="list"
+												role="tab"
 										>
 											<i class="fal fa-arrow-circle-left"></i> Anterior
 										</a>
 										<a
-											href="#step3"
-											class="list-group-item-dark ml-3 w-35 px-0 py-2 rounded text-center btns"
-											data-toggle="list"
-											role="tab"
+												href="#step3"
+												class="list-group-item-dark ml-3 w-35 px-0 py-2 rounded text-center btns"
+												data-toggle="list"
+												role="tab"
 										>
 											Siguiente <i class="fal fa-arrow-circle-right"></i>
 										</a>
@@ -470,17 +449,17 @@
 										<div>
 											<table class="table table-sm">
 												<thead>
-													<tr class="ml-3">
-														<th></th>
-														<th class="text-left" width="50%">Productos</th>
-														<th class="text-center" width="45%">Cantidad</th>
-														<th>Subtotal</th>
-													</tr>
+												<tr class="ml-3">
+													<th></th>
+													<th class="text-left" width="50%">Productos</th>
+													<th class="text-center" width="45%">Cantidad</th>
+													<th>Subtotal</th>
+												</tr>
 												</thead>
 												<tbody>
-													<tr>
-														<td>
-															<div
+												<tr>
+													<td>
+														<div
 																class="rounded"
 																style="
 																	background-image: url(https://unsplash.com/photos/ZBwQ2bCbJjw/download?force=true&w=640);
@@ -488,15 +467,15 @@
 																	height: 60px;
 																	background-size: cover;
 																"
-															></div>
-														</td>
-														<td class="align-middle text-left">Traje</td>
-														<td class="align-middle text-center">1</td>
-														<td class="align-middle text-right">50€</td>
-													</tr>
-													<tr>
-														<td>
-															<div
+														></div>
+													</td>
+													<td class="align-middle text-left">Traje</td>
+													<td class="align-middle text-center">1</td>
+													<td class="align-middle text-right">50€</td>
+												</tr>
+												<tr>
+													<td>
+														<div
 																class="rounded"
 																style="
 																	background-image: url(https://unsplash.com/photos/vOwj38HFrJ0/download?force=true&w=640);
@@ -504,15 +483,15 @@
 																	height: 60px;
 																	background-size: cover;
 																"
-															></div>
-														</td>
-														<td class="align-middle text-left">Pañuelo</td>
-														<td class="align-middle text-center">1</td>
-														<td class="align-middle text-right">30€</td>
-													</tr>
-													<tr>
-														<td>
-															<div
+														></div>
+													</td>
+													<td class="align-middle text-left">Pañuelo</td>
+													<td class="align-middle text-center">1</td>
+													<td class="align-middle text-right">30€</td>
+												</tr>
+												<tr>
+													<td>
+														<div
 																class="rounded"
 																style="
 																	background-image: url(https://unsplash.com/photos/FxraOMAkLOs/download?force=true&w=640);
@@ -521,18 +500,18 @@
 																	background-size: cover;
 																	background-position: center center;
 																"
-															></div>
-														</td>
-														<td class="align-middle text-left">Botas</td>
-														<td class="align-middle text-center">1</td>
-														<td class="align-middle text-right">20€</td>
-													</tr>
-													<tr>
-														<td colspan="3" class="align-middle text-right">
-															Total
-														</td>
-														<td class="align-middle text-right">100€</td>
-													</tr>
+														></div>
+													</td>
+													<td class="align-middle text-left">Botas</td>
+													<td class="align-middle text-center">1</td>
+													<td class="align-middle text-right">20€</td>
+												</tr>
+												<tr>
+													<td colspan="3" class="align-middle text-right">
+														Total
+													</td>
+													<td class="align-middle text-right">100€</td>
+												</tr>
 												</tbody>
 											</table>
 										</div>
@@ -540,42 +519,42 @@
 										<div class="">
 											<table class="table table-sm">
 												<tbody>
-													<tr>
-														<td width="35%" class="align-middle text-left">
-															Nombre
-														</td>
-														<td class="text-left">Alick</td>
-													</tr>
-													<tr>
-														<td class="align-middle text-left">Teléfono</td>
-														<td class="align-middle text-left">988635467</td>
-													</tr>
-													<tr>
-														<td class="align-middle text-left">Email</td>
-														<td class="align-middle text-left">
-															noidnwd@gmail.com
-														</td>
-													</tr>
-													<tr>
-														<td class="align-middle text-left">Dirección</td>
-														<td class="align-middle text-left">calle 123</td>
-													</tr>
+												<tr>
+													<td width="35%" class="align-middle text-left">
+														Nombre
+													</td>
+													<td class="text-left">Alick</td>
+												</tr>
+												<tr>
+													<td class="align-middle text-left">Teléfono</td>
+													<td class="align-middle text-left">988635467</td>
+												</tr>
+												<tr>
+													<td class="align-middle text-left">Email</td>
+													<td class="align-middle text-left">
+														noidnwd@gmail.com
+													</td>
+												</tr>
+												<tr>
+													<td class="align-middle text-left">Dirección</td>
+													<td class="align-middle text-left">calle 123</td>
+												</tr>
 												</tbody>
 											</table>
 										</div>
 									</div>
 								</div>
 								<div
-									class="list-group mt-5 p-0 mb-3 justify-content-center"
-									id="allList"
-									role="tablist"
-									style="flex-direction: row"
+										class="list-group mt-5 p-0 mb-3 justify-content-center"
+										id="allList"
+										role="tablist"
+										style="flex-direction: row"
 								>
 									<a
-										href="#step1"
-										class="list-group-item-dark ml-3 w-35 py-2 rounded text-center btns home"
-										data-toggle="list"
-										role="tab"
+											href="#step1"
+											class="list-group-item-dark ml-3 w-35 py-2 rounded text-center btns home"
+											data-toggle="list"
+											role="tab"
 									>
 										<i class="fas fa-home"></i> Inicio
 									</a>
@@ -588,12 +567,12 @@
 		</div>
 		<!-- delete modal start-->
 		<div
-			class="modal fade"
-			id="delete"
-			tabindex="-1"
-			role="dialog"
-			aria-labelledby="exampleModalLabel"
-			aria-hidden="true"
+				class="modal fade"
+				id="delete"
+				tabindex="-1"
+				role="dialog"
+				aria-labelledby="exampleModalLabel"
+				aria-hidden="true"
 		>
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
@@ -602,10 +581,10 @@
 							New message
 						</h5>
 						<button
-							type="button"
-							class="close"
-							data-dismiss="modal"
-							aria-label="Close"
+								type="button"
+								class="close"
+								data-dismiss="modal"
+								aria-label="Close"
 						>
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -629,38 +608,38 @@
 			(function () {
 				'use strict';
 				window.addEventListener(
-					'load',
-					function () {
-						// Fetch all the forms we want to apply custom Bootstrap validation styles to
-						var forms = document.getElementsByClassName('needs-validation');
-						// Loop over them and prevent submission
-						var validation = Array.prototype.filter.call(
-							forms,
-							function (form) {
-								form.addEventListener(
-									'submit',
-									function (event) {
-										if (form.checkValidity() === false) {
-											event.preventDefault();
-											event.stopPropagation();
-										}
-										form.classList.add('was-validated');
-									},
-									false
-								);
-							}
-						);
-					},
-					false
+						'load',
+						function () {
+							// Fetch all the forms we want to apply custom Bootstrap validation styles to
+							var forms = document.getElementsByClassName('needs-validation');
+							// Loop over them and prevent submission
+							var validation = Array.prototype.filter.call(
+									forms,
+									function (form) {
+										form.addEventListener(
+												'submit',
+												function (event) {
+													if (form.checkValidity() === false) {
+														event.preventDefault();
+														event.stopPropagation();
+													}
+													form.classList.add('was-validated');
+												},
+												false
+										);
+									}
+							);
+						},
+						false
 				);
 			})();
 			var btns = document.querySelector('.home');
 			btns.addEventListener(
-				'click',
-				function () {
-					alert('Thank for your order !');
-				},
-				false
+					'click',
+					function () {
+						alert('Thank for your order !');
+					},
+					false
 			);
 			$(document).ready(function () {
 				$('#delete').on('show.bs.modal', function (event) {
@@ -699,24 +678,17 @@
 			});
 		</script>
 		<script
-			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js "
-			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo "
-			crossorigin="anonymous "
+				src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js "
+				integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo "
+				crossorigin="anonymous "
 		></script>
 		<script
-			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js "
-			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6 "
-			crossorigin="anonymous "
+				src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js "
+				integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6 "
+				crossorigin="anonymous "
 		></script>
 
-		<div th:replace="fragments/footer :: footer">...</div>
+	</div>
 
-		<!-- Start Script -->
-		<script src="../js/jquery-1.11.0.min.js"></script>
-		<script src="../js/jquery-migrate-1.2.1.min.js"></script>
-		<script src="../js/bootstrap.bundle.min.js"></script>
-		<script src="../js/templatemo.js"></script>
-		<script src="../js/custom.js"></script>
-		<!-- End Script -->
-	</body>
+</body>
 </html>
