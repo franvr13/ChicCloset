@@ -1,0 +1,66 @@
+:root {
+    --primary-color: #333;
+    --secondary-color: #f9f9f9;
+    --border-color: #ddd;
+    --header-footer-bg: #eee;
+    --font-family: 'Arial', sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    color: var(--primary-color);
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--secondary-color);
+}
+
+.header, .footer {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1, .footer p {
+    margin: 0;
+}
+
+.header h1 {
+    font-size: 24px;
+}
+
+.invoice-details, .customer-details, .items-table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.invoice-details table, .customer-details table, .items-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.invoice-details th, .customer-details th, .items-table th {
+    text-align: left;
+    padding: 8px;
+    background-color: var(--header-footer-bg);
+    border: 1px solid var(--border-color);
+}
+
+.invoice-details td, .customer-details td, .items-table td {
+    padding: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.total {
+    text-align: right;
+}
+
+.total td {
+    border: none;
+}
