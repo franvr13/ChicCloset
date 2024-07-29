@@ -1,0 +1,36 @@
+<section class="carruselProductos py-5" th:fragment="carruselProductos" style="display: flex; justify-content: center; align-items: center; overflow: hidden;">
+    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div th:each="grupoProductos, iterStat : ${particiones}" class="carousel-item" th:classappend="${iterStat.index == 0} ? 'active' : ''">
+                <div class="row" style="display: flex;">
+                    <div th:each="producto : ${grupoProductos}" class="col-md-4 d-flex align-items-stretch">
+                        <a th:href="@{'/productos/' + ${producto.id}}">
+                            <div class="card h-100">
+                                <!-- Product image -->
+                                <img class="card-img-top img-fluid" th:src="${producto.fotoUrl}" alt="Imagen del producto" style="height: 500px"/>
+                                <!-- Product details -->
+                                <div class="card-body p-4 d-flex flex-column">
+                                    <div class="text-center">
+                                        <!-- Product name -->
+                                        <h5 class="fw-bolder" th:text="${producto.nombre}">Fancy Product</h5>
+                                        <!-- Product price -->
+                                        <h5 th:text="${producto.precio}"></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Carousel controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</section>

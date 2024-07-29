@@ -19,7 +19,10 @@ public class ProductoCtrl {
 
     @Autowired
     private SrvcProducto productoService;
-    
+
+
+
+
 
     // Este parámetro sirve para mostrar una lista de los pedidos
     @GetMapping("")
@@ -36,8 +39,12 @@ public class ProductoCtrl {
         if(producto.isPresent())
         {
             model.addAttribute("producto", producto.get());
+            return "detallesproducto";
+        }else {
+            // Manejo del caso en el que no se encuentra el producto (opcional)
+            return "redirect:/productos";
         }
-        return "detallesProducto";
+
     }
 
 

@@ -29,8 +29,36 @@ Custom Css
 
 .listaProductos .card {
     border-color: #58a664;
+    border-width: medium;
+
 }
 
-.about header {
-    background-color: yellow;
+.carousel-control-next, .carousel-control-prev {
+    background-color: #58a664; !important;
+    height: 5em;
+    width: 5em;
+    border-radius: 50%;
+    top: 40%;
+
 }
+
+
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.blinking-text {
+    animation: blink 2s infinite;
+}
+
+
+

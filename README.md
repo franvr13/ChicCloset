@@ -63,13 +63,13 @@ Para proceder a la instalación y ejecución de la aplicación, debemos seguir l
 - Cambiar la dirección de correo electrónico: soportecliente@chiccloset.com
 
 ## Inicio
- - Header y footer standard
- - Logo de la tienda que será responsive y redirije al inicio
- - Carrousel con diferentes productos
+ - Header y footer standard -- hecho
+ - Logo de la tienda que será responsive y redirije al inicio -- hecho
+ - Carrousel con diferentes productos -- en proceso
  - Banner de promoción
  - Se mostrarán algunos productos (5 CARDS CON DIFERENTES PRODUCTOS)
- - Cambiar las secciones del navbar que se muestran
- - Cambiar la estética de los botones de Login y Registro
+ - Cambiar las secciones del navbar que se muestran -- hecho 
+ - Cambiar la estética de los botones de Login y Registro -- hecho
 
 ## Pestaña Productos
 - Header y footer standard
@@ -112,6 +112,7 @@ FAVORITOS.
 
 ## Registro
 - Es la página que mostramos cuando un usuario se quiere registrar
+- Linkear con registro satisfactorio
 
 ## RegistroSatisfactorio
 - Es la página que mostramos cuando un usuario se ha registrado correctamente

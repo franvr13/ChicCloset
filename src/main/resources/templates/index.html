@@ -1,12 +1,14 @@
 <!doctype html>
-<html layout:decorate="~{layout/layoutHSinMargen}" xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
+<html layout:decorate="layout/layoutHSinMargen" xmlns:th="http://www.thymeleaf.org"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
 	<head>
 		<title>Página inicial</title>
 	</head>
 	<body>
 		<div layout:fragment="content">
 			<div th:replace="fragments/bannerMain :: bannerMain"></div>
-			<div th:replace="fragments/listaProductos :: listaProductos"></div>
+			<div class="container">
+				<div th:replace="fragments/carruselProductos :: carruselProductos"></div>
+			</div>
 		</div>
 	</body>
 </html>

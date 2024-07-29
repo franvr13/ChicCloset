@@ -2,10 +2,10 @@
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <div th:each="producto : ${productos}" class="col mb-5">
-                <a th:href="@{'/admin/productos/' + ${producto.id}}">
+                <a th:href="@{'/productos/' + ${producto.id}}">
                     <div class="card h-100" >
                         <!-- Product image-->
-                        <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                        <img class="card-img-top img-fluid" th:src="${producto.fotoUrl}" alt="Imagen del producto" style="height: 300px; object-fit: cover;"/>
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">

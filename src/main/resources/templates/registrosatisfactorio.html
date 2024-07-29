@@ -1,12 +1,11 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-<head>
-    <head th:replace="fragments/head :: head">
+<head th:replace="fragments/head :: head">
         <title>Registro Satisfactorio</title>
         <meta charset="UTF-8" />
 </head>
 <body>
-<div th:replace="fragments/header :: header">...</div>
+<div th:replace="fragments/header :: header"></div>
 <div class="container fade-in">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -16,7 +15,7 @@
                 </div>
                 <div class="card-body text-center">
                     <p class="mb-4">¡Gracias por registrarte! Tu cuenta ha sido creada con éxito.</p>
-                    <a href="/usuario/login" class="btn btn-primary btn-lg">Ir a Login</a>
+                    <a th:href="@{'/login'}" class="btn btn-success btn-lg">Ir a Login</a>
                 </div>
             </div>
         </div>
