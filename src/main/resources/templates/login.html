@@ -1,23 +1,7 @@
-<!doctype html>
-<html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
-<head>
-    <title th:text="#{titulo.login}">placeholder</title>
-</head>
-<body>
-<div layout:fragment="content">
-    <div th:replace="~{fragments/formularioLogin :: formularioLogin}"></div>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#locales").change(function () {
-                var selectedOption = $('#locales').val();
-                if (selectedOption != '') {
-                    window.location.replace('login?lang=' + selectedOption);
-                }
-            });
-        });
-    </script>
-</div>
-</body>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{fragments/head :: head}"></div>
+<div th:replace="~{fragments/header :: header}"></div>
+<div th:replace="~{layout/login :: login}"></div>
+<div th:replace="~{fragments/footer :: footer}"></div>
 </html>
