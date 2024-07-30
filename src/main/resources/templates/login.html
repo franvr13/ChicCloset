@@ -10,8 +10,8 @@
         <span th:text="#{lang.change}" class="text-success"></span>:
         <select id="locales" class="form-control d-inline w-auto">
             <option value=""></option>
-            <option value="en" th:text="#{lang.eng}"></option>
-            <option value="es" th:text="#{lang.es}"></option>
+            <option value="en" th:text="#{lang.eng}" th:selected="${#locale.language == 'en'}"></option>
+            <option value="es" th:text="#{lang.es}" th:selected="${#locale.language == 'es'}"></option>
         </select>
     </div>
 
@@ -22,7 +22,7 @@
             $("#locales").change(function () {
                 var selectedOption = $('#locales').val();
                 if (selectedOption != '') {
-                    window.location.replace('login?lang=' + selectedOption);
+                    window.location.replace(window.location.pathname + '?lang=' + selectedOption);
                 }
             });
         });
