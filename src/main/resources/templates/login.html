@@ -6,15 +6,6 @@
 </head>
 <body>
 <div layout:fragment="content">
-    <div class="mb-3" style="margin-left: 115px; margin-bottom: 3em">
-        <span th:text="#{lang.change}" class="text-success"></span>:
-        <select id="locales" class="form-control d-inline w-auto">
-            <option value=""></option>
-            <option value="en" th:text="#{lang.eng}" th:selected="${#locale.language == 'en'}"></option>
-            <option value="es" th:text="#{lang.es}" th:selected="${#locale.language == 'es'}"></option>
-        </select>
-    </div>
-
     <div th:replace="~{fragments/formularioLogin :: formularioLogin}"></div>
 
     <script type="text/javascript">
