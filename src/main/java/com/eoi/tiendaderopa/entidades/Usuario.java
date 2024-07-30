@@ -22,7 +22,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "usuarios")
-public class Usuario  implements Serializable, UserDetails {
+public class Usuario implements Serializable, UserDetails {
 
     //Constructor creado para poder crear usuarios simples sin todo lo que necesita un usuario
     public Usuario(int id, String contraseña, String email) {
@@ -32,18 +32,18 @@ public class Usuario  implements Serializable, UserDetails {
     }
 
     @Id
-    @Column(name ="id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column (name ="contraseña",length = 45)
+    @Column(name = "contraseña", length = 45)
     private String contraseña;
 
-    @Column (name ="email",length = 70)
+    @Column(name = "email", length = 70)
     private String email;
 
 
-    @OneToMany (mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario")
     private Set<DatosFacturacion> datosFacturacion;
 
     @OneToMany(mappedBy = "usuarioPedido", fetch = FetchType.EAGER, cascade = CascadeType.ALL)

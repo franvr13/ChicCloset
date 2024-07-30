@@ -1,12 +1,10 @@
 package com.eoi.tiendaderopa.config;
 
-import com.eoi.tiendaderopa.entidades.Producto;
 import com.eoi.tiendaderopa.entidades.Usuario;
 import com.eoi.tiendaderopa.repositorios.RepoProducto;
 import com.eoi.tiendaderopa.repositorios.RepoUsuario;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
-import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +24,6 @@ import org.springframework.stereotype.Component;
  * Esta clase se utiliza para inicializar datos en la base de datos, como la creación de un usuario
  * predeterminado al inicio de la aplicación.
  * </p>
- *
  */
 
 @Component
@@ -64,13 +61,12 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
 
     @Override
     public void onApplicationEvent(final ApplicationReadyEvent event) {
-        Usuario usuario = new Usuario(1,  "password", "email@email.com");
-        Usuario usuario2 = new Usuario(2,  "password", "email2@email.com");
-        Usuario usuario3 = new Usuario(3,  "password", "email3@email.com");
+        Usuario usuario = new Usuario(1, "password", "email@email.com");
+        Usuario usuario2 = new Usuario(2, "password", "email2@email.com");
+        Usuario usuario3 = new Usuario(3, "password", "email3@email.com");
         usuarioRepo.save(usuario);
         usuarioRepo.save(usuario2);
         usuarioRepo.save(usuario3);
-
 
 
     }

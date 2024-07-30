@@ -19,7 +19,7 @@ import java.util.Set;
 public class Rol implements Serializable {
 
     @Id
-    @Column(name ="id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 

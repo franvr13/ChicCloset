@@ -10,22 +10,22 @@ import lombok.Setter;
 public class Venta {
 
     @Id
-    @Column(name ="id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="producto_id", referencedColumnName = "id")
+    @JoinColumn(name = "producto_id", referencedColumnName = "id")
     private Producto producto;
 
-    @Column(name ="cantidad")
+    @Column(name = "cantidad")
     private Integer cantidad;
 
-    @Column (name ="precio_unidad")
+    @Column(name = "precio_unidad")
     private double precio_unidad;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="pedido_id", referencedColumnName = "id")
+    @JoinColumn(name = "pedido_id", referencedColumnName = "id")
     private Pedido pedido;
 
 }

@@ -39,7 +39,7 @@ public class LoginCtrl {
             model.addAttribute("usuario", usuario);
             model.addAttribute("msg", "Usuario encontrado");
             return "/login";
-        }else{
+        } else {
             model.addAttribute("msg", "Usuario no encontrado");
         }
         return "redirect:/login?error=true";

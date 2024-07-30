@@ -18,17 +18,17 @@ import java.time.LocalDateTime;
 public class Factura implements Serializable {
 
     @Id
-    @Column(name ="id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column (name ="importe")
+    @Column(name = "importe")
     private Integer importe;
 
-    @Column (name ="fechaFactura")
+    @Column(name = "fechaFactura")
     private LocalDateTime fechaFactura;
 
-    @Column (name ="fechaVencimiento")
+    @Column(name = "fechaVencimiento")
     private LocalDateTime fechaVencimiento;
 
     @OneToOne(mappedBy = "pagoFactura", fetch = FetchType.EAGER, cascade = CascadeType.ALL)

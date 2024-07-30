@@ -33,17 +33,12 @@ public class ADMINProductoCtrl {
     // Este parámetro sirve para mostrar una lista de los pedidos
     @GetMapping("/{id}")
     public String verProducto(Model model, @PathVariable long id) {
-        Optional<Producto> producto= productoService.encuentraPorId(id);
-        if(producto.isPresent())
-        {
+        Optional<Producto> producto = productoService.encuentraPorId(id);
+        if (producto.isPresent()) {
             model.addAttribute("producto", producto.get());
         }
         return "admin/detallesproducto";
     }
-
-
-
-
 
 
 }

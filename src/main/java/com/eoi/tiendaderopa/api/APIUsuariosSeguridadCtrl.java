@@ -34,7 +34,7 @@ public class APIUsuariosSeguridadCtrl {
     // 1. El que genera la pantalla para pedir los datos de tipo GetMapping
     // 2. Cuando pasamos información a la pantalla hay que usar ModelMap
 
-    @GetMapping ("/registro")
+    @GetMapping("/registro")
     public String registro(ModelMap modelMap) {
         final Usuario usuario = new Usuario();
         final List<Rol> roles = repoRol.findAll();

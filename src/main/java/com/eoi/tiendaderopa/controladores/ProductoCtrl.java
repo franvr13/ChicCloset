@@ -21,9 +21,6 @@ public class ProductoCtrl {
     private SrvcProducto productoService;
 
 
-
-
-
     // Este parámetro sirve para mostrar una lista de los pedidos
     @GetMapping("")
     public String listarProductos(Model model) {
@@ -35,12 +32,11 @@ public class ProductoCtrl {
     // Este parámetro sirve para mostrar una lista de los pedidos
     @GetMapping("/{id}")
     public String verProducto(Model model, @PathVariable long id) {
-        Optional<Producto> producto= productoService.encuentraPorId(id);
-        if(producto.isPresent())
-        {
+        Optional<Producto> producto = productoService.encuentraPorId(id);
+        if (producto.isPresent()) {
             model.addAttribute("producto", producto.get());
             return "detallesproducto";
-        }else {
+        } else {
             // Manejo del caso en el que no se encuentra el producto (opcional)
             return "redirect:/productos";
         }

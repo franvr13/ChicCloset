@@ -37,6 +37,6 @@ public class DetallesUsuario implements Serializable {
     private String Dni;
 
     @OneToOne
-    @JoinColumn(name="usuario_id", referencedColumnName = "id")
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
 }

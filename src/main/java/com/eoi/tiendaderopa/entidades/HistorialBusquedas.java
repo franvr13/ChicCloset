@@ -17,7 +17,7 @@ public class HistorialBusquedas {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name="id_usuario", nullable=false)
+    @JoinColumn(name = "id_usuario", nullable = false)
     private Usuario usuario;
 
     private String busqueda;

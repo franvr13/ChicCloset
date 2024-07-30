@@ -24,7 +24,7 @@ public class MainController {
         model.addAttribute("titulo", "Página Principal");
         List<Producto> productos = repoProducto.findAll();
         //añadido limite de 15 para limitar los que salen al principio y evitar que quede algun elemento suelto
-        if(productos.size() > 15){
+        if (productos.size() > 15) {
             productos = productos.subList(0, 15);
         }
         List<List<Producto>> particiones = partitionList(productos, 3);
@@ -33,7 +33,6 @@ public class MainController {
 
         return "index";
     }
-
 
 
     private <T> List<List<T>> partitionList(List<T> list, int size) {

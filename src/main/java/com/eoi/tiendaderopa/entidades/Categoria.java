@@ -18,14 +18,14 @@ import java.util.Set;
 
 public class Categoria implements Serializable {
     @Id
-    @Column(name ="id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name ="idPadre")
+    @Column(name = "idPadre")
     private long idPadre;
 
-    @Column(name ="nombre")
+    @Column(name = "nombre")
     private String nombre;
 
 }
