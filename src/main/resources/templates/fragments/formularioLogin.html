@@ -1,14 +1,14 @@
 <div class="container" th:fragment="formularioLogin">
-    <h1>Login</h1>
+    <h3 th:text="#{mensaje.login}"></h3>
     <form action="/login" method="post">
         <div class="mb-3">
-            <label for="username" class="form-label">Email</label>
-            <input type="email" class="form-control" id="username" name="username" required>
-        </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Contraseña</label>
+            <label th:text="#{login.password}" for="password" class="form-label"></label>
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
-        <button type="submit" class="btn btn-success">Entrar</button>
+        <div class="mb-3">
+            <label th:text="#{login.email}" for="username" class="form-label"></label>
+            <input type="email" class="form-control" id="username" name="username" required>
+        </div>
+        <button th:text="#{login.enter}" type="submit" class="btn btn-success"></button>
     </form>
 </div>
