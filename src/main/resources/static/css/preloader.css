@@ -1,0 +1,57 @@
+.pre-loader {
+    z-index: 100;
+    background: rgb(41,51,64);
+    background: linear-gradient(90deg, rgba(41,51,64,1) 0%, rgba(88,166,100,1) 50%, rgba(255,246,255,1) 100%);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.pre-loader span {
+    height: 1.5em;
+    width: 1.5em;
+    background: white;
+    display: block;
+    position: absolute;
+    top: 50%;
+    border-radius: 50%;
+    animation: wave 2s ease-in-out infinite;
+}
+
+.pre-loader span:nth-child(1) {
+    left: 47%;
+    animation-delay: 0s;
+}
+
+.pre-loader span:nth-child(2) {
+    left: 49%;
+    animation-delay: 0.1s;
+}
+
+.pre-loader span:nth-child(3) {
+    left: 51%;
+    animation-delay: 0.2s;
+}
+
+.pre-loader span:nth-child(4) {
+    left: 53%;
+    animation-delay: 0.3s;
+}
+
+@keyframes wave {
+    0%,
+    75%,
+    100% {
+        transform: translateY(0) scale(1.1);
+    }
+
+    25% {
+        transform: translateY(2.5em);
+    }
+
+    50% {
+        transform: translateY(-2.5em) scale(1.1);
+    }
+}
