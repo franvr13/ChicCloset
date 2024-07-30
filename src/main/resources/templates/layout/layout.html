@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org/" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
 <div th:replace="~{fragments/head :: head}"></div>
 <body>
-<div th:replace="~{fragments/preloader :: preloader}"></div>
 <div th:replace="~{fragments/header :: header}"></div>
 <div class="container" layout:fragment="content"></div>
 <div th:replace="~{fragments/footer :: footer}"></div>
+<div th:replace="~{fragments/preloader :: preloader}"></div>
 <script layout:fragment="script"></script>
 <script>
     window.addEventListener('load', async function () {
