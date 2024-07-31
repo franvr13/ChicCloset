@@ -61,3 +61,7 @@ Custom Css
 .blinking-text {
     animation: blink 7s infinite;
 }
+
+.link-footer{
+    text-decoration: none;
+}
