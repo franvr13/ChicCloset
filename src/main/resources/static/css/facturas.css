@@ -1,66 +1,46 @@
-:root {
-    --primary-color: #333;
-    --secondary-color: #f9f9f9;
-    --border-color: #ddd;
-    --header-footer-bg: #eee;
-    --font-family: 'Arial', sans-serif;
-}
-
 body {
-    font-family: var(--font-family);
     margin: 0;
     padding: 0;
-    color: var(--primary-color);
+    background-color: #f4f4f4;
 }
 
 .container {
-    width: 80%;
-    margin: auto;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+main {
+    padding: 30px 0;
+}
+
+.invoices {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.invoice {
+    background-color: #fff;
     padding: 20px;
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    background-color: var(--secondary-color);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.header, .footer {
-    text-align: center;
-    margin-bottom: 20px;
+.invoice h3 {
+    margin-top: 0;
 }
 
-.header h1, .footer p {
-    margin: 0;
+.invoice p {
+    margin-bottom: 10px;
 }
 
-.header h1 {
-    font-size: 24px;
-}
-
-.invoice-details, .customer-details, .items-table {
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.invoice-details table, .customer-details table, .items-table table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.invoice-details th, .customer-details th, .items-table th {
-    text-align: left;
-    padding: 8px;
-    background-color: var(--header-footer-bg);
-    border: 1px solid var(--border-color);
-}
-
-.invoice-details td, .customer-details td, .items-table td {
-    padding: 8px;
-    border: 1px solid var(--border-color);
-}
-
-.total {
-    text-align: right;
-}
-
-.total td {
+.btn {
+    background-color: #58a664;
+    color: #fff;
+    padding: 10px 20px;
     border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
 }
