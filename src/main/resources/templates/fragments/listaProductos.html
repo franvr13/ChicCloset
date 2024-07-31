@@ -14,6 +14,12 @@
                                 <h5 class="fw-bolder" th:text="${producto.nombre}"></h5>
                                 <!-- Product price-->
                                 <h5 th:text="${producto.precio}"></h5>
+                                <div class="card-body">
+                                    <form action="/addcarrito" method="post">
+                                        <input type="hidden" name="id" th:value=${producto.id}/>
+                                        <input type="number" name="quantity" class="form-control"/>
+                                        <input type="submit" class="form-control"/>
+                                <button type="submit" class="btn btn-primary">Añadir al carrito</button></div></form>
                             </div>
                         </div>
                     </div>
