@@ -9,7 +9,7 @@
                     <i class="fa fa-envelope mx-2"></i>
                     <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:serviciocliente@chicloset">serviciocliente@chicloset</a>
                     <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel: 123 456 789">123 456 789</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">918 070 098</a>
                 </div>
                 <div>
                     <a
@@ -124,6 +124,12 @@
                     <button type="button" class="btn btn-success"><a th:href="@{/usuarios/registro}"
                                                                      style="color: white; text-decoration: none;">Registro</a>
                     </button>
+                    <div class="mb-3" style="margin-left: 50px; margin-top: 14px">
+                        <select id="locales">
+                            <img src="/img/language.png/" style="width: 15px; height: 15px">
+                            <option value="es" selected th:text="#{lang.es}"></option>
+                            <option value="en" selected th:text="#{lang.eng}"></option>
+                        </select>
                 </div>
             </div>
         </div>
