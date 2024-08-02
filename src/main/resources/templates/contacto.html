@@ -1,13 +1,29 @@
 <!doctype html>
-<html layout:decorate="~{layout/layoutHSinMargen}" xmlns:th="http://www.thymeleaf.org"
+<html layout:decorate="layout/layoutHSinMargen" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
 <head>
     <title>Contacto</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
 <div layout:fragment="content">
-    <div th:replace="fragments/bannerAboutUs :: bannerAboutUs"></div>
-    <div th:replace="fragments/aboutServicios :: aboutServicios"></div>
+
+    <h1>Contacto</h1>
+    <form target="" action="https://formsubmit.co/soportecliente@chiccloset.com" method="POST">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nombre</label>
+            <input type="name" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Correo</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-lg-5">
+            <label  for="text" class="form-label">Mensaje</label>
+            <input type="text" class="form-control" id="text" name="text" required>
+        </div>
+        <button type="submit" class="btn btn-success">Enviar</button>
 </div>
+        <div th:replace="fragments/footer :: footer">...</div>
 </body>
 </html>
