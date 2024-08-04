@@ -45,6 +45,9 @@ public class Producto implements Serializable {
     @Column(name = "precio")
     private double precio;
 
+    @Column(name = "talla")
+    private String talla;
+
    /* @ManyToOne
     private Carrito carrito;*/
 }

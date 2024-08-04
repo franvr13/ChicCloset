@@ -1,5 +1,25 @@
 <section class="listaProductos py-5" th:fragment="listaProductos">
     <div class="container px-4 px-lg-5 mt-5">
+        <!-- Seleccionar el color  y talla -->
+        <form th:action="@{/productos}" method="get" class="filter-form mb-4">
+            <div class="mb-2">
+                <select class="form-select" name="color">
+                    <option value="" th:selected="${colorSeleccionado == null}">Seleccione un color</option>
+                    <option th:each="color : ${colores}" th:value="${color}" th:text="${color}" th:selected="${colorSeleccionado == color}"></option>
+                </select>
+            </div>
+            <div class=" mb-2">
+                <select class="form-select" name="talla">
+                    <option value="" th:selected="${tallaSeleccionada == null}">Seleccione una talla</option>
+                    <option th:each="talla : ${tallas}" th:value="${talla}" th:text="${talla}" th:selected="${tallaSeleccionada == talla}"></option>
+                </select>
+            </div>
+            <div class="mb-2">
+                <input type="hidden" name="pagina" th:value="${numeroPaginaActual}"/>
+                <button class="btn btn-success" type="submit">Filtrar</button>
+            </div>
+        </form>
+        <!---->
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <div th:each="producto : ${paginaProductos.content}" class="col mb-5">
                 <a th:href="@{'/productos/' + ${producto.id}}">
@@ -22,11 +42,11 @@
         </div>
     </div>
     <div class="d-flex justify-content-center mt-4">
-        <a th:if="${numeroPaginaActual > 0}" th:href="@{productos(pagina=${numeroPaginaActual - 1})}">
+        <a th:if="${numeroPaginaActual > 0}" th:href="@{productos(pagina=${numeroPaginaActual - 1}, color=${colorSeleccionado}, talla=${tallaSeleccionada})}">
         <button class="btn btn-success me-2"
                 >Anterior</button></a>
 
-        <a  th:if="${paginaProductos.hasNext()}" th:href="@{productos(pagina=${numeroPaginaActual + 1})}">
+        <a  th:if="${paginaProductos.hasNext()}" th:href="@{productos(pagina=${numeroPaginaActual + 1}, color=${colorSeleccionado}, talla=${tallaSeleccionada})}">
             <button class="btn btn-success"
             >Siguiente</button>
         </a>
