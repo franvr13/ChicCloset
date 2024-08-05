@@ -45,4 +45,7 @@ public class Producto implements Serializable {
     @Column(name = "precio")
     private double precio;
 
+    public void add(ProductoDeseados productoDeseados) {
+
+    }
 }

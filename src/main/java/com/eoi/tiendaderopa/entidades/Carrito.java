@@ -11,9 +11,8 @@ import java.util.Set;
 public class Carrito {
 
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Temporal(TemporalType.DATE)
     private Date fecha;
@@ -29,6 +28,8 @@ public class Carrito {
 
     private String tokenSession;
 
+    public Carrito() {}
+
     public long getId() {
         return id;
     }
@@ -37,11 +38,11 @@ public class Carrito {
         this.id = id;
     }
 
-    public Date getFecha() {
+    public Date getDate() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setDate(Date fecha) {
         this.fecha = fecha;
     }
 
@@ -54,17 +55,15 @@ public class Carrito {
     }
 
     public int getCantidad() {
-        return this.cantidad;
+        return this.getCantidad();
     }
 
-
-
-    public Collection<ProductoCarrito> getCarrito() {
-        return carrito;
+    public Collection<ProductoCarrito> getProducto() {
+        return getProducto();
     }
 
-    public void setCarrito(Collection<ProductoCarrito> carrito) {
-        this.carrito = carrito;
+    public void setCarrito(Collection<ProductoCarrito> productoCarritos) {
+        this.carrito = productoCarritos;
     }
 
     public String getTokenSession() {
@@ -74,4 +73,42 @@ public class Carrito {
     public void setTokenSession(String tokenSession) {
         this.tokenSession = tokenSession;
     }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result + ((getProducto() == null) ? 0 : getProducto().hashCode());
+        result = prime * result + ((tokenSession == null) ? 0 : tokenSession.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Carrito other = (Carrito) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        if (getProducto() == null) {
+            if (other.getProducto() != null)
+                return false;
+        } else if (!getProducto().equals(other.getProducto()))
+            return false;
+        if (tokenSession == null) {
+            if (other.tokenSession != null)
+                return false;
+        } else if (!tokenSession.equals(other.tokenSession))
+            return false;
+        return true;
+    }
+
 }
