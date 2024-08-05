@@ -9,12 +9,12 @@
     <h1 th:text="#{login.heading}">Iniciar sesión</h1>
     <form class="form" th:action="@{/login}" method="post">
         <div class="mb-3">
-            <label for="username" class="form-label">Email</label>
-            <input type="email" class="form-control" id="username" name="username" required>
-        </div>
-        <div class="mb-3">
             <label for="password" class="form-label">Contraseña</label>
             <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <div class="mb-3">
+            <label for="username" class="form-label">Email</label>
+            <input type="email" class="form-control" id="username" name="username" required>
         </div>
         <button type="submit" class="btn btn-success">Entrar</button>
     </form>
