@@ -62,5 +62,16 @@ Custom Css
     animation: blink 7s infinite;
 }
 
+ .filter-form {
+     display: flex;
+     justify-content: flex-end;
+ }
+.filter-form .form-select, .filter-form .btn {
+    width: auto;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+
 
 
