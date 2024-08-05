@@ -2,17 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
 <div th:replace="fragments/head :: head"></div>
 <body>
+<div th:replace="~{fragments/preloader :: preloader}"></div>
 <div th:replace="fragments/headerSinMargen :: header"></div>
 <div layout:fragment="content">
 </div>
 <div th:replace="fragments/footer :: footer"></div>
-<div th:replace="~{fragments/preloader :: preloader}"></div>
-<script>
-   window.addEventListener('load', async function () {
-        await new Promise(r => setTimeout(r, 500));
-        // document.getElementById('preloader').style.display = 'none';
-        $("#preloader").fadeOut(400);
-    });
-</script>
 </body>
 </html>
