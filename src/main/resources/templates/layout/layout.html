@@ -7,12 +7,5 @@
 <div th:replace="~{fragments/footer :: footer}"></div>
 <div th:replace="~{fragments/preloader :: preloader}"></div>
 <script layout:fragment="script"></script>
-<script>
-    window.addEventListener('load', async function () {
-        await new Promise(r => setTimeout(r, 500));
-        // document.getElementById('preloader').style.display = 'none';
-        $("#preloader").fadeOut(400);
-    });
-</script>
 </body>
 </html>
