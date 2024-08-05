@@ -65,3 +65,16 @@ Custom Css
 .link-footer{
     text-decoration: none;
 }
+
+.filter-form {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.filter-form .form-select {
+    width: auto;
+    margin-right: 10px;
+}
+.filter-form .btn {
+    margin-left: 10px;
+}

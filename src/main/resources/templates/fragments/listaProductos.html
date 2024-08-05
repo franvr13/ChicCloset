@@ -1,7 +1,7 @@
 <section class="listaProductos py-5" th:fragment="listaProductos">
     <div class="container px-4 px-lg-5 mt-5">
         <!-- Seleccionar el color  y talla -->
-        <form th:action="@{/productos}" method="get" class="filter-form" onsubmit="resetPage()">
+        <form th:action="@{/productos}" method="get" class="filter-form mb-4" onsubmit="resetPage()">
             <div class="mb-2">
                 <select class="form-select" name="color">
                     <option value="" th:selected="${colorSeleccionado == null}">Seleccione un color</option>
