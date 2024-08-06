@@ -31,14 +31,14 @@ public class SrvcCarrito {
         productoCarrito.setProducto(SrvcProducto.getProductoByID(id));
         carrito.getProducto().add(productoCarrito);
         carrito.setTokenSession(sessionToken);
-        Carrito save = RepoCarrito.save(carrito);
-        return save;
+        Carrito carrito2 = repoCarrito.save(carrito);
+        return carrito2;
 
     }
 
     public Carrito addToExistingCarrito(Long id, String sessionToken, int cantidad) {
 
-        Carrito carrito = RepoCarrito.findByTokenSession(sessionToken);
+        Carrito carrito = repoCarrito.findByTokenSession(String sessionToken);
         Producto p = SrvcProducto.getProductoByID(id);
         Boolean productDoesExistInTheCart = false;
         if (carrito != null) {
@@ -81,7 +81,7 @@ public class SrvcCarrito {
 
     public Carrito removeProductoCarritoFromCarrito(Long id, String sessionToken) {
         String carrito = RepoCarrito.findByTokenSession(sessionToken);
-        Set<ProductoCarrito> productoCarrito = (Set<ProductoCarrito>) carrito.productoCarrito();
+        Set<ProductoCarrito> productoCarrito = (Set<ProductoCarrito>) repoProductoCarrito.getReferenceById();
         ProductoCarrito productoCarrito1 = null;
         for(ProductoCarrito producto : productoCarrito) {
             if(producto.getId()==id) {
@@ -93,7 +93,7 @@ public class SrvcCarrito {
         return repoCarrito.guardar(carrito);
     }
 
-    public void clearShoppingCart(String sessionToken) {
+    public void clearCarrito(String sessionToken) {
         String car = RepoCarrito.findByTokenSession(sessionToken);
         repoCarrito.delete(car);
 

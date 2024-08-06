@@ -39,7 +39,7 @@ public class CarritoCtrl {
             SrvcCarrito.addCarritoPrimeraVez(id, sessionToken, cantidad);
         }
         else {
-            SrvcCarrito.addToExistingCarrito(id, sessionToken, cantidad);
+            srvcCarrito.addToExistingCarrito(id, sessionToken, cantidad);
         }
         return "redirect:/";
     }
@@ -53,15 +53,14 @@ public class CarritoCtrl {
     @PostMapping("/updateProductoCarrito")
     public String updateProductoCarrito(@RequestParam("producto_id") Long id,
                                  @RequestParam("cantidad") int cantidad) {
-
-        srvcProducto.guardar(id,cantidad);
+        srvcCarrito.updateProductoCarrito(id, cantidad);
         return "redirect:carrito";
     }
     @GetMapping("/removeProductoCarrito/{id}")
     public String removeProducto(@PathVariable("id") Long id, HttpServletRequest request) {
         String sessionToken = (String) request.getSession(false).getAttribute("sessiontToken");
         System.out.println("elemento eliminado");
-        srvcProductoCarrito.removeProductoCarritoFromCarrito(id,sessionToken);
+        srvcCarrito.removeProductoCarritoFromCarrito(id,sessionToken);
         return "redirect:/carrito";
     }
 
@@ -69,7 +68,7 @@ public class CarritoCtrl {
     public String clearCarrito(HttpServletRequest request) {
         String sessionToken = (String) request.getSession(false).getAttribute("sessiontToken");
         request.getSession(false).removeAttribute("sessiontToken");
-        srvcProductoCarrito.clearCarrito(sessionToken);
+        srvcCarrito.clearCarrito(sessionToken);
         return "redirect:/carrito";
     }
 }
