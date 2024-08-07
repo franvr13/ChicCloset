@@ -50,9 +50,13 @@ public class BusquedaCtrl {
 
 
         }
-        cq.where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
+        cq.where(cb.and(predicates.toArray(new Predicate[0])));
+
+        List<Producto> productos = entityManager.createQuery(cq).getResultList();
+        model.addAttribute("productos", productos);
+        model.addAttribute("busqueda", busqueda);
 
 
-        return entityManager.createQuery(cq).getResultList().toString();
+        return "resultadosBusqueda";
     }
 }
