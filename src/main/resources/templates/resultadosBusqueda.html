@@ -8,7 +8,7 @@
 <div layout:fragment="content">
     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <div th:each="producto : ${productos}">
-                    <a th:href="@{'/productos/' + ${producto.id}}">
+                    <a th:href="@{'/productos/' + ${producto.id}}" style="text-decoration: none; color: black;">
                         <div class="card h-100">
                             <!-- Product image-->
                             <img class="card-img-top img-fluid" th:src="${producto.fotoUrl}" alt="Imagen del producto"
