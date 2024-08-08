@@ -7,11 +7,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RepoCarrito extends JpaRepository<Carrito, Long> {
-    static String findByTokenSession(String sessionToken) {
-        return sessionToken;
-    }
+    Carrito findByTokenSession(String sessionToken);
 
-        void delete(String car);
+    void delete(String car);
 
-        Carrito guardar(String carrito);
+        Carrito guardar(Carrito carrito);
 }
