@@ -35,6 +35,15 @@ CREATE TABLE IF NOT EXISTS `TiendaRopa`.`producto` (
 ENGINE = InnoDB;
 
 
+
+CREATE TABLE IF NOT EXISTS `TiendaRopa`.`carrito` (
+                                                      `id` INT NOT NULL AUTO_INCREMENT,
+                                                      `fecha` DATE,
+                                                      `precio` DOUBLE,
+                                                      `cantidad` INTEGER,
+                                                      PRIMARY KEY (`id`))
+    ENGINE = InnoDB;
+
 -- -----------------------------------------------------
 -- Table `TiendaRopa`.`usuario`
 -- -----------------------------------------------------

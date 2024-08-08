@@ -11,7 +11,7 @@ public class SrvcProducto extends AbstractBusinessSrvc {
         super(repo);
     }
 
-    public static Producto getProductoByID(Long id) {
+    public Producto getProductoByID(Long id) {
         return null;
     }
 }

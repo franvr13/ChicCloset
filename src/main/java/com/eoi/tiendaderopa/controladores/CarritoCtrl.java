@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Date;
-import java.util.Random;
 
 @Controller
 public class CarritoCtrl {
@@ -29,46 +27,56 @@ public class CarritoCtrl {
     private SrvcCarrito srvcCarrito;
 
     @PostMapping("/addToCarrito")
-    public String addToCarrito(HttpSession session, Model model, @RequestParam("id") Long id, @RequestParam("cantidad") int cantidad) {
-        // sessionToken
+    public String addToCarrito(HttpSession session, @RequestParam("id") Long id, @RequestParam("cantidad") int cantidad) {
         String sessionToken = (String) session.getAttribute("sessionToken");
-        if(sessionToken == null) {
-            Random rand = new Random();
+
+        if (sessionToken == null) {
             sessionToken = UUID.randomUUID().toString();
             session.setAttribute("sessionToken", sessionToken);
-            SrvcCarrito.addCarritoPrimeraVez(id, sessionToken, cantidad);
-        }
-        else {
+            srvcCarrito.addCarritoPrimeraVez(id, sessionToken, cantidad);
+        } else {
             srvcCarrito.addToExistingCarrito(id, sessionToken, cantidad);
         }
         return "redirect:/";
     }
 
     @GetMapping("/carrito")
-    public String showViewCarrito(HttpServletRequest request, Model model) {
-
+    public String showViewCarrito(HttpSession session, Model model) {
+        String sessionToken = (String) session.getAttribute("sessionToken");
+        if (sessionToken != null) {
+            Carrito carrito = srvcCarrito.getCarritoBySessionToken(sessionToken);
+        }
         return "carrito";
     }
 
     @PostMapping("/updateProductoCarrito")
-    public String updateProductoCarrito(@RequestParam("producto_id") Long id,
-                                 @RequestParam("cantidad") int cantidad) {
+    public String updateProductoCarrito(@RequestParam("producto_id") Long id, @RequestParam("cantidad") int cantidad) {
         srvcCarrito.updateProductoCarrito(id, cantidad);
-        return "redirect:carrito";
+        return "redirect:/carrito";
     }
+
     @GetMapping("/removeProductoCarrito/{id}")
     public String removeProducto(@PathVariable("id") Long id, HttpServletRequest request) {
-        String sessionToken = (String) request.getSession(false).getAttribute("sessiontToken");
-        System.out.println("elemento eliminado");
-        srvcCarrito.removeProductoCarritoFromCarrito(id,sessionToken);
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            String sessionToken = (String) session.getAttribute("sessionToken");
+            if (sessionToken != null) {
+                srvcCarrito.removeProductoCarritoFromCarrito(id, sessionToken);
+            }
+        }
         return "redirect:/carrito";
     }
 
     @GetMapping("/clearCarrito")
     public String clearCarrito(HttpServletRequest request) {
-        String sessionToken = (String) request.getSession(false).getAttribute("sessiontToken");
-        request.getSession(false).removeAttribute("sessiontToken");
-        srvcCarrito.clearCarrito(sessionToken);
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            String sessionToken = (String) session.getAttribute("sessionToken");
+            if (sessionToken != null) {
+                srvcCarrito.clearCarrito(sessionToken);
+                session.removeAttribute("sessionToken");
+            }
+        }
         return "redirect:/carrito";
     }
 }
