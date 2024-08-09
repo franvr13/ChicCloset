@@ -78,10 +78,16 @@
 
 .busqueda-input {
     padding: 10px;
-    border: none;
+    border: 1px solid #ccc;
     border-radius: 5px;
     width: 100%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.busqueda-input:focus {
+    border: 1px solid #58a664;
+    outline: none;
+    transition: border-color 0.2s ease-in-out;
 }
 
 .btn-search {
