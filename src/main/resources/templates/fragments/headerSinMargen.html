@@ -68,8 +68,8 @@
 
                 <!-- Busqueda -->
                 <form th:action="@{/busqueda}" method="get" class="d-flex align-items-center">
-                    <input type="text" name="busqueda" class="form-control me-2" placeholder="Buscar..." th:value="${busqueda}" />
-                    <button  type="submit">
+                    <input type="text" name="busqueda" class="busqueda-input" placeholder="Buscar..." th:value="${busqueda}" />
+                    <button type="submit" class="btn-search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </button>
                 </form>
