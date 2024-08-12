@@ -59,14 +59,18 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
      * @param event el evento que indica que la aplicación está lista.
      */
 
+
     @Override
     public void onApplicationEvent(final ApplicationReadyEvent event) {
-        Usuario usuario = new Usuario(1, "password", "email@email.com");
-        Usuario usuario2 = new Usuario(2, "password", "email2@email.com");
-        Usuario usuario3 = new Usuario(3, "password", "email3@email.com");
+
+        String password = bCryptPasswordEncoder.encode("password");
+
+        Usuario usuario = new Usuario(1, password, "email@email.com");
+       /* Usuario usuario2 = new Usuario(2, password,"password", "email2@email.com");
+        Usuario usuario3 = new Usuario(3, "password","password", "email3@email.com");*/
         usuarioRepo.save(usuario);
-        usuarioRepo.save(usuario2);
-        usuarioRepo.save(usuario3);
+        //usuarioRepo.save(usuario2);
+        //usuarioRepo.save(usuario3);
 
 
     }
