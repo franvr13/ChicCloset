@@ -1,50 +1,32 @@
 package com.eoi.tiendaderopa.entidades;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
 @Table(name = "ProductoCarrito")
+@Getter
+@Setter
 public class ProductoCarrito {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    //TODO Revisar cómo contamos las cantidades. En principio, tenemos el quantity, que es el numero de items de un mismo tipo en un carrito.
     private int quantity;
+
     @Temporal(TemporalType.DATE)
     private Date date;
+
+
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "producto_id",nullable=false, updatable=false)
     private Producto producto;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public int getCantidad(int cantidad) {
-        return getCantidad(cantidad);
-    }
-
-
-    public Producto getProducto() {
-        return producto;
-    }
-
-    public void setProducto(Producto producto) {
-        this.producto = producto;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
     @Override
     public int hashCode() {
@@ -81,9 +63,8 @@ public class ProductoCarrito {
                 return false;
         } else if (!producto.equals(other.producto))
             return false;
-        if (quantity != other.quantity)
-            return false;
-        return true;
+
+        return quantity == other.quantity;
     }
 
     @Override

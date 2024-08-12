@@ -12,8 +12,12 @@ import java.util.UUID;
 @Controller
 public class DeseadosCtrl {
 
-    @Autowired
-    private SrvcDeseados srvcDeseados;
+
+    private final SrvcDeseados srvcDeseados;
+
+    public DeseadosCtrl(SrvcDeseados srvcDeseados) {
+        this.srvcDeseados = srvcDeseados;
+    }
 
     @GetMapping("/addToDeseados/{id}")
     public String addToDeseados(@PathVariable("id") Long id, HttpServletRequest request) {

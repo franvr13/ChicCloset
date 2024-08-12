@@ -26,13 +26,12 @@ public class SrvcCarrito {
     public static Carrito addCarritoPrimeraVez(Long id, String sessionToken, int cantidad) {
         Carrito carrito = new Carrito();
         ProductoCarrito productoCarrito = new ProductoCarrito();
-        productoCarrito.getCantidad(cantidad);
         productoCarrito.setDate(new Date());
         productoCarrito.setProducto(SrvcProducto.getProductoByID(id));
         carrito.getProducto().add(productoCarrito);
         carrito.setTokenSession(sessionToken);
-        Carrito carrito2 = repoCarrito.save(carrito);
-        return carrito2;
+        carrito = repoCarrito.save(carrito);
+        return carrito;
 
     }
 
@@ -46,7 +45,6 @@ public class SrvcCarrito {
             for (ProductoCarrito producto : productoCarrito) {
                 if (producto.getProducto().equals(p)) {
                     productDoesExistInTheCart = true;
-                    producto.getCantidad(cantidad);
                     carrito.getProducto();
                     return repoCarrito.saveAndFlush(carrito);
                 }
@@ -57,7 +55,6 @@ public class SrvcCarrito {
         {
             ProductoCarrito productoCarrito = new ProductoCarrito();
             productoCarrito.setDate(new Date());
-            productoCarrito.getCantidad(cantidad);
             productoCarrito.setProducto(p);
             carrito.getProducto().add(productoCarrito);
             return repoCarrito.saveAndFlush(carrito);
@@ -68,20 +65,17 @@ public class SrvcCarrito {
     }
 
     public Carrito getCarritoBySessionToken(String sessionToken) {
-
         return  repoCarrito.findByTokenSession(sessionToken);
     }
 
     public ProductoCarrito updateProductoCarrito(Long id, int cantidad) {
         ProductoCarrito productoCarrito = repoProductoCarrito.findById(id).get();
-        productoCarrito.getCantidad(cantidad);
         return repoProductoCarrito.saveAndFlush(productoCarrito);
-
     }
 
     public Carrito removeProductoCarritoFromCarrito(Long id, String sessionToken) {
         Carrito carrito = repoCarrito.findByTokenSession(sessionToken);
-        Set<ProductoCarrito> productoCarrito = (Set<ProductoCarrito>) repoProductoCarrito.getReferenceById();
+        Set<ProductoCarrito> productoCarrito = (Set<ProductoCarrito>) repoProductoCarrito.getReferenceById(id);
         ProductoCarrito productoCarrito1 = null;
         for(ProductoCarrito producto : productoCarrito) {
             if(producto.getId()==id) {
@@ -90,7 +84,7 @@ public class SrvcCarrito {
         }
         productoCarrito.remove(productoCarrito);
         repoProductoCarrito.delete((ProductoCarrito) productoCarrito);
-        return repoCarrito.guardar(carrito);
+        return repoCarrito.save(carrito);
     }
 
     public void clearCarrito(String sessionToken) {

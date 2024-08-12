@@ -1,78 +1,58 @@
 package com.eoi.tiendaderopa.entidades;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.Set;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Table(name = "Carrito")
 public class Carrito {
+
+
+    //TODO Repasar esta clase, y poner las relaciones correctamente con las demás.
+    // Poner los dos lados de la relación a ser posible y como recomendación, nunca poner el column_name, y dejarlo que hibernate escoja.
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    @Temporal(TemporalType.DATE)
     private Date fecha;
 
-    @Transient
-    private Double precio;
-
-    @Transient
-    private int cantidad;
+    private Double precio
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true )
-    private Collection<ProductoCarrito> carrito;
-
+    private Collection<ProductoCarrito> listaProductosCarrito;
     private String tokenSession;
 
-    public Carrito() {}
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public Date getDate() {
-        return fecha;
-    }
-
-    public void setDate(Date fecha) {
-        this.fecha = fecha;
-    }
 
     public Double getPrecio() {
         Double sum = 0.0;
-        for(ProductoCarrito productoCarrito : this.carrito) {
+        for(ProductoCarrito productoCarrito : this.listaProductosCarrito) {
             sum = sum + productoCarrito.getProducto().getPrecio();
+
         }
-        return precio;
+
+        //TODO Esto antes devolvía el precio. Echadle un ojo
+        return sum;
     }
 
     public int getCantidad() {
-        return this.getCantidad();
+        return this.listaProductosCarrito.size();
     }
 
     public Collection<ProductoCarrito> getProducto() {
-        return getProducto();
+        return listaProductosCarrito;
     }
 
-    public void setCarrito(Collection<ProductoCarrito> productoCarritos) {
-        this.carrito = productoCarritos;
-    }
-
-    public String getTokenSession() {
-        return tokenSession;
-    }
-
-    public void setTokenSession(String tokenSession) {
-        this.tokenSession = tokenSession;
-    }
 
     @Override
     public int hashCode() {

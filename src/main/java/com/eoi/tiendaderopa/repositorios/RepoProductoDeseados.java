@@ -5,19 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RepoProductoDeseados extends JpaRepository<ProductoDeseados, Long> {
+public interface RepoProductoDeseados extends JpaRepository<ProductoDeseado, Long> {
 
-    static String findByTokenSession(String tokenSession) {
-        return tokenSession;
-    }
+    ProductoDeseado findByTokenSession(String tokenSession);
 
-    static Deseados saveAndFlush(Deseados deseados) {
-        return deseados;
-    }
-
-    static Deseados add(Deseados deseados) {
-        return deseados;
-    }
-
-    void delete(String car);
 }

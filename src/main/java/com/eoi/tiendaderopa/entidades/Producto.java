@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -45,7 +44,7 @@ public class Producto implements Serializable {
     @Column(name = "precio")
     private double precio;
 
-    public void add(ProductoDeseados productoDeseados) {
+    public void add(ProductoDeseado productoDeseados) {
 
     }
 }

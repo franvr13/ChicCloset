@@ -1,11 +1,15 @@
 package com.eoi.tiendaderopa.entidades;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 
 @Entity(name = "productodeseados")
-public class ProductoDeseados {
+@Getter
+@Setter
+public class ProductoDeseado {
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,24 +19,10 @@ public class ProductoDeseados {
         @ManyToOne(fetch = FetchType.EAGER)
         @JoinColumn(name = "product_id",nullable=false, updatable=false)
         private Producto producto;
-        public Long getId() {
-            return id;
-        }
-        public void setId(Long id) {
-            this.id = id;
-        }
-        public Date getDate() {
-            return date;
-        }
-        public void setDate(Date date) {
-            this.date = date;
-        }
-        public Producto getProducto() {
-            return producto;
-        }
-        public void setProducto(Producto producto) {
-            this.producto = producto;
-        }
+
+        private String tokenSession;
+
+
         @Override
         public int hashCode() {
             final int prime = 31;
@@ -48,7 +38,7 @@ public class ProductoDeseados {
                 return false;
             if (getClass() != obj.getClass())
                 return false;
-            ProductoDeseados other = (ProductoDeseados) obj;
+            ProductoDeseado other = (ProductoDeseado) obj;
             if (id == null) {
                 if (other.id != null)
                     return false;

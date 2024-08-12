@@ -55,13 +55,13 @@ public class MainController {
     }
 
 
-    @GetMapping("/carrito")
-    public String carrito(Model model, HttpSession session) {
-        //Obtengo de la sesión el carrito
-        //List<Venta> list = model.getAttribute();
-        //model.getAttribute("carrito");
-        return "carrito";
-    }
+//    @GetMapping("/carrito")
+//    public String carrito(Model model, HttpSession session) {
+//        //Obtengo de la sesión el carrito
+//        //List<Venta> list = model.getAttribute();
+//        //model.getAttribute("carrito");
+//        return "carrito";
+//    }
 
     //1:48 29/07/2024
     //@GetMapping("/addcarrito")
