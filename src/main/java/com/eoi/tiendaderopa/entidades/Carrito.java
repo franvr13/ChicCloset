@@ -27,7 +27,7 @@ public class Carrito {
     private Long id;
     private Date fecha;
 
-    private Double precio
+    private Double precio;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true )
     private Collection<ProductoCarrito> listaProductosCarrito;
