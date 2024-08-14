@@ -1,6 +1,3 @@
-/*
-Custom Css
-*/
 @import "divider-text.css";
 @import "favoritos.css";
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
@@ -77,4 +74,25 @@ Custom Css
 }
 .filter-form .btn {
     margin-left: 10px;
+}
+
+.busqueda-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.busqueda-input:focus {
+    border: 1px solid #58a664;
+    outline: none;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.btn-search {
+    border: none;
+    background-color: transparent;
+    padding: 10px;
+    cursor: pointer;
 }
