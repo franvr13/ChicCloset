@@ -1,5 +1,6 @@
 package com.eoi.tiendaderopa.entidades;
 
+import com.eoi.tiendaderopa.Validaciones.ValidEmail;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,10 +11,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -36,9 +35,11 @@ public class Usuario implements Serializable, UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "contraseña", length = 45)
+
+    @Column(name = "contraseña", length = 450)
     private String contraseña;
 
+    @ValidEmail
     @Column(name = "email", length = 70)
     private String email;
 

@@ -5,19 +5,22 @@ import com.eoi.tiendaderopa.entidades.Usuario;
 import com.eoi.tiendaderopa.servicios.SrvcBusqueda;
 import com.eoi.tiendaderopa.servicios.SrvcUsuario;
 import com.eoi.tiendaderopa.servicios.SrvcDetallesUsuario;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/usuarios")
 public class UsuarioCtrl {
 
-    final SrvcUsuario usuarioSrvc;
-    final SrvcBusqueda busquedaSrvc;
-    final SrvcDetallesUsuario usuarioDetallesSrvc;
+    private final SrvcUsuario usuarioSrvc;
+    private final  SrvcBusqueda busquedaSrvc;
+    private final SrvcDetallesUsuario usuarioDetallesSrvc;
 
+    @Autowired
     public UsuarioCtrl(SrvcUsuario usuarioSrvc, SrvcBusqueda busquedaSrvc, SrvcDetallesUsuario usuarioDetallesSrvc) {
         this.usuarioSrvc = usuarioSrvc;
         this.busquedaSrvc = busquedaSrvc;
@@ -32,15 +35,15 @@ public class UsuarioCtrl {
 
 
     @GetMapping("/registro")
-    public String mostrarFormularioRegistro(Model model) {
+    public String mostrarFormularioRegistro(@Valid Model model) {
         model.addAttribute("usuario", new Usuario());
         return "registro";
     }
 
     @PostMapping("/registro")
-    public String registrarUsuario(@ModelAttribute("usuario") Usuario usuario) {
+    public String registrarUsuario( @ModelAttribute("usuario")  @Valid Usuario usuario) {
         usuarioSrvc.registrarUsuario(usuario);
-        return "/registrosatisfactorio";
+        return "registrosatisfactorio";
     }
 
     @GetMapping("/detalles/{idUsuario}")
