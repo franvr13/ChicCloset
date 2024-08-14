@@ -3,12 +3,15 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Usuarios</title>
+    <title>Perfil</title>
 </head>
 <body>
 <div layout:fragment="content">
     <div class="container">
-        <h2>Perfil</h2>
+        <div class="form-group">
+            <label></label>
+            <h2>Perfil</h2>
+        </div>
         <form action="/api/profile" method="post">
             <div class="form-group">
                 <label for="username">Nombre de usuario</label>
@@ -58,6 +61,7 @@
                 <label for="postal-code">Código postal</label>
                 <input type="text" id="postal-code" class="form-control" placeholder="Ingrese su código postal">
             </div>
+            <br>
             <br>
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
