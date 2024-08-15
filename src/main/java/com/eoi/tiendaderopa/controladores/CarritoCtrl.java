@@ -77,17 +77,20 @@ public class CarritoCtrl {
         return "redirect:carrito";
     }
     @GetMapping("/removeProductoCarrito/{id}")
-    public String removeProducto(@PathVariable("id") Long id, HttpServletRequest request) {
-        String sessionToken = (String) request.getSession(false).getAttribute("sessiontToken");
+    public String removeProducto(@PathVariable("id") Long id, HttpSession session) {
+        String sessionToken = (String) session.getAttribute("sessionToken");
+        if (sessionToken == null) {
+            sessionToken = UUID.randomUUID().toString();
+            session.setAttribute("sessionToken", sessionToken);
+        }
         System.out.println("elemento eliminado");
         srvcCarrito.removeProductoCarritoFromCarrito(id,sessionToken);
         return "redirect:/carrito";
     }
 
     @GetMapping("/clearCarrito")
-    public String clearCarrito(HttpServletRequest request) {
-        String sessionToken = (String) request.getSession(false).getAttribute("sessiontToken");
-        request.getSession(false).removeAttribute("sessiontToken");
+    public String clearCarrito(HttpSession session) {
+        String sessionToken = (String) session.getAttribute("sessionToken");
         srvcCarrito.clearCarrito(sessionToken);
         return "redirect:/carrito";
     }

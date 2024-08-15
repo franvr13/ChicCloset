@@ -42,7 +42,7 @@
                     <tbody>
                     <tr th:each="productoCarrito : ${productos}">
                         <td class="align-middle text-center">
-                            <a th:href="@{'/removeProductoCarrito' + ${productoCarrito.id}}" class="delete-icon">
+                            <a th:href="@{'/removeProductoCarrito/' + ${productoCarrito.id}}" class="delete-icon">
                                 <i class="fa fa-trash-alt"></i>
                             </a>
                         </td>
