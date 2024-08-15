@@ -5,7 +5,6 @@ import java.util.UUID;
 
 
 import com.eoi.tiendaderopa.entidades.Carrito;
-import com.eoi.tiendaderopa.entidades.ProductoCarrito;
 import com.eoi.tiendaderopa.servicios.SrvcCarrito;
 import com.eoi.tiendaderopa.servicios.SrvcProducto;
 import jakarta.servlet.http.HttpServletRequest;
@@ -33,9 +32,18 @@ public class CarritoCtrl {
     @PostMapping("/addToCarrito")
     public String addToCarrito(@RequestParam Long id, @RequestParam int cantidad, HttpSession session) {
         String sessionToken = (String) session.getAttribute("sessionToken");
+        if (sessionToken == null) {
+            sessionToken = UUID.randomUUID().toString();
+            session.setAttribute("sessionToken", sessionToken);
+        }
+
+        Carrito carrito = srvcCarrito.getCarritoBySessionToken(sessionToken);
+        if (carrito == null) {
+            carrito = srvcCarrito.addCarritoPrimeraVez(id, sessionToken, cantidad);
+        }
 
         try {
-            srvcCarrito.addToExistingCarrito(id, sessionToken, cantidad);
+            srvcCarrito.addToExistingCarrito(id, sessionToken, cantidad, session);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -50,7 +58,7 @@ public class CarritoCtrl {
             if (carrito == null) {
                 carrito = new Carrito();
                 carrito.setTokenSession(sessionToken);
-                carrito = srvcCarrito.addCarritoPrimeraVez(null, sessionToken, 0); // Crear carrito vacío
+                carrito = srvcCarrito.addCarritoPrimeraVez(null, sessionToken, 0);
             }
             model.addAttribute("carrito", carrito);
             model.addAttribute("productos", carrito.getProducto());

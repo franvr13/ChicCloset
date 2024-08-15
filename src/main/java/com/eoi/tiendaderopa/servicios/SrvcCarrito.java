@@ -6,14 +6,12 @@ import com.eoi.tiendaderopa.entidades.ProductoCarrito;
 import com.eoi.tiendaderopa.repositorios.RepoCarrito;
 import com.eoi.tiendaderopa.repositorios.RepoProducto;
 import com.eoi.tiendaderopa.repositorios.RepoProductoCarrito;
+import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 import static groovyjarjarantlr4.v4.gui.Trees.save;
 
@@ -38,8 +36,9 @@ public class SrvcCarrito {
 
 
     @Transactional
-    public void addToExistingCarrito(Long productoId, String sessionToken, int cantidad) {
+    public void addToExistingCarrito(Long productoId, String sessionToken, int cantidad, HttpSession session) {
         Carrito carrito = repoCarrito.findByTokenSession(sessionToken);
+
         if (carrito == null) {
             carrito = new Carrito();
             carrito.setTokenSession(sessionToken);

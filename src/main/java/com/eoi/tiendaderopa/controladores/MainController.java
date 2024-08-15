@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 import static java.nio.file.Files.setAttribute;
 
@@ -31,8 +32,11 @@ public class MainController {
 
 
     @GetMapping("/")
-    public String indexPage(Model model) {
+    public String indexPage(Model model, HttpSession session) {
         model.addAttribute("titulo", "Página Principal");
+        if (session.getAttribute("sessionToken") == null) {
+            session.setAttribute("sessionToken", UUID.randomUUID().toString());
+        }
         List<Producto> productos = repoProducto.findAll();
         //añadido limite de 15 para limitar los que salen al principio y evitar que quede algun elemento suelto
         if (productos.size() > 15) {
