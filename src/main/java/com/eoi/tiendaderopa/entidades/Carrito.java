@@ -6,15 +6,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "Carrito")
 public class Carrito {
 
 
@@ -25,34 +26,35 @@ public class Carrito {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private Date fecha;
 
     private Double precio;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true )
-    private Collection<ProductoCarrito> listaProductosCarrito;
+    @OneToMany( mappedBy = "carrito", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ProductoCarrito> listaProductosCarrito = new ArrayList<>();
+
+
     private String tokenSession;
 
 
-    public Double getPrecio() {
-        Double sum = 0.0;
-        for(ProductoCarrito productoCarrito : this.listaProductosCarrito) {
-            sum = sum + productoCarrito.getProducto().getPrecio();
-
-        }
-
-        //TODO Esto antes devolvía el precio. Echadle un ojo
-        return sum;
-    }
 
     public int getCantidad() {
         return this.listaProductosCarrito.size();
     }
 
-    public Collection<ProductoCarrito> getProducto() {
+    public List<ProductoCarrito> getProducto() {
         return listaProductosCarrito;
     }
 
+
+    public Double getPrecio() {
+        Double sum = 0.0;
+        for (ProductoCarrito productoCarrito : this.listaProductosCarrito) {
+            sum += productoCarrito.getProducto().getPrecio() * productoCarrito.getQuantity();
+        }
+        return sum;
+    }
 
     @Override
     public int hashCode() {

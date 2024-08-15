@@ -48,11 +48,17 @@
                     </div>
                 </div>
 
-                <div class="card-body text-center" style="margin-top: 30px">
+                <form th:action="@{/addToCarrito}" method="post">
+                    <input type="hidden" name="id" th:value="${producto.id}"/>
+                    <input type="number" name="cantidad" class="form-control" value="1" min="1"/> <!-- Valor predeterminado de 1 -->
+                    <button type="submit" class="btn btn-primary">Añadir al carrito</button>
+                </form>
+
+               <<!-- <div class="card-body text-center" style="margin-top: 30px">
                     <button class="btn btn-success ms-9" type="button">
-                        <i class="bi bi-cart"></i> Comprar
+                        <i class="bi bi-cart"></i> Añadir al carrito
                     </button>
-                </div>
+                </div>-->
 
             </div>
         </div>

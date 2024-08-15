@@ -4,11 +4,15 @@ import com.eoi.tiendaderopa.entidades.Carrito;
 import com.eoi.tiendaderopa.entidades.Producto;
 import com.eoi.tiendaderopa.entidades.ProductoCarrito;
 import com.eoi.tiendaderopa.repositorios.RepoCarrito;
+import com.eoi.tiendaderopa.repositorios.RepoProducto;
 import com.eoi.tiendaderopa.repositorios.RepoProductoCarrito;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import static groovyjarjarantlr4.v4.gui.Trees.save;
@@ -17,52 +21,57 @@ import static groovyjarjarantlr4.v4.gui.Trees.save;
 public class SrvcCarrito {
 
     @Autowired
-    private static RepoCarrito repoCarrito;
+    private RepoCarrito repoCarrito;
     @Autowired
     private SrvcProducto srvcProducto;
     @Autowired
     private RepoProductoCarrito repoProductoCarrito;
 
-    public static Carrito addCarritoPrimeraVez(Long id, String sessionToken, int cantidad) {
+    @Autowired
+    private RepoProducto repoProducto;
+
+    public Carrito addCarritoPrimeraVez(Long id, String sessionToken, int cantidad) {
         Carrito carrito = new Carrito();
-        ProductoCarrito productoCarrito = new ProductoCarrito();
-        productoCarrito.setDate(new Date());
-        productoCarrito.setProducto(SrvcProducto.getProductoByID(id));
-        carrito.getProducto().add(productoCarrito);
         carrito.setTokenSession(sessionToken);
-        carrito = repoCarrito.save(carrito);
-        return carrito;
-
+        return repoCarrito.save(carrito);
     }
 
-    public Carrito addToExistingCarrito(Long id, String sessionToken, int cantidad) {
 
+    @Transactional
+    public void addToExistingCarrito(Long productoId, String sessionToken, int cantidad) {
         Carrito carrito = repoCarrito.findByTokenSession(sessionToken);
-        Producto p = SrvcProducto.getProductoByID(id);
-        Boolean productDoesExistInTheCart = false;
-        if (carrito != null) {
-            Set<ProductoCarrito> productoCarrito = (Set<ProductoCarrito>) carrito.getProducto();
-            for (ProductoCarrito producto : productoCarrito) {
-                if (producto.getProducto().equals(p)) {
-                    productDoesExistInTheCart = true;
-                    carrito.getProducto();
-                    return repoCarrito.saveAndFlush(carrito);
-                }
-
-            }
-        }
-        if(!productDoesExistInTheCart && (carrito != null))
-        {
-            ProductoCarrito productoCarrito = new ProductoCarrito();
-            productoCarrito.setDate(new Date());
-            productoCarrito.setProducto(p);
-            carrito.getProducto().add(productoCarrito);
-            return repoCarrito.saveAndFlush(carrito);
+        if (carrito == null) {
+            carrito = new Carrito();
+            carrito.setTokenSession(sessionToken);
+            carrito = repoCarrito.save(carrito);
         }
 
-        return this.addCarritoPrimeraVez(id, sessionToken, cantidad);
+        Producto producto = repoProducto.findById(productoId).orElseThrow(() -> new RuntimeException("Producto no encontrado: " + productoId));
 
+        ProductoCarrito productoCarrito = carrito.getListaProductosCarrito()
+                .stream()
+                .filter(pc -> pc.getProducto().equals(producto))
+                .findFirst()
+                .orElse(null);
+
+        if (productoCarrito != null) {
+            // Si el producto ya está en el carrito, actualizar la cantidad
+            productoCarrito.setQuantity(productoCarrito.getQuantity() + cantidad);
+            repoProductoCarrito.save(productoCarrito);
+        } else {
+            // Si el producto no está en el carrito, añadirlo
+            productoCarrito = new ProductoCarrito();
+            productoCarrito.setProducto(producto);
+            productoCarrito.setQuantity(cantidad);
+            productoCarrito.setCarrito(carrito);
+            carrito.getListaProductosCarrito().add(productoCarrito);
+            repoProductoCarrito.save(productoCarrito);
+        }
+
+        repoCarrito.save(carrito);
     }
+
+
 
     public Carrito getCarritoBySessionToken(String sessionToken) {
         return  repoCarrito.findByTokenSession(sessionToken);
@@ -73,23 +82,26 @@ public class SrvcCarrito {
         return repoProductoCarrito.saveAndFlush(productoCarrito);
     }
 
-    public Carrito removeProductoCarritoFromCarrito(Long id, String sessionToken) {
+    @Transactional
+    public void removeProductoCarritoFromCarrito(Long id, String sessionToken) {
         Carrito carrito = repoCarrito.findByTokenSession(sessionToken);
-        Set<ProductoCarrito> productoCarrito = (Set<ProductoCarrito>) repoProductoCarrito.getReferenceById(id);
-        ProductoCarrito productoCarrito1 = null;
-        for(ProductoCarrito producto : productoCarrito) {
-            if(producto.getId()==id) {
-                producto = producto;
-            }
-        }
-        productoCarrito.remove(productoCarrito);
-        repoProductoCarrito.delete((ProductoCarrito) productoCarrito);
-        return repoCarrito.save(carrito);
+        ProductoCarrito productoCarrito = repoProductoCarrito.findById(id)
+                .orElseThrow(() -> new RuntimeException("ProductoCarrito no encontrado: " + id));
+
+        carrito.getListaProductosCarrito().remove(productoCarrito);
+        repoProductoCarrito.delete(productoCarrito);
+        repoCarrito.save(carrito);
     }
 
+    @Transactional
     public void clearCarrito(String sessionToken) {
-        Carrito car = repoCarrito.findByTokenSession(sessionToken);
-        repoCarrito.delete(car);
+        Carrito carrito = repoCarrito.findByTokenSession(sessionToken);
+        if (carrito == null) {
+            throw new RuntimeException("Carrito no encontrado para el token de sesión: " + sessionToken);
+        }
+        repoProductoCarrito.deleteAll(carrito.getListaProductosCarrito());
+        carrito.getListaProductosCarrito().clear();
+        repoCarrito.save(carrito);
 
     }
 

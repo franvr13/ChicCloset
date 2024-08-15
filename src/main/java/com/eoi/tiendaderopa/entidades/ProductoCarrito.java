@@ -25,7 +25,12 @@ public class ProductoCarrito {
 
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "producto_id")
     private Producto producto;
+
+    @ManyToOne
+    @JoinColumn(name = "carrito_id", nullable = false)
+    private Carrito carrito;
 
 
     @Override
@@ -75,5 +80,12 @@ public class ProductoCarrito {
 
     public void remove(ProductoCarrito productoCarrito) {
 
+    }
+
+    public ProductoCarrito() {}
+
+    public ProductoCarrito(Producto producto, int cantidad) {
+        this.producto = producto;
+        this.quantity= cantidad;
     }
 }

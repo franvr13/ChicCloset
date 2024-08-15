@@ -1,8 +1,9 @@
 package com.eoi.tiendaderopa.controladores;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
-import ch.qos.logback.core.model.Model;
+
 import com.eoi.tiendaderopa.entidades.Carrito;
 import com.eoi.tiendaderopa.entidades.ProductoCarrito;
 import com.eoi.tiendaderopa.servicios.SrvcCarrito;
@@ -11,6 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,26 +31,36 @@ public class CarritoCtrl {
     private SrvcCarrito srvcCarrito;
 
     @PostMapping("/addToCarrito")
-    public String addToCarrito(HttpSession session, Model model, @RequestParam("id") Long id, @RequestParam("cantidad") int cantidad) {
-        // sessionToken
+    public String addToCarrito(@RequestParam Long id, @RequestParam int cantidad, HttpSession session) {
         String sessionToken = (String) session.getAttribute("sessionToken");
-        if(sessionToken == null) {
-            Random rand = new Random();
-            sessionToken = UUID.randomUUID().toString();
-            session.setAttribute("sessionToken", sessionToken);
-            SrvcCarrito.addCarritoPrimeraVez(id, sessionToken, cantidad);
-        }
-        else {
+
+        try {
             srvcCarrito.addToExistingCarrito(id, sessionToken, cantidad);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return "redirect:/";
+
+        return "redirect:/carrito?token=" + sessionToken;
     }
-
     @GetMapping("/carrito")
-    public String showViewCarrito(HttpServletRequest request, Model model) {
-
+    public String showViewCarrito(HttpSession session, Model model) {
+        String sessionToken = (String) session.getAttribute("sessionToken");
+        if (sessionToken != null) {
+            Carrito carrito = srvcCarrito.getCarritoBySessionToken(sessionToken);
+            if (carrito == null) {
+                carrito = new Carrito();
+                carrito.setTokenSession(sessionToken);
+                carrito = srvcCarrito.addCarritoPrimeraVez(null, sessionToken, 0); // Crear carrito vacío
+            }
+            model.addAttribute("carrito", carrito);
+            model.addAttribute("productos", carrito.getProducto());
+        } else {
+            model.addAttribute("carrito", new Carrito());
+            model.addAttribute("productos", new ArrayList<>());
+        }
         return "carrito";
     }
+
 
     @PostMapping("/updateProductoCarrito")
     public String updateProductoCarrito(@RequestParam("producto_id") Long id,
