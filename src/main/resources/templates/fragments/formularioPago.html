@@ -1,0 +1,22 @@
+<div class="container" th:fragment="formularioPago">
+    <h2>Detalles de la Tarjeta</h2>
+    <form th:action="@{/pago/procesarPago}" method="post">
+        <div>
+            <label for="card-number">Número de Tarjeta</label>
+            <input type="text" id="card-number" name="cardNumber" placeholder="Número de tarjeta" required>
+        </div>
+        <div>
+            <label for="card-holder">Nombre del Titular</label>
+            <input type="text" id="card-holder" name="cardHolder" placeholder="Nombre del titular" required>
+        </div>
+        <div>
+            <label for="expiry-date">Fecha de Expiración</label>
+            <input type="text" id="expiry-date" name="expiryDate" placeholder="MM/AA" required>
+        </div>
+        <div>
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" name="cvv" placeholder="CVV" required>
+        </div>
+        <button type="submit">Pagar</button>
+    </form>
+</div>

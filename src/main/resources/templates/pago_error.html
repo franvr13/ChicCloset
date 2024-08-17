@@ -1,0 +1,23 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="fragments/head :: head">
+    <title>Pago Satisfactorio</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="container fade-in">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-header text-center">
+                    <h2>Error</h2>
+                </div>
+                <div class="card-body text-center">
+                    <p class="mb-4">Su compra no se pudo efectuar</p>
+                    <a th:ref="@{/carrito}" class="btn btn-danger">Volver al carrito</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
