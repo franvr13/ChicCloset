@@ -94,6 +94,11 @@
                         <a th:href="@{/usuarios/registro}" style="color: white; text-decoration: none;">Registro</a>
                     </button>
                     </div>
+                    <div sec:authorize="isAuthenticated()">
+                        <button type="button" class="btn btn-success">
+                            <a th:href="@{/logout}" style="color: white; text-decoration: none;">Cerrar Sesión</a>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
