@@ -1,21 +1,21 @@
 <div class="container" th:fragment="formularioEnvio">
   <h2>Detalles Envio</h2>
   <form th:action="@{/pago/datosPago}" method="post">
-    <div>
+    <div class="form-group">
       <label for="name">Nombre</label>
-      <input type="text" id="name" name="name" placeholder="Introduzca su nombre" required>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Introduzca su nombre" required>
     </div>
-    <div>
+    <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="Introduzca su email" required>
+      <input type="email" class="form-control" id="email" name="email" placeholder="Introduzca su email" required>
     </div>
-    <div>
+    <div class="form-group">
       <label for="tel">Teléfono</label>
-      <input type="tel" id="tel" name="tel" placeholder="Introduzca su teléfono" required>
+      <input type="tel" class="form-control" id="tel" name="tel" placeholder="Introduzca su teléfono" required>
     </div>
-    <div>
+    <div class="form-group">
       <label for="country">País</label>
-      <select id="country" name="country" required>
+      <select id="country" name="country" class="form-control" required>
         <option value="" disabled selected>Seleccione un país</option>
         <option>España</option>
         <option>Italia</option>
@@ -23,14 +23,14 @@
         <option>Francia</option>
       </select>
     </div>
-    <div>
+    <div class="form-group">
       <label for="city">Ciudad</label>
-      <input type="text" id="city" name="city" placeholder="Indique su ciudad" required>
+      <input type="text" class="form-control" id="city" name="city" placeholder="Indique su ciudad" required>
     </div>
-    <div>
+    <div class="form-group">
       <label for="address">Dirección</label>
-      <input type="text" id="address" name="address" placeholder="Introduzca su dirección" required>
+      <input type="text" class="form-control" id="address" name="address" placeholder="Introduzca su dirección" required>
     </div>
-    <button type="submit">Siguiente Paso</button>
+    <button type="submit" class="btn btn-success" style="margin-top: 20px">Siguiente Paso</button>
   </form>
 </div>
