@@ -1,36 +1,70 @@
 <!doctype html>
-<html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"
+<html layout:decorate="~{layout/layoutHSinMargen}" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
 <head>
-    <title>Usuarios</title>
+    <meta charset="UTF-8">
+    <title>Perfil</title>
 </head>
 <body>
 <div layout:fragment="content">
-<h1>Aquí irá una lista de usuarios</h1>
-<div class="container">
-    <table class="table ">
-        <thead>
-        <tr>
-            <th>Email</th>
-            <th>Id</th>
-            <th>Contraseña</th>
-            <th></th>
-            <th></th>
-        </tr>
-        </thead>
-        <tr th:each="usuario : ${usuarios}">
-            <td th:text="${usuario.email}"></td>
-            <td th:text="${usuario.id}"></td>
-            <td th:text="${usuario.contraseña}"></td>
-            <td>
-                <button type="button" class="btn btn-primary">Editar</button>
-            </td>
-            <td>
-                <button type="button" class="btn btn-danger">Eliminar</button>
-            </td>
-        </tr>
-    </table>
-</div>
-</div>
+    <div class="container">
+        <div class="form-group">
+            <label></label>
+            <h2>Perfil</h2>
+        </div>
+        <form action="/api/profile" method="post">
+            <div class="form-group">
+                <label for="username">Nombre de usuario</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Ingrese su nombre de usuario" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="name">Nombre y apellidos</label>
+                <input type="text" id="name" class="form-control" placeholder="Ingrese su nombre y apellidos">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="phone">Número de teléfono</label>
+                <div class="input-group">
+                    <select id="country-code" class="form-control">
+                        <option value="+34">(+34) España</option>
+                        <option value="+49">(+49) Alemania</option>
+                        <option value="+33">(+33) Francia</option>
+                        <option value="+39">(+39) Italia</option>
+                        <option value="+44">(+44) Reino Unido</option>
+                        <option value="+7">(+7) Rusia</option>
+                        <option value="+380">(+380) Ucrania</option>
+                        <option value="+48">(+48) Polonia</option>
+                        <option value="+40">(+40) Rumania</option>
+                        <option value="+41">(+41) Países Bajos</option>
+                        <option value="+32">(+32) Bélgica</option>
+                        <option value="+30">(+30) Grecia</option>
+                        <option value="+351">(+351) Portugal</option>
+                        <option value="+46">(+46) Suecia</option>
+                        <option value="+47">(+47) Noruega</option>
+                    </select>
+                    <input type="tel" id="phone" class="form-control" placeholder="Ingrese su número de teléfono">
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="country">País o ciudad</label>
+                <input type="text" id="country" class="form-control" placeholder="Ingrese su país o ciudad">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="address">Dirección</label>
+                <input type="text" id="address" class="form-control" placeholder="Ingrese su dirección">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="postal-code">Código postal</label>
+                <input type="text" id="postal-code" class="form-control" placeholder="Ingrese su código postal">
+            </div>
+            <br>
+            <br>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
 </body>
 </html>
