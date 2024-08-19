@@ -1,6 +1,7 @@
 package com.eoi.tiendaderopa.servicios;
 
 import com.eoi.tiendaderopa.entidades.Producto;
+import com.eoi.tiendaderopa.repositorios.RepoPedido;
 import com.eoi.tiendaderopa.repositorios.RepoProducto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -47,5 +48,9 @@ public class SrvcProducto extends AbstractBusinessSrvc {
                 .map(Producto::getTalla)
                 .distinct()
                 .collect(Collectors.toList());
+    }
+
+    public static Producto getProductoByID(Long id) {
+        return null;
     }
 }
