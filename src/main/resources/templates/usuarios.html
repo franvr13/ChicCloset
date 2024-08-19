@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!doctype html>
+<html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
 <head>
-    <head th:replace="fragments/head :: head">
-        <title>Usuarios</title>
-        <meta charset="UTF-8"/>
-    </head>
+    <title>Usuarios</title>
+</head>
 <body>
-<div th:replace="fragments/header :: header">...</div>
+<div layout:fragment="content">
 <h1>Aquí irá una lista de usuarios</h1>
 <div class="container">
     <table class="table ">
@@ -32,13 +31,6 @@
         </tr>
     </table>
 </div>
-<div th:replace="fragments/footer :: footer">...</div>
-<!-- Start Script -->
-<script src="../js/jquery-1.11.0.min.js"></script>
-<script src="../js/jquery-migrate-1.2.1.min.js"></script>
-<script src="../js/bootstrap.bundle.min.js"></script>
-<script src="../js/templatemo.js"></script>
-<script src="../js/custom.js"></script>
-<!-- End Script -->
+</div>
 </body>
 </html>

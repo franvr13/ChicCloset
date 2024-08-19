@@ -1,11 +1,11 @@
-<!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
-<div th:replace="fragments/head :: head"></div>
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org/" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
+<div th:replace="~{fragments/head :: head}"></div>
 <body>
-<div th:replace="fragments/header :: header"></div>
-<div layout:fragment="content">
-
-</div>
-<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="~{fragments/header :: header}"></div>
+<div class="container" layout:fragment="content"></div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+<div th:replace="~{fragments/preloader :: preloader}"></div>
+<script layout:fragment="script"></script>
 </body>
 </html>

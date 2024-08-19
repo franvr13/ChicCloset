@@ -1,0 +1,33 @@
+<!doctype html>
+<html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
+<head>
+    <title>Busquedas</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div th:each="producto : ${productos}">
+                    <a th:href="@{'/productos/' + ${producto.id}}" style="text-decoration: none; color: black;">
+                        <div class="card h-100">
+                            <!-- Product image-->
+                            <img class="card-img-top img-fluid" th:src="${producto.fotoUrl}" alt="Imagen del producto"
+                                 style="height: 300px; object-fit: cover;"/>
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder" th:text="${producto.nombre}"></h5>
+                                    <!-- Product price-->
+                                    <h5 th:text="${producto.precio}"></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        <p th:if="${#lists.isEmpty(productos)}">No se encontraron productos.</p>
+    </div>
+</div>
+</body>
+</html>

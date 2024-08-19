@@ -6,7 +6,7 @@
                  th:classappend="${iterStat.index == 0} ? 'active' : ''">
                 <div class="row" style="display: flex;">
                     <div th:each="producto : ${grupoProductos}" class="col-md-4 d-flex align-items-stretch">
-                        <a th:href="@{'/productos/' + ${producto.id}}">
+                        <a th:href="@{'/productos/' + ${producto.id}}" style="text-decoration: none; color: black;">
                             <div class="card h-100">
                                 <!-- Product image -->
                                 <img class="card-img-top img-fluid" th:src="${producto.fotoUrl}"

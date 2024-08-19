@@ -45,10 +45,18 @@ public class Producto implements Serializable {
     @Column(name = "precio")
     private double precio;
 
+
     @OneToMany(mappedBy = "producto")
     private Set<ProductoCarrito> productosCarrito;
 
     public void add(ProductoDeseado productoDeseados) {
 
     }
+
+    @Column(name = "talla")
+    private String talla;
+
+   /* @ManyToOne
+    private Carrito carrito;*/
+
 }

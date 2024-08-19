@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" th:fragment="login">
+<head>
+    <title th:text="#{login.heading}">Iniciar sesión</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+<div class="container">
+    <h1 th:text="#{login.heading}">Iniciar sesión</h1>
+    <form class="form" th:action="@{/login}" method="post">
+        <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <div class="mb-3">
+            <label for="username" class="form-label">Email</label>
+            <input type="email" class="form-control" id="username" name="username" required>
+        </div>
+        <button type="submit" class="btn btn-success">Entrar</button>
+    </form>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#locales").change(function () {
+                var selectedOption = $('#locales').val();
+                if (selectedOption != '') {
+                    window.location.replace('login?lang=' + selectedOption);
+                }
+            });
+        });
+    </script>
+</div>
+</body>
+</html>

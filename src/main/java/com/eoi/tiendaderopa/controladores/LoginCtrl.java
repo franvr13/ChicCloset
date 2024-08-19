@@ -2,7 +2,6 @@ package com.eoi.tiendaderopa.controladores;
 
 import com.eoi.tiendaderopa.entidades.Usuario;
 import com.eoi.tiendaderopa.repositorios.RepoUsuario;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,10 +37,11 @@ public class LoginCtrl {
             Usuario usuario = optionalUsuario.get();
             model.addAttribute("usuario", usuario);
             model.addAttribute("msg", "Usuario encontrado");
-            return "/login";
+            return "/productos";
         } else {
             model.addAttribute("msg", "Usuario no encontrado");
         }
-        return "redirect:/login?error=true";
+        return "/productos";
     }
+
 }

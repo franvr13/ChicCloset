@@ -70,7 +70,7 @@ body, ul, li, p, a, label, input, div {
 }
 
 .bg-dark {
-    background-color: #212934 !important;
+    background-color: red !important;
 }
 
 .bg-light {
