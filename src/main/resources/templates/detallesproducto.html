@@ -45,9 +45,12 @@
 					</div>
 				</div>
 
+				<br>
+
                 <form th:action="@{/addToCarrito}" method="post">
                     <input type="hidden" name="id" th:value="${producto.id}"/>
                     <input type="number" name="cantidad" class="form-control" value="1" min="1"/> <!-- Valor predeterminado de 1 -->
+					<p></p>
                     <button type="submit" class="btn btn-primary">Añadir al carrito</button>
                 </form>
 
