@@ -41,9 +41,27 @@ public class UsuarioCtrl {
     }
 
     @PostMapping("/registro")
-    public String registrarUsuario( @ModelAttribute("usuario")  @Valid Usuario usuario) {
+    public String registrarUsuario(@ModelAttribute("usuario") Usuario usuario, Model model) {
+        // Validar que los campos obligatorios no estén vacíos
+        if (usuario.getEmail() == null || usuario.getEmail().isEmpty()) {
+            model.addAttribute("error", "El email es obligatorio.");
+            return "registro";
+        }
+
+        if (usuario.getContraseña() == null || usuario.getContraseña().isEmpty()) {
+            model.addAttribute("error", "La contraseña es obligatoria.");
+            return "registro";
+        }
+
+        // Validar la fortaleza de la contraseña
+        if (!isValidPassword(usuario.getContraseña())) {
+            model.addAttribute("error", "La contraseña debe tener al menos 8 caracteres, incluyendo una mayúscula, una minúscula, un número y un carácter especial.");
+            return "registro";
+        }
+
+        // Si las validaciones pasan, registrar el usuario
         usuarioSrvc.registrarUsuario(usuario);
-        return "registrosatisfactorio";
+        return "/registrosatisfactorio";
     }
 
     @GetMapping("/detalles/{idUsuario}")
@@ -86,6 +104,19 @@ public class UsuarioCtrl {
     public String eliminarUsuario(@ModelAttribute("usuario") Usuario usuario, Integer idUsuario) {
         usuarioSrvc.eliminarPorId(idUsuario);
         return "redirect:/home";
+    }
+
+    // Método privado para validar la fortaleza de la contraseña
+    private boolean isValidPassword(String password) {
+        if (password.length() < 8) {
+            return false;
+        }
+        boolean hasUppercase = password.chars().anyMatch(Character::isUpperCase);
+        boolean hasLowercase = password.chars().anyMatch(Character::isLowerCase);
+        boolean hasDigit = password.chars().anyMatch(Character::isDigit);
+        boolean hasSpecialChar = password.chars().anyMatch(ch -> "!@#$%^&*()_+[]{}|;:,.<>?".indexOf(ch) >= 0);
+
+        return hasUppercase && hasLowercase && hasDigit && hasSpecialChar;
     }
 }
 

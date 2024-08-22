@@ -2,6 +2,9 @@ package com.eoi.tiendaderopa.entidades;
 
 import com.eoi.tiendaderopa.Validaciones.ValidEmail;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,10 +40,14 @@ public class Usuario implements Serializable, UserDetails {
 
 
     @Column(name = "contraseña", length = 450)
+    @NotBlank(message = "La contraseña no puede estar vacía")
+    @Size(min = 8, message = "La contraseña debe tener al menos 8 caracteres")
     private String contraseña;
 
     @ValidEmail
-    @Column(name = "email", length = 70)
+    @Column(name = "email", length = 70, unique = true)
+    @NotBlank(message = "El email no puede estar vacío")
+    @Email(message = "El email debe ser válido")
     private String email;
 
 
