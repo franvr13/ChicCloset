@@ -1,36 +1,72 @@
 <div class="container" th:fragment="formularioEnvio">
-  <h2>Detalles Envio</h2>
+  <h2 th:text="#{shippingdetails}">Detalles Envio</h2>
   <form th:action="@{/pago/datosPago}" method="post">
-    <div class="form-group">
-      <label for="name">Nombre</label>
+    <div class="form-group mb-1">
+      <label for="name" th:text="#{name}">Nombre</label>
       <input type="text" class="form-control" id="name" name="name" placeholder="Introduzca su nombre" required>
     </div>
+    <br>
     <div class="form-group">
-      <label for="email">Email</label>
+      <label for="email" th:text="#{login.email}">Email</label>
       <input type="email" class="form-control" id="email" name="email" placeholder="Introduzca su email" required>
     </div>
-    <div class="form-group">
-      <label for="tel">Teléfono</label>
-      <input type="tel" class="form-control" id="tel" name="tel" placeholder="Introduzca su teléfono" required>
+    <br>
+    <div class="form-group-perfil">
+      <label for="phone">Número de teléfono</label>
+      <div class="input-group">
+        <select id="country-code" class="form-control">
+          <option value="+34">(+34) España</option>
+          <option value="+49">(+49) Alemania</option>
+          <option value="+33">(+33) Francia</option>
+          <option value="+39">(+39) Italia</option>
+          <option value="+44">(+44) Reino Unido</option>
+          <option value="+7">(+7) Rusia</option>
+          <option value="+380">(+380) Ucrania</option>
+          <option value="+48">(+48) Polonia</option>
+          <option value="+40">(+40) Rumania</option>
+          <option value="+41">(+41) Países Bajos</option>
+          <option value="+32">(+32) Bélgica</option>
+          <option value="+30">(+30) Grecia</option>
+          <option value="+351">(+351) Portugal</option>
+          <option value="+46">(+46) Suecia</option>
+          <option value="+47">(+47) Noruega</option>
+        </select>
+        <input type="tel" id="phone" class="form-control" th:placeholder="#{enteryourphone}">
+      </div>
     </div>
+    <br>
     <div class="form-group">
-      <label for="country">País</label>
+      <label for="country" th:text="#{country}">País</label>
       <select id="country" name="country" class="form-control" required>
-        <option value="" disabled selected>Seleccione un país</option>
+        <option value="" disabled selected th:text="#{selectcountry}">Seleccione un país</option>
         <option>España</option>
-        <option>Italia</option>
         <option>Alemania</option>
         <option>Francia</option>
+        <option>Italia</option>
+        <option>Reino Unido</option>
+        <option>Rusia</option>
+        <option>Ucrania</option>
+        <option>Polonia</option>
+        <option>Rumania</option>
+        <option>Países Bajos</option>
+        <option>Bélgica</option>
+        <option>Grecia</option>
+        <option>Portugal</option>
+        <option>Suecia</option>
+        <option>Noruega</option>
       </select>
     </div>
+    <br>
     <div class="form-group">
-      <label for="city">Ciudad</label>
+      <label for="city" th:text="#{city}">Ciudad</label>
       <input type="text" class="form-control" id="city" name="city" placeholder="Indique su ciudad" required>
     </div>
+    <br>
     <div class="form-group">
-      <label for="address">Dirección</label>
+      <label for="address" th:text="#{address}">Dirección</label>
       <input type="text" class="form-control" id="address" name="address" placeholder="Introduzca su dirección" required>
     </div>
-    <button type="submit" class="btn btn-success" style="margin-top: 20px">Siguiente Paso</button>
+    <br>
+    <button type="submit" class="btn btn-success" style="margin-top: 20px" th:text="#{next}">Siguiente Paso</button>
   </form>
 </div>

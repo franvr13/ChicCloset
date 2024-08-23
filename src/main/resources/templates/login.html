@@ -2,18 +2,10 @@
 <html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
 <head>
-    <title th:text="#{titulo.login}"></title>
+    <title th:text="#{login.tittle}"></title>
 </head>
 <body>
 <div layout:fragment="content">
-    <div class="mb-3" style="margin-left: 19px; margin-bottom: 3em">
-        <select id="locales" class="form-control d-inline w-auto">
-            <option value=""></option>
-            <option value="en" th:text="#{lang.eng}" th:selected="${#locale.language == 'en'}"></option>
-            <option value="es" th:text="#{lang.es}" th:selected="${#locale.language == 'es'}"></option>
-        </select>
-    </div>
-
     <div th:replace="~{fragments/formularioLogin :: formularioLogin}"></div>
     <script type="text/javascript">
         $(document).ready(function () {
