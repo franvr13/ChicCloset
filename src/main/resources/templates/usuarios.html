@@ -12,7 +12,7 @@
             <label></label>
             <h2 th:text="#{profile}">Perfil</h2>
         </div>
-        <form action="/api/profile" method="post">
+        <form action="/api/profile" method="post" th:object="${profile}">
             <div class="form-group-perfil">
                 <label for="username" th:text="#{username}">Nombre de usuario</label>
                 <input type="text" id="username" name="username" class="form-control" th:placeholder="#{enteryourusername}" required>
