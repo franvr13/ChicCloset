@@ -4,19 +4,19 @@
         <form th:action="@{/productos}" method="get" class="filter-form mb-4" onsubmit="resetPage()">
             <div class="mb-2">
                 <select class="form-select" name="color">
-                    <option th:selected="${colorSeleccionado == null}">Seleccione un color</option>
+                    <option th:selected="${colorSeleccionado == null}" th:text="#{selectcolour}">Seleccione un color</option>
                     <option th:each="color : ${colores}" th:value="${color}" th:text="${color}" th:selected="${colorSeleccionado == color}"></option>
                 </select>
             </div>
             <div class=" mb-2">
                 <select class="form-select" name="talla">
-                    <option th:selected="${tallaSeleccionada == null}">Seleccione una talla</option>
+                    <option th:selected="${tallaSeleccionada == null}" th:text="#{selectsize}">Seleccione una talla</option>
                     <option th:each="talla : ${tallas}" th:value="${talla}" th:text="${talla}" th:selected="${tallaSeleccionada == talla}"></option>
                 </select>
             </div>
             <div class="mb-2">
                 <input type="hidden" id="page-input" name="pagina" th:value="${numeroPaginaActual}"/>
-                <button class="btn btn-success" type="submit">Filtrar</button>
+                <button class="btn btn-success" type="submit" th:text="#{filter}">Filtrar</button>
             </div>
         </form>
         <!---->
@@ -43,11 +43,11 @@
     </div>
     <div class="d-flex justify-content-center mt-4">
         <a th:if="${numeroPaginaActual > 0}" th:href="@{productos(pagina=${numeroPaginaActual - 1}, color=${colorSeleccionado}, talla=${tallaSeleccionada})}">
-        <button class="btn btn-success me-2"
+        <button class="btn btn-success me-2" th:text="#{previouspage}"
                 >Anterior</button></a>
 
         <a  th:if="${paginaProductos.hasNext()}" th:href="@{productos(pagina=${numeroPaginaActual + 1}, color=${colorSeleccionado}, talla=${tallaSeleccionada})}">
-            <button class="btn btn-success"
+            <button class="btn btn-success" th:text="#{nextpage}"
             >Siguiente
             </button>
         </a>
