@@ -115,3 +115,9 @@
     box-shadow: 0 0 10px #ccc;
     transition: border-color 0.2s ease-in-out;
 }
+
+.card-product-search {
+    border: 3.5px solid #58a664;
+    border-radius: 5.5px;
+    overflow: hidden;
+}

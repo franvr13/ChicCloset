@@ -9,7 +9,7 @@
     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <div th:each="producto : ${productos}"  class="col mb-5" >
                     <a th:href="@{'/productos/' + ${producto.id}}" style="text-decoration: none; color: black;">
-                        <div class="card h-100">
+                        <div class="card-product-search h-100 card-product-search">
                             <!-- Product image-->
                             <img class="card-img-top img-fluid" th:src="${producto.fotoUrl}" alt="Imagen del producto"
                                  style="height: 300px; object-fit: cover;"/>
