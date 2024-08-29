@@ -48,6 +48,7 @@
       <input type="text" class="form-control" id="address" name="address" th:placeholder="#{enteryouraddress}" required>
     </div>
     <br>
+    <input type="hidden" name="idcarrito" th:value="${idcarrito}">
     <button type="submit" class="btn btn-success" style="margin-top: 20px" th:text="#{next}">Siguiente Paso</button>
   </form>
 </div>

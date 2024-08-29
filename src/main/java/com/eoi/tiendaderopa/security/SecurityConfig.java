@@ -1,4 +1,5 @@
 package com.eoi.tiendaderopa.security;
+
 import com.eoi.tiendaderopa.servicios.CustomUserDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +32,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/login", "/usuarios/registro", "/css/**", "/js/**", "/tienda", "/busqueda", "/productos", "/", "about", "/contacto").permitAll()
+                        .requestMatchers("/login", "/usuarios/registro", "/css/**", "/js/**","/img/**", "/tienda", "/busqueda", "/productos", "/", "about", "/contacto").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
