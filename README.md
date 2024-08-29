@@ -7,7 +7,7 @@ Proyecto personal para Máster Programación Java EOI 2024.
 - La siguiente iniciativa ha sido creada por el Grupo 2, formado por 4 personas, como proyecto final para el
 bootcamp de Java impartido por la EOI de abril a septiembre del 2024. A lo largo de
 los meses de curso se ha vertido todo el conocimiento adquirido en la creación de la
-siguiente aplicación web de venta de ropa combinando los conocimientos adquiridos
+siguiente aplicación web de itemPedido de ropa combinando los conocimientos adquiridos
 sobre Java, POO (Programación Orientada a Objetos), Maven, Hibernate, Springboot,
 JDBC (Java Database Connectivity), JPA, Thymeleaf, MySQL, HTMLS5, CSS y Bootstrap.
 

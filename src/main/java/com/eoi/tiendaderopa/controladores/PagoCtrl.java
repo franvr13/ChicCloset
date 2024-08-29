@@ -19,23 +19,29 @@ import java.util.List;
 @RequestMapping("/pago")
 public class PagoCtrl {
 
-    @Autowired
-    private SrvcPago pagoSrvc;
+    private final SrvcPago pagoSrvc;
 
-    @Autowired
-    private RepoProductoCarrito repoProductoCarrito;
+    private final RepoMetodoPago repoMetodoPago;
 
-    @Autowired
-    private RepoCarrito repoCarrito;
+    private final RepoProductoCarrito repoProductoCarrito;
 
-    @Autowired
-    private RepoUsuario repoUsuario;
+    private final RepoCarrito repoCarrito;
 
-    @Autowired
-    private RepoPedido repoPedido;
+    private final RepoUsuario repoUsuario;
 
-    @Autowired
-    private RepoVenta repoVenta;
+    private final RepoPedido repoPedido;
+
+    private final RepoVenta repoVenta;
+
+    public PagoCtrl(SrvcPago pagoSrvc, RepoMetodoPago repoMetodoPago, RepoProductoCarrito repoProductoCarrito, RepoCarrito repoCarrito, RepoUsuario repoUsuario, RepoPedido repoPedido, RepoVenta repoVenta) {
+        this.pagoSrvc = pagoSrvc;
+        this.repoMetodoPago = repoMetodoPago;
+        this.repoProductoCarrito = repoProductoCarrito;
+        this.repoCarrito = repoCarrito;
+        this.repoUsuario = repoUsuario;
+        this.repoPedido = repoPedido;
+        this.repoVenta = repoVenta;
+    }
 
     @PostMapping("/enviarinfo")
     public String mostrarFormularioEnvio(Model model , @RequestParam("idcarrito") String idcarrito) {
@@ -79,32 +85,39 @@ public class PagoCtrl {
         final Pedido finalPedido = pedido;
         // Vamos a recorrer el Array de productos del carrito
         productos.forEach(productoCarrito ->  {
-            Venta venta = new Venta();
-            venta.setCantidad(productoCarrito.getQuantity());
-            venta.setProducto(productoCarrito.getProducto());
-            venta.setPrecio_unidad(productoCarrito.getProducto().getPrecio());
-            venta.setPedido(finalPedido);
-            repoVenta.save(venta);
+            ItemPedido itemPedido = new ItemPedido();
+            itemPedido.setCantidad(productoCarrito.getQuantity());
+            itemPedido.setProducto(productoCarrito.getProducto());
+            itemPedido.setPrecio_unidad(productoCarrito.getProducto().getPrecio());
+            itemPedido.setPedido(finalPedido);
+            repoVenta.save(itemPedido);
         });
+
+
+
         return "pago";
     }
 
-    @PostMapping("/procesarPago")
-    public String procesarPago(
+    @PostMapping("/crearMetodoPago")
+    public String crearMetodoPago(
             @RequestParam("cardNumber") String cardNumber,
             @RequestParam("cardHolder") String cardHolder,
             @RequestParam("expiryDate") String expiryDate,
             @RequestParam("cvv") String cvv,
-            Model model) {
+            Model model,
+            @AuthenticationPrincipal UserDetails userDetails) {
 
         model.addAttribute("cardNumber", cardNumber);
         model.addAttribute("cardHolder", cardHolder);
         model.addAttribute("expiryDate", expiryDate);
         model.addAttribute("cvv", cvv);
 
-        Pago pago = new Pago();
+        MetodoPago metodoPago = new MetodoPago(cardHolder, cardNumber, expiryDate, cvv);
+        Usuario usuario = repoUsuario.findByEmail(userDetails.getUsername());
+        metodoPago.setUsuario(usuario);
+        repoMetodoPago.save(metodoPago);
 
-        return "pagoexito";
+        return "metodoPagoCreado";
     }
 
 

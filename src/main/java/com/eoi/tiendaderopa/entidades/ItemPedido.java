@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Venta {
+public class ItemPedido {
 
     @Id
     @Column(name = "id")

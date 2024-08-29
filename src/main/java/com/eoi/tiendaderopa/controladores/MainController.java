@@ -1,7 +1,6 @@
 package com.eoi.tiendaderopa.controladores;
 
 import com.eoi.tiendaderopa.entidades.Producto;
-import com.eoi.tiendaderopa.entidades.Venta;
 import com.eoi.tiendaderopa.repositorios.RepoProducto;
 import com.eoi.tiendaderopa.repositorios.RepoUsuario;
 import com.eoi.tiendaderopa.servicios.SrvcProducto;
@@ -12,10 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
-
-import static java.nio.file.Files.setAttribute;
 
 @Controller
 public class MainController {

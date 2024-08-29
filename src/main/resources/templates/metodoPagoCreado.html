@@ -1,0 +1,25 @@
+<!doctype html>
+<html layout:decorate="~{layout/layoutHSinMargen}" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
+<head>
+    <title th:text="#{payment}">Pago</title>
+</head>
+<body>
+<div layout:fragment="content">
+<div class="container fade-in">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-header text-center">
+                    <h2 th:text="#{successfulpayment}">Metodo Pago creado </h2>
+                </div>
+                <div class="card-body text-center">
+                    <a th:href="@{'/'}" class="btn btn-success" th:text="#{gotohome}">Ir a inicio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

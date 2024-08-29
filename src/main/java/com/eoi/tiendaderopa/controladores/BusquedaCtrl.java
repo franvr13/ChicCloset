@@ -24,8 +24,7 @@ public class BusquedaCtrl {
     @PersistenceContext
     private EntityManager entityManager;
 
-
-
+    
     @GetMapping("/busqueda")
     public String mostrarBusqueda(@RequestParam String busqueda, Model model) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();

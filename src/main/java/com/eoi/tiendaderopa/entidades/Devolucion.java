@@ -23,7 +23,7 @@ public class Devolucion {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "venta_id", referencedColumnName = "id")
-    private Set<Venta> ventas;
+    private Set<ItemPedido> itemPedidos;
 
     @Column(name = "cantidad")
     private Integer cantidad;
