@@ -151,3 +151,24 @@
 p {
     margin-bottom: .5px !important;
 }
+
+.product-image {
+     width: 60px;
+     height: 60px;
+     background-size: cover;
+     background-position: center center;
+}
+
+.product-row {
+    margin-bottom: 10px;
+}
+
+.total-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.delete-icon {
+    color: red;
+    cursor: pointer;
+}

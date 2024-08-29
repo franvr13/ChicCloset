@@ -19,83 +19,18 @@
                 </h2>
                 <ul class="list-unstyled text-light footer-link-list">
                     <li>
-                        <a class="text-decoration-none text-white" th:href="@{/index}"
-                           style="text-decoration: none; color: white;">
-                            Página Principal
-                        </a>
-                    </li>
-                    <li>
-                        <a class="text-decoration-none text-white" th:href="@{/about}"
-                           style="text-decoration: none; color: white;">
-                            Nuestro Equipo
-                        </a>
-                    </li>
-                    <li>
-                        <a class="text-decoration-none text-white" th:href="@{/preguntas_frecuentes}"
-                           style="text-decoration: none; color: white;">
-                            FAQs
-                        </a>
-                    </li>
-                    <li>
-                        <a class="text-decoration-none text-white" th:href="@{/contacto}"
-                           style="text-decoration: none; color: white;">
-                            Contáctanos
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
 
-        <div class="row text-light mb-4">
-            <div class="col-12 mb-3">
-                <div class="w-100 my-3 border-top border-light"></div>
-            </div>
-            <div class="col-auto me-auto">
-                <ul class="list-inline text-left footer-icons">
-                    <li class="list-inline-item text-center">
-                        <a rel="nofollow" target="_blank" href="https://facebook.com/">
-                            <i class="fab fa-facebook-f fa-lg fa-fw" style="color: #3b5998;"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item text-center">
-                        <a target="_blank" href="https://www.instagram.com/">
-                            <i class="fab fa-instagram fa-lg fa-fw" style="color: #e1306c;"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item text-center">
-                        <a target="_blank" href="https://twitter.com/">
-                            <i class="fab fa-twitter fa-lg fa-fw" style="color: #1da1f2;"></i>
-                        </a>
-                    </li>
-                    <li class="list-inline-item text-center">
-                        <a target="_blank" href="https://www.linkedin.com/">
-                            <i class="fab fa-linkedin fa-lg fa-fw" style="color: #0072b1;"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-auto">
-                <div class="input-group mb-2">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="w-100 bg-black py-3">
-        <div class="container">
-            <div class="row pt-2">
-                <div class="col-12">
-                    <p class="text-left text-light">
-                        Copyright &copy; 2024 ChicCloset | Web diseñada por
-                        <a
-                                rel="sponsored"
-                                href="https://github.com/franvr13/ProyectoGrupo2EOI2024.git"
-                                target="_blank"
-                        >Grupo 2</a
-                        >
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+                        <a class="text-decoration-none text-white" th:href="@{/index}"                 
+            <div class="w-100 bg-black py-3">
+               <div class="container">
+                   <div class="row pt-2">
+                        <div class="col-12">
+                            <p class="text-left text-light">
+                            <span th:text="#{copyright}">Copyright 2024 ChicCloset | Web diseñada por</span>
+                            <a rel="sponsored" th:href="@{#{proyectlink}}" target="_blank" th:text="#{proyectlinktext}">Grupo 2</a>
+                          </p>
+                     </div>
+                 </div>
+                 </div>
+                 </div>
+              </footer>

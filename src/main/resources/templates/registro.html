@@ -2,26 +2,22 @@
 <html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
 <head>
-    <title>Registro</title>
+    <title th:text="#{register}"></title>
 </head>
 <body>
 <div layout:fragment="content">
     <div class="container">
-        <h1>Registro</h1>
+        <h1 th:text="#{register}">Registro</h1>
         <form th:action="@{/usuarios/registro}" th:object="${usuario}" method="post">
-            <!-- <div class="form-group">
-                 <label for="nombre">Nombre:</label>
-                 <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required/>
-             </div>  -->
             <div class="form-group">
-                <label for="email">Email:</label>
+                <label for="email" th:text="#{login.email}">Email:</label>
                 <input type="email" class="form-control" id="email" th:field="*{email}" required/>
             </div>&nbsp;
             <div class="form-group">
-                <label for="password">Contraseña:</label>
+                <label for="password" th:text="#{login.password}">Contraseña:</label>
                 <input type="password" class="form-control" id="password" th:field="*{contraseña}" required/>
             </div>
-            <button type="submit" class="btn btn-success" style="margin-top: 20px">Registrar</button>
+            <button type="submit" class="btn btn-success" style="margin-top: 20px" th:text="#{register}">Registrar</button>
         </form>
     </div>
 </div>

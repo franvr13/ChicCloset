@@ -2,27 +2,8 @@
 <html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
 <head>
-    <title>Carrito</title>
-
-    <style>
-        .product-image {
-            width: 60px;
-            height: 60px;
-            background-size: cover;
-            background-position: center center;
-        }
-        .product-row {
-            margin-bottom: 10px;
-        }
-        .total-price {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        .delete-icon {
-            color: red;
-            cursor: pointer;
-        }
-    </style>
+    <title th:text="#{cart}">Carrito</title>
+    <link rel="stylesheet" href="/css/carrito.css">
 </head>
 <body>
 <div layout:fragment="content">
@@ -33,10 +14,10 @@
                     <thead>
                     <tr>
                         <th></th>
-                        <th>Imagen</th>
-                        <th>Producto</th>
-                        <th class="text-center">Cantidad</th>
-                        <th>Subtotal</th>
+                        <th th:text="#{productimage}">Imagen</th>
+                        <th th:text="#{products}">Producto</th>
+                        <th class="text-center" th:text="#{quantity}">Cantidad</th>
+                        <th th:text="#{subtotal}">Subtotal</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -57,11 +38,11 @@
                 </table>
                 <div class="d-flex justify-content-between mt-3">
                     <span class="text-danger h4 total-price" th:text="${#numbers.formatDecimal(carrito.precio, 1, 'COMMA', 2, 'POINT') + '€'}"></span>
-                    <a href="#" th:href="@{/clearCarrito}" class="btn btn-danger">Vaciar carrito</a>
+                    <a href="#" th:href="@{/clearCarrito}" class="btn btn-danger" th:text="#{emptycart}">Vaciar carrito</a>
                 </div>
 
                 <div class="d-flex justify-content-end mt-3">
-                    <a href="#" th:href="@{/pago/enviarinfo}" class="btn btn-success">Pagar</a>
+                    <a href="#" th:href="@{/pago/enviarinfo}" class="btn btn-success" th:text="#{pay}">Pagar</a>
                 </div>
             </div>
         </div>

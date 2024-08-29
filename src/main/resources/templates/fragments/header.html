@@ -51,14 +51,14 @@
                         <li class="nav-item">
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{/productos}">Productos</a>
+                            <a class="nav-link" th:href="@{/productos}" th:text="#{products}">Productos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{/contacto}">Contacto</a>
+                            <a class="nav-link" th:href="@{/contacto}" th:text="#{contact}">Contacto</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{/about}">Nuestro equipo</a>
+                            <a class="nav-link" th:href="@{/about}" th:text="#{about}">Nuestro equipo</a>
                         </li>
                         <li class="nav-item">
                         </li>
@@ -67,7 +67,7 @@
 
                 <!-- Busqueda -->
                 <form th:action="@{/busqueda}" method="get" class="d-flex align-items-center">
-                    <input type="text" name="busqueda" class="busqueda-input" placeholder="Buscar..." th:value="${busqueda}" />
+                    <input type="text" name="busqueda" class="busqueda-input" th:placeholder="#{search}" aria-label="Search"/>
                     <button type="submit" class="btn-search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </button>
@@ -86,17 +86,26 @@
                     </div>
                     <div sec:authorize="!isAuthenticated()">
                     <button type="button" class="btn btn-success" style="margin-right: 8px; margin-left: 20px">
-                        <a th:href="@{/login}" style="color: white; text-decoration: none;">Login</a>
+                        <a th:href="@{/login}" th:text="#{login}" style="color: white; text-decoration: none;">Login</a>
                     </button>
                     </div>
                     <div sec:authorize="!isAuthenticated()">
                     <button type="button" class="btn btn-success">
-                        <a th:href="@{/usuarios/registro}" style="color: white; text-decoration: none;">Registro</a>
+                        <a th:href="@{/usuarios/registro}" th:text="#{register}" style="color: white; text-decoration: none;">Registro</a>
                     </button>
+                    </div>
+                    <div class="dropdown">
+                        <button class="m-lg-2 btn btn-secondary dropdown-toggle" type="button" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false" role="button" th:text="#{lang}">
+                            Idioma
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="?lang=es" th:text="#{lang.es}">Español</a></li>
+                            <li><a class="dropdown-item" href="?lang=en" th:text="#{lang.eng}">Inglés</a></li>
+                        </ul>
                     </div>
                     <div sec:authorize="isAuthenticated()">
                         <button type="button" class="btn btn-success">
-                            <a th:href="@{/logout}" style="color: white; text-decoration: none;">Cerrar Sesión</a>
+                            <a th:href="@{/logout}" th:text="#{logout}" style="color: white; text-decoration: none;">Cerrar Sesión</a>
                         </button>
                     </div>
                 </div>

@@ -96,3 +96,28 @@
     padding: 10px;
     cursor: pointer;
 }
+
+.form-select {
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-select:focus {
+    outline: none;
+    border: 1px solid #58a664;
+    box-shadow: 0 0 10px #ccc;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.form-control:focus {
+    outline: none;
+    border: 1px solid #58a664;
+    box-shadow: 0 0 10px #ccc;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.card-product-search {
+    border: 3.5px solid #58a664;
+    border-radius: 5.5px;
+    overflow: hidden;
+}
