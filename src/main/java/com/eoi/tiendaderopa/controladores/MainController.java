@@ -114,11 +114,9 @@ public class MainController {
         return "tienda";
     }
 
-
     @GetMapping("/contacto")
     public String contacto(Model model) {
         return "contacto";
     }
-
 
 }
