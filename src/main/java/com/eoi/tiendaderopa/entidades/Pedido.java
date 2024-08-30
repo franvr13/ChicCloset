@@ -35,9 +35,6 @@ public class Pedido implements Serializable {
     @Column(name = "codigo_cliente")
     private Integer codigo_cliente;
 
-    @Column(name = "comentario", length = 255)
-    private String comentario;
-
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "usuario_id", foreignKey = @ForeignKey(name = "fk_usuario_pedido"))
     private Usuario usuarioPedido;

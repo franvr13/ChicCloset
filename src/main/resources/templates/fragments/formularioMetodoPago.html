@@ -1,12 +1,15 @@
 <div class="container" th:fragment="formularioMetodoPago" xmlns:th="http://www.w3.org/1999/xhtml">
     <h2>Escoge un método de pago o añade uno nuevo</h2>
-    <button type="button" class="btn btn-primary">Primary</button>
+    <form th:action="@{/ventas/revisarDatos}" method="post">
     <label>
-        <select>
-            <option th:each="metodopago : ${metodosPago}" th:text="${metodopago.numero_tarjeta}">
+        <select name="idMetodoPago" id="idMetodoPago" class="form-select">
+            <option selected>Selecciona un método de  pago</option>
+            <option th:each="metodopago : ${metodosPago}" th:value="${metodopago.id}" th:text="${metodopago.numero_tarjeta}">
             </option>
         </select>
     </label>
+    <button th:if="${#lists.size(metodosPago)>0}" type="submit" class="btn btn-primary">Utilizar método de pago</button>
+    </form>
 
     <form th:action="@{/ventas/crearMetodoPago}" method="post">
         <br>
@@ -29,7 +32,7 @@
             <label for="cvv" th:text="#{cvv}">CVV</label>
             <input type="text" class="form-control" id="cvv" name="cvv" placeholder="CVV" required>
         </div>
-        <button type="submit" class="btn btn-success" style="margin-top: 20px" th:text="#{pay}">Crear nuevo</button>
+        <button type="submit" class="btn btn-success" style="margin-top: 20px" th:text="#{pay}">Añadir método de pago</button>
     </form>
 
 </div>

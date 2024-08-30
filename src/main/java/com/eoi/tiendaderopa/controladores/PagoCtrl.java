@@ -3,6 +3,7 @@ package com.eoi.tiendaderopa.controladores;
 import com.eoi.tiendaderopa.entidades.*;
 import com.eoi.tiendaderopa.repositorios.*;
 import com.eoi.tiendaderopa.servicios.SrvcPago;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 
 @Controller
@@ -60,8 +63,16 @@ public class PagoCtrl {
             @RequestParam("city") String city,
             @RequestParam("address") String address,
             Model model,
-            @AuthenticationPrincipal UserDetails userDetails)
+            @AuthenticationPrincipal UserDetails userDetails,
+            HttpSession session)
     {
+        String sessionToken = (String) session.getAttribute("sessionToken");
+
+        if (sessionToken == null) {
+            sessionToken = UUID.randomUUID().toString();
+            session.setAttribute("sessionToken", sessionToken);
+        }
+
 
         model.addAttribute("name", name);
         model.addAttribute("email", email);
@@ -81,6 +92,7 @@ public class PagoCtrl {
         pedido.setUsuarioPedido(usuario);
         //TODO Aquí hay que rellenar todos los datos del pedido.
         pedido = repoPedido.save(pedido);
+        session.setAttribute("pedidoId", pedido.getId());
         final Pedido finalPedido = pedido;
         // Vamos a recorrer el Array de productos del carrito
         productos.forEach(productoCarrito ->  {
@@ -112,7 +124,9 @@ public class PagoCtrl {
             @RequestParam("expiryDate") String expiryDate,
             @RequestParam("cvv") String cvv,
             Model model,
-            @AuthenticationPrincipal UserDetails userDetails) {
+            @AuthenticationPrincipal UserDetails userDetails,
+            HttpSession session) {
+
 
         model.addAttribute("cardNumber", cardNumber);
         model.addAttribute("cardHolder", cardHolder);
@@ -131,6 +145,21 @@ public class PagoCtrl {
         return "elegirMetodoPago";
     }
 
+
+    @PostMapping("/revisarDatos")
+    public String revisarDatos(Model model, HttpSession session,
+    @RequestParam("idMetodoPago") long idMetodoPago)
+    {
+
+        Factura factura = new Factura();
+        int pedidoId = (int) session.getAttribute("pedidoId");
+        Optional<Pedido> pedido = repoPedido.findById(Integer.valueOf(pedidoId));
+        if (pedido.isPresent()) {
+            model.addAttribute("pedido", pedido.get());
+        }
+
+        return "revisarDatos";
+    }
 
 
     // Este parámetro sirve para mostrar una lista de pagos
