@@ -72,11 +72,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `TiendaRopa`.`venta`
+-- Table `TiendaRopa`.`itemPedido`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `TiendaRopa`.`venta` ;
+DROP TABLE IF EXISTS `TiendaRopa`.`itemPedido` ;
 
-CREATE TABLE IF NOT EXISTS `TiendaRopa`.`venta` (
+CREATE TABLE IF NOT EXISTS `TiendaRopa`.`itemPedido` (
   `ID` INT NOT NULL AUTO_INCREMENT,
   `producto_id` INT NULL,
   `pedido_id` INT NULL,
@@ -140,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `TiendaRopa`.`devoluciones` (
   INDEX `producto_id_idx` (`producto_id` ASC) VISIBLE,
   CONSTRAINT `FK_producto_pedido_id`
     FOREIGN KEY (`venta_id`)
-    REFERENCES `TiendaRopa`.`venta` (`ID`)
+    REFERENCES `TiendaRopa`.`itemPedido` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `factura_id`

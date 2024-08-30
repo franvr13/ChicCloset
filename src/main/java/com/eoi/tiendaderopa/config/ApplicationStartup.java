@@ -9,17 +9,17 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 /**
- * Clase que se ejecuta al iniciar la aplicación. Implementa {@link ApplicationListener}
+ * * Clase que se ejecuta al iniciar la aplicación. Implementa {@link ApplicationListener}
  * para escuchar el evento {@link ApplicationReadyEvent}, indicando que la aplicación
  * está lista para recibir solicitudes.
- *
+
  * <p>
  * Al implementar {@link ApplicationListener}, esta clase puede reaccionar a eventos específicos
  * del ciclo de vida de la aplicación. En este caso, estamos escuchando el evento
  * {@link ApplicationReadyEvent}, que se dispara cuando la aplicación ha completado el
  * proceso de arranque y está lista para servir peticiones.
  * </p>
- *
+
  * <p>
  * Esta clase se utiliza para inicializar datos en la base de datos, como la creación de un usuario
  * predeterminado al inicio de la aplicación.
@@ -71,8 +71,5 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
         usuarioRepo.save(usuario);
         //usuarioRepo.save(usuario2);
         //usuarioRepo.save(usuario3);
-
-
     }
 }
-

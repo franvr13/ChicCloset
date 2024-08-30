@@ -1,11 +1,17 @@
 package com.eoi.tiendaderopa.controladores;
 
-import com.eoi.tiendaderopa.entidades.Pago;
+import com.eoi.tiendaderopa.entidades.*;
+import com.eoi.tiendaderopa.repositorios.*;
 import com.eoi.tiendaderopa.servicios.SrvcPago;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -13,25 +19,50 @@ import java.util.List;
 @RequestMapping("/pago")
 public class PagoCtrl {
 
-    @Autowired
-    private SrvcPago pagoSrvc;
+    private final SrvcPago pagoSrvc;
 
+    private final RepoMetodoPago repoMetodoPago;
 
+    private final RepoProductoCarrito repoProductoCarrito;
 
-    @GetMapping("/enviarinfo")
-    public String mostrarFormularioEnvio() {
+    private final RepoCarrito repoCarrito;
+
+    private final RepoUsuario repoUsuario;
+
+    private final RepoPedido repoPedido;
+
+    private final RepoVenta repoVenta;
+
+    public PagoCtrl(SrvcPago pagoSrvc, RepoMetodoPago repoMetodoPago, RepoProductoCarrito repoProductoCarrito, RepoCarrito repoCarrito, RepoUsuario repoUsuario, RepoPedido repoPedido, RepoVenta repoVenta) {
+        this.pagoSrvc = pagoSrvc;
+        this.repoMetodoPago = repoMetodoPago;
+        this.repoProductoCarrito = repoProductoCarrito;
+        this.repoCarrito = repoCarrito;
+        this.repoUsuario = repoUsuario;
+        this.repoPedido = repoPedido;
+        this.repoVenta = repoVenta;
+    }
+
+    @PostMapping("/enviarinfo")
+    public String mostrarFormularioEnvio(Model model , @RequestParam("idcarrito") String idcarrito) {
+        model.addAttribute("idcarrito", idcarrito);
+       // ArrayList<ProductoCarrito> productos = new ArrayList<>();
+        // productos = (ArrayList<ProductoCarrito>) model.getAttribute("productos");
         return "enviarinfo";
     }
 
     @PostMapping("/datosPago")
     public String mostrarFormularioPago(
+            @RequestParam("idcarrito") Long idcarrito,
             @RequestParam("name") String name,
             @RequestParam("email") String email,
             @RequestParam("tel") String tel,
             @RequestParam("country") String country,
             @RequestParam("city") String city,
             @RequestParam("address") String address,
-            Model model) {
+            Model model,
+            @AuthenticationPrincipal UserDetails userDetails)
+    {
 
         model.addAttribute("name", name);
         model.addAttribute("email", email);
@@ -39,24 +70,54 @@ public class PagoCtrl {
         model.addAttribute("country", country);
         model.addAttribute("city", city);
         model.addAttribute("address", address);
+        List<ProductoCarrito> productos = new ArrayList<>();
+        Carrito carrito = repoCarrito.findById(Long.valueOf(idcarrito)).get();
+        productos = carrito.getListaProductosCarrito();
+        Usuario usuario = repoUsuario.findByEmail(userDetails.getUsername());
+        Pedido pedido = new Pedido();
+        pedido.setCodigo_cliente(usuario.getId());
+        pedido.setFecha_pedido(LocalDateTime.now());
+        pedido.setFecha_entrega(LocalDateTime.now().plusDays(10L));
+        pedido.setEstado("new");
+        pedido.setUsuarioPedido(usuario);
+        //TODO Aquí hay que rellenar todos los datos del pedido.
+        pedido = repoPedido.save(pedido);
+        final Pedido finalPedido = pedido;
+        // Vamos a recorrer el Array de productos del carrito
+        productos.forEach(productoCarrito ->  {
+            ItemPedido itemPedido = new ItemPedido();
+            itemPedido.setCantidad(productoCarrito.getQuantity());
+            itemPedido.setProducto(productoCarrito.getProducto());
+            itemPedido.setPrecio_unidad(productoCarrito.getProducto().getPrecio());
+            itemPedido.setPedido(finalPedido);
+            repoVenta.save(itemPedido);
+        });
+
+
 
         return "pago";
     }
 
-    @PostMapping("/procesarPago")
-    public String procesarPago(
+    @PostMapping("/crearMetodoPago")
+    public String crearMetodoPago(
             @RequestParam("cardNumber") String cardNumber,
             @RequestParam("cardHolder") String cardHolder,
             @RequestParam("expiryDate") String expiryDate,
             @RequestParam("cvv") String cvv,
-            Model model) {
+            Model model,
+            @AuthenticationPrincipal UserDetails userDetails) {
 
         model.addAttribute("cardNumber", cardNumber);
         model.addAttribute("cardHolder", cardHolder);
         model.addAttribute("expiryDate", expiryDate);
         model.addAttribute("cvv", cvv);
 
-        return "pagoexito";
+        MetodoPago metodoPago = new MetodoPago(cardHolder, cardNumber, expiryDate, cvv);
+        Usuario usuario = repoUsuario.findByEmail(userDetails.getUsername());
+        metodoPago.setUsuario(usuario);
+        repoMetodoPago.save(metodoPago);
+
+        return "metodoPagoCreado";
     }
 
 

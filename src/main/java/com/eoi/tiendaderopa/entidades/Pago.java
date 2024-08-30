@@ -39,4 +39,11 @@ public class Pago implements Serializable {
     @JoinColumn(name = "metodoPago_id", foreignKey = @ForeignKey(name = "fk_metodoPago_pago"))
     private MetodoPago metodoPagoPago;
 
+    public Pago(String metodoPago, LocalDateTime fechaPago, Double total, Factura pagoFactura, MetodoPago metodoPagoPago) {
+        this.metodoPago = metodoPago;
+        this.fechaPago = fechaPago;
+        this.total = total;
+        this.pagoFactura = pagoFactura;
+        this.metodoPagoPago = metodoPagoPago;
+    }
 }

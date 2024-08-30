@@ -47,6 +47,9 @@ public class Usuario implements Serializable, UserDetails {
     @OneToMany(mappedBy = "usuario")
     private Set<DatosFacturacion> datosFacturacion;
 
+    @OneToMany(mappedBy = "usuario")
+    private Set<MetodoPago> metodosPago;
+
     @OneToMany(mappedBy = "usuarioPedido", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Pedido> pedidosUsuario;
 

@@ -16,9 +16,15 @@ public class DatosFacturacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String nombre;
-    private String apellidos;
-    private String Dni;
+    private String razon_social;
+    private String numero_id;
+    private String tipo_id;
+    private String direccion_n1;
+    private String direccion_n2;
+    private String codigo_postal;
+    private String ciudad;
+    private String provincia;
+    private String pais;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
