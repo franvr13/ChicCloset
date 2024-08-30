@@ -28,4 +28,6 @@ public class ItemPedido {
     @JoinColumn(name = "pedido_id", referencedColumnName = "id")
     private Pedido pedido;
 
+
+
 }

@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -41,5 +42,8 @@ public class Pedido implements Serializable {
 
     @OneToMany(mappedBy = "pedidoFactura", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Factura> facturaPedido;
+
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<ItemPedido> items;
 
 }

@@ -1,0 +1,75 @@
+<div class="container mt-5" th:fragment="revisarDatos" xmlns:th="http://www.w3.org/1999/xhtml">
+    <h2 class="mb-4">Revisar Datos del Pedido</h2>
+
+    <div th:if="${pedido != null}">
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="card-title">Detalles del Pedido</h3>
+            </div>
+            <div class="card-body">
+                <p><strong>Fecha del Pedido:</strong> <span th:text="${pedido.fecha_pedido}"></span></p>
+                <p><strong>Fecha de Entrega:</strong> <span th:text="${pedido.fecha_entrega}"></span></p>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="card-title">Productos en el Pedido</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="item : ${pedido.items}">
+                        <td th:text="${item.producto.nombre}"></td>
+                        <td th:text="${item.cantidad}"></td>
+                        <td th:text="${item.precio_unidad}"></td>
+                        <td th:text="${item.cantidad * item.precio_unidad}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div th:if="${metodoPago != null}">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="card-title">Método de Pago</h3>
+            </div>
+            <div class="card-body">
+                <p><strong>Número de Tarjeta:</strong> **** **** **** <span th:text="${metodoPago.numero_tarjeta.substring(metodoPago.numero_tarjeta.length() - 4)}"></span></p>
+                <p><strong>Nombre del Titular:</strong> <span th:text="${metodoPago.nombre}"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <div th:if="${pedido != null}">
+        <!-- Dirección de Envío -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="card-title">Dirección de Envío</h3>
+            </div>
+            <div class="card-body">
+                <p><strong>Nombre:</strong> <span th:text="${pedido.usuarioPedido.detalle.Nombre}"></span></p>
+                <p><strong>Email:</strong> <span th:text="${pedido.usuarioPedido.email}"></span></p>
+                <p><strong>Dirección:</strong> <span th:text="${pedido.usuarioPedido.detalle.Direccion}"></span></p>
+                <p><strong>Ciudad:</strong> <span th:text="${pedido.usuarioPedido.detalle.Ciudad}"></span></p>
+                <p><strong>País:</strong> <span th:text="${pedido.usuarioPedido.detalle.Pais}"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <form th:action="@{/ventas/confirmarCompra}" method="post">
+        <button type="submit" class="btn btn-success btn-lg">Confirmar Compra</button>
+    </form>
+
+</div>

@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
 <head>
-    <meta charset="UTF-8">
     <title>Revisar Datos</title>
 </head>
 <body>
-
+<div layout:fragment="content">
+    <div th:replace="fragments/revisarDatos :: revisarDatos"></div>
+</div>
 </body>
 </html>
