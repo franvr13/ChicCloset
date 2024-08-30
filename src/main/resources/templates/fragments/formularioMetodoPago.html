@@ -1,0 +1,35 @@
+<div class="container" th:fragment="formularioMetodoPago" xmlns:th="http://www.w3.org/1999/xhtml">
+    <h2>Escoge un método de pago o añade uno nuevo</h2>
+    <button type="button" class="btn btn-primary">Primary</button>
+    <label>
+        <select>
+            <option th:each="metodopago : ${metodosPago}" th:text="${metodopago.numero_tarjeta}">
+            </option>
+        </select>
+    </label>
+
+    <form th:action="@{/ventas/crearMetodoPago}" method="post">
+        <br>
+        <div class="form-group">
+            <label for="card-number" th:text="#{cardnumber}">Número de Tarjeta</label>
+            <input type="text" class="form-control" id="card-number" name="cardNumber" placeholder="Número de tarjeta" required>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="card-holder" th:text="#{cardname}">Nombre del Titular</label>
+            <input type="text" class="form-control" id="card-holder" name="cardHolder" placeholder="Nombre del titular" required>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="expiry-date" th:text="#{expirationdate}">Fecha de Expiración</label>
+            <input type="text" class="form-control" id="expiry-date" name="expiryDate" placeholder="MM/AA" required>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="cvv" th:text="#{cvv}">CVV</label>
+            <input type="text" class="form-control" id="cvv" name="cvv" placeholder="CVV" required>
+        </div>
+        <button type="submit" class="btn btn-success" style="margin-top: 20px" th:text="#{pay}">Crear nuevo</button>
+    </form>
+
+</div>

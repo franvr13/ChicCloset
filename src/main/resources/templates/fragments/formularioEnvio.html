@@ -1,6 +1,6 @@
 <div class="container" th:fragment="formularioEnvio">
   <h2 th:text="#{shippingdetails}">Detalles Envio</h2>
-  <form th:action="@{/pago/datosPago}" method="post">
+  <form th:action="@{/ventas/datosFacturacion}" method="post">
     <div class="form-group mb-1">
       <label for="name" th:text="#{name}">Nombre</label>
       <input type="text" class="form-control" id="name" name="name" th:placeholder="#{enteryourname}" required>
