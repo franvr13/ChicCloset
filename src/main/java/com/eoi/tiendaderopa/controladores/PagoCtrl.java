@@ -35,8 +35,10 @@ public class PagoCtrl {
     private final RepoPedido repoPedido;
 
     private final RepoVenta repoVenta;
+    private final RepoDetallesUsuario repoDetallesUsuario;
+    private final RepoFactura repoFactura;
 
-    public PagoCtrl(SrvcPago pagoSrvc, RepoMetodoPago repoMetodoPago, RepoProductoCarrito repoProductoCarrito, RepoCarrito repoCarrito, RepoUsuario repoUsuario, RepoPedido repoPedido, RepoVenta repoVenta) {
+    public PagoCtrl(SrvcPago pagoSrvc, RepoMetodoPago repoMetodoPago, RepoProductoCarrito repoProductoCarrito, RepoCarrito repoCarrito, RepoUsuario repoUsuario, RepoPedido repoPedido, RepoVenta repoVenta, RepoDetallesUsuario repoDetallesUsuario, RepoFactura repoFactura) {
         this.pagoSrvc = pagoSrvc;
         this.repoMetodoPago = repoMetodoPago;
         this.repoProductoCarrito = repoProductoCarrito;
@@ -44,6 +46,8 @@ public class PagoCtrl {
         this.repoUsuario = repoUsuario;
         this.repoPedido = repoPedido;
         this.repoVenta = repoVenta;
+        this.repoDetallesUsuario = repoDetallesUsuario;
+        this.repoFactura = repoFactura;
     }
 
     @PostMapping("/iniciarVenta")
@@ -80,20 +84,38 @@ public class PagoCtrl {
         model.addAttribute("country", country);
         model.addAttribute("city", city);
         model.addAttribute("address", address);
+
         List<ProductoCarrito> productos = new ArrayList<>();
         Carrito carrito = repoCarrito.findById(idcarrito).get();
         productos = carrito.getListaProductosCarrito();
+
+        //guardar detalles envio
         Usuario usuario = repoUsuario.findByEmail(userDetails.getUsername());
+        DetallesUsuario detalles = usuario.getDetalle();
+        if (detalles == null) {
+            detalles = new DetallesUsuario();
+            detalles.setUsuario(usuario);
+        }
+        detalles.setNombre(name);
+        detalles.setTelefono(tel);
+        detalles.setDireccion(address);
+        detalles.setCiudad(city);
+        detalles.setPais(country);
+        usuario.setDetalle(detalles);
+        repoUsuario.save(usuario);
+
+
+
         Pedido pedido = new Pedido();
         pedido.setCodigo_cliente(usuario.getId());
         pedido.setFecha_pedido(LocalDateTime.now());
         pedido.setFecha_entrega(LocalDateTime.now().plusDays(10L));
         pedido.setEstado("new");
         pedido.setUsuarioPedido(usuario);
-        //TODO Aquí hay que rellenar todos los datos del pedido.
         pedido = repoPedido.save(pedido);
         session.setAttribute("pedidoId", pedido.getId());
         final Pedido finalPedido = pedido;
+
         // Vamos a recorrer el Array de productos del carrito
         productos.forEach(productoCarrito ->  {
             ItemPedido itemPedido = new ItemPedido();
@@ -151,14 +173,48 @@ public class PagoCtrl {
     @RequestParam("idMetodoPago") long idMetodoPago)
     {
 
-        Factura factura = new Factura();
         int pedidoId = (int) session.getAttribute("pedidoId");
         Optional<Pedido> pedido = repoPedido.findById(Integer.valueOf(pedidoId));
         if (pedido.isPresent()) {
-            model.addAttribute("pedido", pedido.get());
+            Pedido pedidoObj = pedido.get();
+            model.addAttribute("pedido", pedidoObj);
+
+            if (pedidoObj.getItems() != null && !pedidoObj.getItems().isEmpty()) {
+                model.addAttribute("items", pedidoObj.getItems());
+            }
+
+            Usuario usuario = pedidoObj.getUsuarioPedido();
+            model.addAttribute("usuario", usuario);
+            DetallesUsuario detallesUsuario = usuario.getDetalle();
+            model.addAttribute("detallesUsuario", detallesUsuario);
+
+            Factura factura = new Factura();
+            factura.setFechaFactura((LocalDateTime.now()));
+            factura.setFechaVencimiento(LocalDateTime.now().plusDays(10L));
+            factura.setPedidoFactura(pedidoObj);
+            int importeTotal = pedidoObj.getItems().stream()
+                    .mapToInt(item -> (int) (item.getCantidad() * item.getPrecio_unidad()))
+                    .sum();
+            factura.setImporte(importeTotal);
+            repoFactura.save(factura);
+
         }
 
+
+        Optional<MetodoPago> metodoPago = repoMetodoPago.findById(idMetodoPago);
+        if (metodoPago.isPresent()) {
+            model.addAttribute("metodoPago", metodoPago.get());
+        } else {
+            model.addAttribute("error", "Método de pago no encontrado.");
+        }
+
+
         return "revisarDatos";
+    }
+
+    @PostMapping("/confirmarCompra")
+    public String confirmarCompra(){
+        return "pagoexito";
     }
 
 

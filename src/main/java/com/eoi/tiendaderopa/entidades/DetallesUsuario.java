@@ -24,17 +24,15 @@ public class DetallesUsuario implements Serializable {
     @Column(name = "nombre", length = 25)
     private String Nombre;
 
-    @Column(name = "apellido", length = 50)
-    private String Apellido;
+    private String Ciudad;
+
+    private String Pais;
+
+    private String Telefono;
 
     @Column(name = "direccion", length = 250)
     private String Direccion;
 
-    @Column(name = "fechaNacimiento")
-    private LocalDateTime FechaNacimiento;
-
-    @Column(name = "dni", length = 10)
-    private String Dni;
 
     @OneToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
