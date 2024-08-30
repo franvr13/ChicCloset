@@ -16,7 +16,7 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("/pago")
+@RequestMapping("/ventas")
 public class PagoCtrl {
 
     private final SrvcPago pagoSrvc;
@@ -43,17 +43,16 @@ public class PagoCtrl {
         this.repoVenta = repoVenta;
     }
 
-    @PostMapping("/enviarinfo")
+    @PostMapping("/iniciarVenta")
     public String mostrarFormularioEnvio(Model model , @RequestParam("idcarrito") String idcarrito) {
         model.addAttribute("idcarrito", idcarrito);
-       // ArrayList<ProductoCarrito> productos = new ArrayList<>();
-        // productos = (ArrayList<ProductoCarrito>) model.getAttribute("productos");
-        return "enviarinfo";
+        return "datosFacturacion";
     }
 
-    @PostMapping("/datosPago")
-    public String mostrarFormularioPago(
-            @RequestParam("idcarrito") Long idcarrito,
+
+    @PostMapping("/datosFacturacion")
+    public String ºmostrarFormularioPago(
+            @RequestParam("idcarrito") long idcarrito,
             @RequestParam("name") String name,
             @RequestParam("email") String email,
             @RequestParam("tel") String tel,
@@ -71,7 +70,7 @@ public class PagoCtrl {
         model.addAttribute("city", city);
         model.addAttribute("address", address);
         List<ProductoCarrito> productos = new ArrayList<>();
-        Carrito carrito = repoCarrito.findById(Long.valueOf(idcarrito)).get();
+        Carrito carrito = repoCarrito.findById(idcarrito).get();
         productos = carrito.getListaProductosCarrito();
         Usuario usuario = repoUsuario.findByEmail(userDetails.getUsername());
         Pedido pedido = new Pedido();
@@ -92,11 +91,19 @@ public class PagoCtrl {
             itemPedido.setPedido(finalPedido);
             repoVenta.save(itemPedido);
         });
-
-
-
-        return "pago";
+        return "redirect:/ventas/elegirMetodoPago";
     }
+
+
+    @GetMapping("/elegirMetodoPago")
+    public String elegirMetodoPago(Model model){
+        List<MetodoPago> metodosPago = new ArrayList<>();
+        //TODO - Hacer que filtre esta búsqueda por el usuario logeado (con el principal)
+        metodosPago = repoMetodoPago.findAll();
+        model.addAttribute("metodosPago",metodosPago);
+        return "elegirMetodoPago";
+    }
+
 
     @PostMapping("/crearMetodoPago")
     public String crearMetodoPago(
@@ -116,8 +123,12 @@ public class PagoCtrl {
         Usuario usuario = repoUsuario.findByEmail(userDetails.getUsername());
         metodoPago.setUsuario(usuario);
         repoMetodoPago.save(metodoPago);
+        List<MetodoPago> metodosPago = new ArrayList<>();
+        //TODO - Hacer que filtre esta búsqueda por el usuario logeado (con el principal)
+        metodosPago = repoMetodoPago.findAll();
+        model.addAttribute("metodosPago",metodosPago);
 
-        return "metodoPagoCreado";
+        return "elegirMetodoPago";
     }
 
 

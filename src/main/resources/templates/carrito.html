@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="d-flex justify-content-end mt-3">
-                    <form th:action="@{/pago/enviarinfo}" method="post">
+                    <form th:action="@{/ventas/iniciarVenta}" method="post">
                         <input type="hidden" name="idcarrito" th:value="${carrito.id}">
                     <input type="submit" class="btn btn-success" th:value="#{pay}">
                     </form>
