@@ -1,12 +1,17 @@
 package com.eoi.tiendaderopa.config;
 
+import com.eoi.tiendaderopa.entidades.Rol;
 import com.eoi.tiendaderopa.entidades.Usuario;
 import com.eoi.tiendaderopa.repositorios.RepoProducto;
+import com.eoi.tiendaderopa.repositorios.RepoRol;
 import com.eoi.tiendaderopa.repositorios.RepoUsuario;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
+import java.util.HashSet;
 
 /**
  * * Clase que se ejecuta al iniciar la aplicación. Implementa {@link ApplicationListener}
@@ -31,7 +36,7 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
 
     private final RepoUsuario usuarioRepo;
     private final RepoProducto repoProducto;
-
+    private final RepoRol repoRol;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     /**
@@ -40,9 +45,10 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
      * @param usuarioRepo el repositorio de usuarios que se utilizará para guardar los datos del usuario.
      */
 
-    public ApplicationStartup(RepoUsuario usuarioRepo, RepoProducto repoProducto, BCryptPasswordEncoder bCryptPasswordEncoder) {
+    public ApplicationStartup(RepoUsuario usuarioRepo, RepoProducto repoProducto, BCryptPasswordEncoder bCryptPasswordEncoder, RepoRol repoRol) {
         this.usuarioRepo = usuarioRepo;
         this.repoProducto = repoProducto;
+        this.repoRol = repoRol;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
@@ -65,11 +71,30 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
 
         String password = bCryptPasswordEncoder.encode("password");
 
+        //String passwordadmin = bCryptPasswordEncoder.encode("adminpassword");
+
         Usuario usuario = new Usuario(1, password, "email@email.com");
-       /* Usuario usuario2 = new Usuario(2, password,"password", "email2@email.com");
-        Usuario usuario3 = new Usuario(3, "password","password", "email3@email.com");*/
+       /* Rol roluser = new Rol();
+        roluser.setRolNombre("USER");
+        usuario.setRoles(new HashSet<>(Arrays.asList(roluser)));*/
+       /* Usuario usuario2 = new Usuario(2, password, "email2@email.com");
+        Usuario usuario3 = new Usuario(3, "password", "email3@email.com");*/
         usuarioRepo.save(usuario);
         //usuarioRepo.save(usuario2);
         //usuarioRepo.save(usuario3);
+
+       /* Usuario usuarioadmin = new Usuario();
+        usuarioadmin.setEmail("admin@example.com");
+        usuarioadmin.setContraseña(passwordadmin);
+
+        Rol rolAdmin = new Rol();
+        rolAdmin.setRolNombre("ADMIN");
+
+        usuarioadmin.setRoles(new HashSet<>(Arrays.asList(rolAdmin)));
+
+
+        usuarioRepo.save(usuarioadmin);*/
     }
+
+
 }
