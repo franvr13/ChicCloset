@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
+<head>
+    <title>Productos</title>
+</head>
+<body>
+<div class="container" layout:fragment="content">
+    <h2>Pedidos del Usuario:</h2>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Total</th>
+            <th>Estado</th>
+            <th>Detalles</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pedido : ${pedidos}">
+            <td th:text="${pedido.id}"></td>
+            <td th:text="${pedido.fecha_pedido}"></td>
+            <td th:text="${pedido.fecha_entrega}"></td>
+            <td th:text="${pedido.estado}"></td>
+            <td>
+                <!--<a th:href="@{/admin/pedidos/detalles/{id}(id=${pedido.id})}" class="btn btn-info">Detalles</a>-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

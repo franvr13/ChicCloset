@@ -28,12 +28,6 @@ public class UsuarioCtrl {
         this.usuarioDetallesSrvc = usuarioDetallesSrvc;
     }
 
-    @GetMapping("")
-    public String mostrarListaUsuarios(Model model) {
-        model.addAttribute("usuarios", usuarioSrvc.buscarEntidades());
-        return "usuarios";
-    }
-
 
     @GetMapping("/registro")
     public String mostrarFormularioRegistro(@Valid Model model) {

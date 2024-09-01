@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
+<head>
+    <title>Usuarios</title>
+</head>
+<body>
+<div class="container" layout:fragment="content">
+    <h2>Lista de Usuarios</h2>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Correo Electrónico</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="usuario : ${usuarios}">
+            <td th:text="${usuario.id}"></td>
+            <td th:text="${usuario.email}"></td>
+            <td>
+                <a th:href="@{/admin/usuarios/pedidos/{id}(id=${usuario.id})}" class="btn btn-info">Ver Pedidos</a>
+                <a th:href="@{/admin/usuarios/eliminar/{id}(id=${usuario.id})}" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar a este usuario?');">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

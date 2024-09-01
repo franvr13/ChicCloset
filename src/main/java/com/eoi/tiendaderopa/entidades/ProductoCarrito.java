@@ -24,8 +24,8 @@ public class ProductoCarrito {
     private Date date;
 
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "producto_id")
+    @ManyToOne
+    @JoinColumn(name = "producto_id", nullable = false)
     private Producto producto;
 
     @ManyToOne

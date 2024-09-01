@@ -6,27 +6,45 @@
 </head>
 <body>
 <div class="container" layout:fragment="content">
-    <table class="table ">
-        <thead>
-        <tr>
-            <th>Email</th>
-            <th>Id</th>
-            <th>Contraseña</th>
-            <th></th>
-            <th></th>
-        </tr>
-        </thead>
-        <tr th:each="producto : ${entidades}">
-
-            <td th:text="${producto.getNombre()}"></td>
-            <td><a th:href="@{'/admin/productos/' + ${producto.id}}">
-                <button type="button" class="btn btn-primary">Editar</button>
-            </a></td>
-            <td>
-                <button type="button" class="btn btn-danger">Eliminar</button>
-            </td>
-        </tr>
-    </table>
+    <div class="container mt-5">
+        <h2 class="mb-4">Gestión de Productos</h2>
+        <a th:href="@{/admin/productos/nuevo}" class="btn btn-primary mb-3">Añadir Nuevo Producto</a>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Proveedor</th>
+                <th>Material</th>
+                <th>Color</th>
+                <th>Descripción</th>
+                <th>Foto</th>
+                <th>Cantidad en Stock</th>
+                <th>Precio</th>
+                <th>Talla</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="producto : ${productos}">
+                <td th:text="${producto.id}"></td>
+                <td th:text="${producto.nombre}"></td>
+                <td th:text="${producto.proveedor}"></td>
+                <td th:text="${producto.material}"></td>
+                <td th:text="${producto.color}"></td>
+                <td th:text="${producto.descripcion}"></td>
+                <td><img th:src="${producto.fotoUrl}" alt="Foto" style="width: 100px; height: auto;"></td>
+                <td th:text="${producto.cantidadStock}"></td>
+                <td th:text="${producto.precio}"></td>
+                <td th:text="${producto.talla}"></td>
+                <td>
+                    <a th:href="@{/admin/productos/editar/{id}(id=${producto.id})}" class="btn btn-warning btn-sm" style="margin-bottom: 10px">Editar</a>
+                    <a th:href="@{/admin/productos/eliminar/{id}(id=${producto.id})}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que quieres eliminar este producto?');">Eliminar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 </body>
 </html>
