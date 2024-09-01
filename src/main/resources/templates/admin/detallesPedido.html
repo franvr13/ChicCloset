@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
+<head>
+    <title>Detalles Pedido</title>
+</head>
+<body>
+<div class="container" layout:fragment="content">
+<h2>Detalles del Pedido ID: <span th:text="${pedido.id}"></span></h2>
+<div>
+<p>Fecha: <span th:text="${pedido.fecha_pedido}"></span></p>
+<p>Fecha: <span th:text="${pedido.fecha_entrega}"></span></p>
+<p>Estado: <span th:text="${pedido.estado}"></span></p>
+
+    <form th:action="@{/admin/pedidos/cambiarestado/{id}(id=${pedido.id})}" method="post">
+        <div class="form-group">
+            <label for="nuevoEstado">Cambiar Estado:</label>
+            <select id="nuevoEstado" name="nuevoEstado" class="form-control">
+                <option value="PENDIENTE">Pendiente</option>
+                <option value="PROCESANDO">Procesando</option>
+                <option value="ENVIADO">Enviado</option>
+                <option value="ENTREGADO">Entregado</option>
+                <option value="CANCELADO">Cancelado</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success" style="margin-top: 10px; margin-bottom: 30px">Actualizar Estado</button>
+    </form>
+</div>
+<h3>Artículos:</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${pedido.items}">
+        <td th:text="${item.producto}"></td>
+        <td th:text="${item.cantidad}"></td>
+        <td th:text="${item.precio_unidad}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<a href="/admin/usuarios/pedidos/{usuarioId}" th:href="@{/admin/usuarios}" class="btn btn-primary">Volver a Usuarios</a>
+
+</div>
+</body>
+</html>
