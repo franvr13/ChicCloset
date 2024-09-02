@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/layoutHSinMargen}" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
+<head>
+    <title>Detalles del usuario</title>
+</head>
+<body>
+<div class="container mt-5" layout:fragment="content">
+    <div class="container mt-5">
+        <h2>Detalles del Usuario</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Campo</th>
+                    <th>Valor</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Nombre de Usuario</td>
+                    <td th:text="${detalles.username}">Nombre de Usuario</td>
+                </tr>
+                <tr>
+                    <td>Nombre y Apellidos</td>
+                    <td th:text="${detalles.fullname}">Nombre y Apellidos</td>
+                </tr>
+                <tr>
+                    <td>Número de Teléfono</td>
+                    <td th:text="${detalles.phonenumber}">Número de Teléfono</td>
+                </tr>
+                <tr>
+                    <td>Dirección</td>
+                    <td th:text="${detalles.address}">Dirección</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <a href="/admin/usuarios" class="btn btn-primary mt-3">Volver</a>
+    </div>
+
+</div>
+</body>
+</html>

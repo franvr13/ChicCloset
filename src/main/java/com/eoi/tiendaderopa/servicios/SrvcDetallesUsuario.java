@@ -1,6 +1,7 @@
 package com.eoi.tiendaderopa.servicios;
 
 import com.eoi.tiendaderopa.entidades.DetallesUsuario;
+import com.eoi.tiendaderopa.entidades.Pedido;
 import com.eoi.tiendaderopa.entidades.Usuario;
 import com.eoi.tiendaderopa.repositorios.RepoDetallesUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,11 @@ public class SrvcDetallesUsuario extends AbstractBusinessSrvc<DetallesUsuario, I
     )
     {
         return repoDetallesUsuario.findByUsuario(usuario);
+    }
+
+
+    public DetallesUsuario findDetallesByUsuarioId(int usuarioId) {
+        return repoDetallesUsuario.findByUsuarioDetalle_Id(usuarioId);
     }
 
 }

@@ -48,38 +48,46 @@ public class UsuarioCtrl {
         return "registrosatisfactorio";
     }
 
-    @GetMapping("/detalles/{idUsuario}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String mostrarDetallesUsuario(@ModelAttribute DetallesUsuario detalle, @PathVariable int idUsuario,
-                                         @AuthenticationPrincipal UserDetails userDetails,
-                                         Model model
-                                         ) {
-        model.addAttribute("usuario", usuarioSrvc.getRepo().findById(idUsuario).get());
-        Optional<DetallesUsuario> detallesUsuario = usuarioDetallesSrvc.obtenerDetallesUsuario(usuarioSrvc.getRepo().findById(idUsuario).get());
-        if(detallesUsuario.isPresent())
-        {
-            model.addAttribute("detalles", detallesUsuario.get());
-        }
-        else {
-            DetallesUsuario detallesUsuario1 = new DetallesUsuario();
-            model.addAttribute("detalles", detallesUsuario1);
-        }
-        return "detallesUsuario";
+    @GetMapping("/perfil")
+    public String redirigirADetallesUsuario(@AuthenticationPrincipal UserDetails userDetails) {
+        String email = userDetails.getUsername();
+        Usuario usuario = usuarioSrvc.obtenerPorEmail(email);
+        return "redirect:/usuarios/detalles/" + usuario.getId();
     }
 
+    @GetMapping("/detalles/{idUsuario}")
+    public String mostrarDetallesUsuario(@PathVariable int idUsuario, Model model) {
+        Optional<Usuario> usuarioOptional = usuarioSrvc.encuentraPorId(idUsuario);
+            Usuario usuario = usuarioOptional.get();
+            model.addAttribute("usuario", usuario);
 
+            Optional<DetallesUsuario> detallesOptional = usuarioDetallesSrvc.obtenerDetallesUsuario(usuario);
+            if (detallesOptional.isPresent()) {
+                model.addAttribute("detalles", detallesOptional.get());
+            } else {
+                DetallesUsuario detallesUsuario = new DetallesUsuario();
+                detallesUsuario.setUsuario(usuario);
+                model.addAttribute("detalles", detallesUsuario);
+            }
+            return "detallesUsuario";
+    }
 
     @PostMapping("/detalles/{idUsuario}")
-    public String guardarDetallesUsuario(@ModelAttribute DetallesUsuario detalle,
-                                         @PathVariable int idUsuario,
+    public String guardarDetallesUsuario(@PathVariable int idUsuario,
+                                         @ModelAttribute DetallesUsuario detalles,
                                          Model model) {
-        detalle.setUsuario(usuarioSrvc.encuentraPorId(idUsuario).get());
-        try { detalle = usuarioDetallesSrvc.guardar(detalle);
+        Usuario usuario = usuarioSrvc.encuentraPorId(idUsuario).get();
+        detalles.setUsuario(usuario);
+
+        try {
+            usuarioDetallesSrvc.guardar(detalles);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            model.addAttribute("error", "Error al guardar los detalles del usuario");
+            model.addAttribute("usuario", usuario);
+            return "detallesUsuario";
         }
-        model.addAttribute("detalles", detalle);
-        return "detallesUsuario";
+
+        return "redirect:/usuarios/detalles/" + idUsuario;
     }
 
     @PostMapping("/busqueda/{idUsuario}")

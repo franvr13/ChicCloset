@@ -57,4 +57,8 @@ public class SrvcUsuario extends AbstractBusinessSrvc<Usuario, Integer, RepoUsua
         }
 
     }
+
+    public Usuario obtenerPorEmail(String email) {
+        return repoUsuario.findByEmail(email);
+    }
 }

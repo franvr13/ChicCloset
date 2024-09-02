@@ -2,6 +2,7 @@ package com.eoi.tiendaderopa.repositorios;
 
 
 import com.eoi.tiendaderopa.entidades.DetallesUsuario;
+import com.eoi.tiendaderopa.entidades.Pedido;
 import com.eoi.tiendaderopa.entidades.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -12,4 +13,5 @@ public interface RepoDetallesUsuario extends JpaRepository<DetallesUsuario, Inte
 
     Optional<DetallesUsuario> findByUsuario(Usuario usuario);
     Optional<DetallesUsuario> findByUsuarioId(Integer usuario);
+    DetallesUsuario findByUsuarioDetalle_Id(int usuarioId);
 }

@@ -1,17 +1,20 @@
 package com.eoi.tiendaderopa.config;
 
-import com.eoi.tiendaderopa.entidades.Rol;
-import com.eoi.tiendaderopa.entidades.Usuario;
+import com.eoi.tiendaderopa.entidades.*;
 import com.eoi.tiendaderopa.repositorios.RepoProducto;
 import com.eoi.tiendaderopa.repositorios.RepoRol;
 import com.eoi.tiendaderopa.repositorios.RepoUsuario;
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * * Clase que se ejecuta al iniciar la aplicación. Implementa {@link ApplicationListener}
@@ -77,6 +80,15 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
         Rol roluser = new Rol();
         roluser.setRolNombre("ROLE_USER");
         usuario.setRoles(new HashSet<>(Arrays.asList(roluser)));
+
+        DetallesUsuario detallesUsuario = new DetallesUsuario();
+        detallesUsuario.setUsuario(usuario);
+        detallesUsuario.setUsername("celia");
+        detallesUsuario.setAddress("calle");
+        detallesUsuario.setCountry(2);
+        detallesUsuario.setPhonenumber("123456789");
+        detallesUsuario.setFullname("Celia");
+        usuario.setDetalle(detallesUsuario);
        /* Usuario usuario2 = new Usuario(2, password, "email2@email.com");
         Usuario usuario3 = new Usuario(3, "password", "email3@email.com");*/
         usuarioRepo.save(usuario);

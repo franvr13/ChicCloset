@@ -1,17 +1,20 @@
 package com.eoi.tiendaderopa.controladores.admin;
+import com.eoi.tiendaderopa.entidades.DetallesUsuario;
 import com.eoi.tiendaderopa.entidades.Pedido;
 import com.eoi.tiendaderopa.entidades.Usuario;
 import com.eoi.tiendaderopa.repositorios.RepoFactura;
 import com.eoi.tiendaderopa.repositorios.RepoPedido;
 import com.eoi.tiendaderopa.repositorios.RepoUsuario;
+import com.eoi.tiendaderopa.servicios.SrvcDetallesUsuario;
 import com.eoi.tiendaderopa.servicios.SrvcPedido;
 import com.eoi.tiendaderopa.servicios.SrvcUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,13 +28,15 @@ public class ADMINUsuarioCtrl {
     private final RepoPedido repoPedido;
     private final RepoUsuario repoUsuario;
     private final SrvcPedido srvcPedido;
+    private final SrvcDetallesUsuario srvcDetallesUsuario;
 
     @Autowired
-    public ADMINUsuarioCtrl(SrvcUsuario usuarioSrvc,RepoUsuario repoUsuario, RepoPedido repoPedido, SrvcPedido srvcPedido) {
+    public ADMINUsuarioCtrl(SrvcUsuario usuarioSrvc,RepoUsuario repoUsuario, RepoPedido repoPedido, SrvcPedido srvcPedido, SrvcDetallesUsuario srvcDetallesUsuario) {
         this.usuarioSrvc = usuarioSrvc;
         this.repoPedido = repoPedido;
         this.repoUsuario = repoUsuario;
         this.srvcPedido = srvcPedido;
+        this.srvcDetallesUsuario = srvcDetallesUsuario;
 
     }
 
@@ -57,6 +62,16 @@ public class ADMINUsuarioCtrl {
             model.addAttribute("pedidos", pedidos);
         }
         return "admin/pedidos";
+    }
+
+    @GetMapping("/detalles/{idUsuario}")
+    public String mostrarDetallesUsuarioadmin(@PathVariable int idUsuario, Model model) {
+        DetallesUsuario detalles = srvcDetallesUsuario.findDetallesByUsuarioId(idUsuario);
+        if (detalles == null) {
+            return "redirect:/admin/usuarios";
+        }
+        model.addAttribute("detalles", detalles);
+        return "admin/detallesUsuario";
     }
 
 

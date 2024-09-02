@@ -37,7 +37,6 @@ public class DetallesUsuario implements Serializable {
     @Column(name = "phonenumber", length = 15)
     private String phonenumber;
 
-    @NotNull
     @Column(name = "country")
     private Integer country;
 
@@ -45,7 +44,6 @@ public class DetallesUsuario implements Serializable {
     @Column(name = "address", length = 255)
     private String address;
 
-    @NotNull
     @Column(name = "zipcode")
     private Integer zipcode;
 

@@ -10,7 +10,7 @@
         <label></label>
         <h2 th:text="#{profile}">Perfil</h2>
     </div>
-    <form action="" method="post" th:object="${profile}">
+    <form th:action="@{/usuarios/detalles/{idUsuario}(idUsuario=${usuario.id})}" method="post" th:object="${detalles}">
         <input  id="id" name="id" th:value="${detalles.id}" type="hidden" class="form-control" required>
         <div class="form-group-perfil">
             <label for="username" th:text="#{username}">Nombre de usuario</label>
@@ -51,10 +51,10 @@
             <input id="address" name="address" th:value="${detalles.address}" type="text"  class="form-control" th:placeholder="#{enteryouraddress}" required>
         </div>
         <br>
-        <div class="form-group-perfil">
+        <!--<div class="form-group-perfil">
             <label for="zipcode" th:text="#{zipcode}">Código postal</label>
             <input name="zipcode" th:value="${detalles.zipcode}" type="text" id="zipcode" class="form-control" th:placeholder="#{enteryouraddress}" required>
-        </div>
+        </div>-->
         <br>
         <br>
         <button type="submit" class="btn btn-primary" th:text="#{save}">Guardar</button>
