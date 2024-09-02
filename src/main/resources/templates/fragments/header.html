@@ -76,11 +76,13 @@
                 </form>
 
                 <div class="navbar align-self-center d-flex">
+                    <div>
                     <a class="nav-icon position-relative text-decoration-none" th:href="@{/carrito}">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                     </a>
-                    <div sec:authorize="isAuthenticated()">
+                    </div>
+                    <div sec:authorize="isAuthenticated()" >
                         <a class="nav-icon position-relative text-decoration-none" th:href="@{/usuarios}">
                             <i class="fa fa-fw fa-user text-dark mr-3"></i>
                             <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
@@ -88,7 +90,12 @@
                     </div>
                     <div sec:authorize = "hasAnyRole('ROLE_ADMIN')">
                         <button type="button" class="btn btn-success" style="margin-right: 8px; margin-left: 20px">
-                            <a th:href="@{/admin/productos}" style="color: white; text-decoration: none;">AdminProductos</a>
+                            <a th:href="@{/admin/productos}" style="color: white; text-decoration: none;">AProd</a>
+                        </button>
+                    </div>
+                    <div sec:authorize = "hasAnyRole('ROLE_ADMIN')">
+                        <button type="button" class="btn btn-success" style="margin-right: 8px; margin-left: 20px">
+                            <a th:href="@{/admin/usuarios}" style="color: white; text-decoration: none;">AUs</a>
                         </button>
                     </div>
                     <div sec:authorize="!isAuthenticated()" >
