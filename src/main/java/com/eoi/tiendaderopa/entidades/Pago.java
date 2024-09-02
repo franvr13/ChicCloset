@@ -31,7 +31,7 @@ public class Pago implements Serializable {
     @Column(name = "total")
     private Double total;
 
-   @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "facturas_id", foreignKey = @ForeignKey(name = "fk_pago_facturas"))
     private Factura pagoFactura;
 
