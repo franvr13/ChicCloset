@@ -43,7 +43,6 @@ public class Usuario implements Serializable, UserDetails {
     @Column(name = "email", length = 70)
     private String email;
 
-
     @OneToMany(mappedBy = "usuario")
     private Set<DatosFacturacion> datosFacturacion;
 
@@ -62,6 +61,8 @@ public class Usuario implements Serializable, UserDetails {
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
     private DetallesUsuario detalle;
 
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private Perfil perfil;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

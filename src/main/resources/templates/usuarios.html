@@ -81,6 +81,9 @@
             <br>
             <br>
             <button type="submit" class="btn btn-primary" th:text="#{save}">Guardar</button>
+            <div th:if="${saved}">
+                <p th:text="#{profilesaved}">Perfil guardado correctamente</p>
+            </div>
         </form>
     </div>
 </div>
