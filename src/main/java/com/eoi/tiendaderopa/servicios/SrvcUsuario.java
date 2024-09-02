@@ -32,6 +32,7 @@ public class SrvcUsuario extends AbstractBusinessSrvc<Usuario, Integer, RepoUsua
         super(repoUsuario);
         this.passwordEncoder = passwordEncoder;
         this.srvcRol = srvcRol;
+        this.repoUsuario = repoUsuario;
     }
 
     private static final Logger logger = LoggerFactory.getLogger(SrvcUsuario.class);
