@@ -53,7 +53,7 @@
             <div class="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between"
                  id="templatemo_main_nav">
                 <div class="flex-fill">
-                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                    <ul sec:authorize="!hasAnyRole('ROLE_ADMIN')" class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
                         </li>
                         <li class="nav-item">
@@ -66,6 +66,24 @@
                         <li class="nav-item">
                             <a class="nav-link" th:href="@{/about}" th:text="#{about}">Nuestro equipo</a>
                         </li>
+                        <li class="nav-item">
+                        </li>
+                    </ul>
+                    <ul sec:authorize="hasAnyRole('ROLE_ADMIN')" class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                        <li class="nav-item">
+                            <h4>ADMINISTRACIÓN:</h4>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/admin/productos}">Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/admin/pedidos}">Pedidos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/admin/usuarios}">Usuarios</a>
+                        </li>
+
+
                         <li class="nav-item">
                         </li>
                     </ul>

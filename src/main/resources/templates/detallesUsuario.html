@@ -1,38 +1,66 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html layout:decorate="~{layout/layoutHSinMargen}" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
 <head>
-    <title>Detalles Usuario</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Detalles del usuario</title>
 </head>
 <body>
-<div th:replace="fragments/header :: header">...</div>
-
-<div class="container mt-5">
-    <h1 class="text-center">Detalles de Usuario</h1>
-    <form th:action="@{usuarios/detalles}" method="post" th:object="${detalles}">
-        <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" th:field="*{usuario.nombre}" class="form-control" id="nombre" required readonly>
+<div class="container mt-5" layout:fragment="content">
+    <div class="form-group">
+        <label></label>
+        <h2 th:text="#{profile}">Perfil</h2>
+    </div>
+    <form action="" method="post" th:object="${profile}">
+        <input  id="id" name="id" th:value="${detalles.id}" type="hidden" class="form-control" required>
+        <div class="form-group-perfil">
+            <label for="username" th:text="#{username}">Nombre de usuario</label>
+            <input  id="username" name="username" th:value="${detalles.username}" type="text" class="form-control" th:placeholder="#{enteryourusername}" required>
         </div>
-        <div class="mb-3">
-            <label for="apellido" class="form-label">Apellido</label>
-            <input type="text" th:field="*{usuario.apellido}" class="form-control" id="apellido" required readonly>
+        <br>
+        <div class="form-group-perfil">
+            <label for="fullname" th:text="#{fullname}">Nombre y apellidos</label>
+            <input id="fullname" name="fullname"  th:value="${detalles.fullname}"  type="text" class="form-control" th:placeholder="#{enteryourfullname}" required>
         </div>
-        <div class="mb-3">
-            <label for="direccion" class="form-label">Direccion</label>
-            <input type="text" th:field="*{usuario.direccion}" class="form-control" id="direccion" required readonly>
+        <br>
+        <div class="form-group-perfil">
+            <label for="phone" th:text="#{phonenumber}">Número de teléfono</label>
+            <div class="input-group">
+                <select name="country" id="country" class="form-control">
+                    <option value="34" th:text="#{spain}">(+34) España</option>
+                    <option value="49" th:text="#{germany}">(+49) Alemania</option>
+                    <option value="33" th:text="#{france}">(+33) Francia</option>
+                    <option value="39" th:text="#{italy}">(+39) Italia</option>
+                    <option value="44" th:text="#{unitedkingdom}">(+44) Reino Unido</option>
+                    <option value="7" th:text="#{russia}">(+7) Rusia</option>
+                    <option value="380" th:text="#{ukraine}">(+380) Ucrania</option>
+                    <option value="48" th:text="#{poland}">(+48) Polonia</option>
+                    <option value="40" th:text="#{romania}">(+40) Rumania</option>
+                    <option value="41" th:text="#{netherlands}">(+41) Países Bajos</option>
+                    <option value="32" th:text="#{belgium}">(+32) Bélgica</option>
+                    <option value="30" th:text="#{greece}">(+30) Grecia</option>
+                    <option value="351" th:text="#{portugal}">(+351) Portugal</option>
+                    <option value="46" th:text="#{sweden}">(+46) Suecia</option>
+                    <option value="47" th:text="#{norway}">(+47) Noruega</option>
+                </select>
+                <input id="phone" name="phonenumber" th:value="${detalles.phonenumber}" type="tel"  class="form-control" th:placeholder="#{enteryournumberphone}" required>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="fechaNacimiento" class="form-label">Fecha Nacimiento</label>
-            <input type="date" th:field="*{usuario.fechaNacimiento}" class="form-control" id="fechaNacimiento" required
-                   readonly>
+        <br>
+        <div class="form-group-perfil">
+            <label for="address" th:text="#{address}">Dirección</label>
+            <input id="address" name="address" th:value="${detalles.address}" type="text"  class="form-control" th:placeholder="#{enteryouraddress}" required>
         </div>
-        <div class="mb-3">
-            <label for="dni" class="form-label">DNI</label>
-            <input type="text" th:field="*{usuario.dni}" class="form-control" id="dni" required readonly>
+        <br>
+        <div class="form-group-perfil">
+            <label for="zipcode" th:text="#{zipcode}">Código postal</label>
+            <input name="zipcode" th:value="${detalles.zipcode}" type="text" id="zipcode" class="form-control" th:placeholder="#{enteryouraddress}" required>
         </div>
-
-        <button type="submit" class="btn btn-primary w-100">Guardar Cambios</button>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary" th:text="#{save}">Guardar</button>
+        <div th:if="${saved}">
+            <p th:text="#{profilesaved}">Perfil guardado correctamente</p>
+        </div>
     </form>
 </div>
 

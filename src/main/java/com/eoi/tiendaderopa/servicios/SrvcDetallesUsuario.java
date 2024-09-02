@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SrvcDetallesUsuario extends AbstractBusinessSrvc<DetallesUsuario, Integer, RepoDetallesUsuario> {
@@ -19,12 +20,14 @@ public class SrvcDetallesUsuario extends AbstractBusinessSrvc<DetallesUsuario, I
     @Autowired
     RepoDetallesUsuario repoDetallesUsuario;
 
-    public List<DetallesUsuario> obtenerDetallesUsuario(Usuario usuario) {
+    public Optional<DetallesUsuario> obtenerDetallesUsuario(Usuario usuario) {
         return repoDetallesUsuario.findByUsuario(usuario);
     }
 
-    public List<DetallesUsuario> obtenerDetallesUsuarioporId(Integer idusuario) {
-        return repoDetallesUsuario.findByUsuarioId(idusuario);
+    public Optional<DetallesUsuario> obtenerDetallesUsuarioporId(Usuario usuario
+    )
+    {
+        return repoDetallesUsuario.findByUsuario(usuario);
     }
 
 }

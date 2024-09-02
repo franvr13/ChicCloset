@@ -63,7 +63,7 @@ public class PagoCtrl {
             @RequestParam("name") String name,
             @RequestParam("email") String email,
             @RequestParam("tel") String tel,
-            @RequestParam("country") String country,
+            @RequestParam("country") Integer country,
             @RequestParam("city") String city,
             @RequestParam("address") String address,
             Model model,
@@ -96,14 +96,12 @@ public class PagoCtrl {
             detalles = new DetallesUsuario();
             detalles.setUsuario(usuario);
         }
-        detalles.setNombre(name);
-        detalles.setTelefono(tel);
-        detalles.setDireccion(address);
-        detalles.setCiudad(city);
-        detalles.setPais(country);
+        detalles.setFullname(name);
+        detalles.setPhonenumber(tel);
+        detalles.setAddress(address + " " + city);
+        detalles.setCountry(country);
         usuario.setDetalle(detalles);
         repoUsuario.save(usuario);
-
 
 
         Pedido pedido = new Pedido();
@@ -114,8 +112,9 @@ public class PagoCtrl {
         pedido.setUsuarioPedido(usuario);
         pedido = repoPedido.save(pedido);
         session.setAttribute("pedidoId", pedido.getId());
-        final Pedido finalPedido = pedido;
 
+
+        final Pedido finalPedido = pedido;
         // Vamos a recorrer el Array de productos del carrito
         productos.forEach(productoCarrito ->  {
             ItemPedido itemPedido = new ItemPedido();

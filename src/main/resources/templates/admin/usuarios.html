@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"
+<html layout:decorate="~{layout/layoutHSinMargen}" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="es">
 <head>
     <title>Usuarios</title>
@@ -22,6 +22,7 @@
             <td th:text="${usuario.email}"></td>
             <td>
                 <a th:href="@{/admin/usuarios/pedidos/{id}(id=${usuario.id})}" class="btn btn-info">Ver Pedidos</a>
+                <a th:href="@{/usuarios/detalles/{id}(id=${usuario.id})}" class="btn btn-info">Ver Detalles</a>
                 <a th:href="@{/admin/usuarios/eliminar/{id}(id=${usuario.id})}" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar a este usuario?');">Eliminar</a>
             </td>
         </tr>

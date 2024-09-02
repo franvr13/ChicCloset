@@ -20,7 +20,6 @@ import java.util.Set;
 @Service
 public class SrvcUsuario extends AbstractBusinessSrvc<Usuario, Integer, RepoUsuario> {
 
-
     private final PasswordEncoder passwordEncoder;
 
     private RepoUsuario repoUsuario;
