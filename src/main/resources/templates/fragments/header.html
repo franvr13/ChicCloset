@@ -86,7 +86,12 @@
                             <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                         </a>
                     </div>
-                    <div sec:authorize="!isAuthenticated()">
+                    <div sec:authorize = "hasAnyRole('ROLE_ADMIN')">
+                        <button type="button" class="btn btn-success" style="margin-right: 8px; margin-left: 20px">
+                            <a th:href="@{/admin/productos}" style="color: white; text-decoration: none;">AdminProductos</a>
+                        </button>
+                    </div>
+                    <div sec:authorize="!isAuthenticated()" >
                     <button type="button" class="btn btn-success" style="margin-right: 8px; margin-left: 20px">
                         <a th:href="@{/login}" th:text="#{login}" style="color: white; text-decoration: none;">Login</a>
                     </button>

@@ -14,7 +14,7 @@ import java.util.Date;
 public class ProductoCarrito {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     //TODO Revisar cómo contamos las cantidades. En principio, tenemos el quantity, que es el numero de items de un mismo tipo en un carrito.

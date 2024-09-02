@@ -32,7 +32,7 @@ public class Usuario implements Serializable, UserDetails {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
 

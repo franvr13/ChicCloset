@@ -21,7 +21,7 @@ public class Pedido implements Serializable {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "fecha_pedido")

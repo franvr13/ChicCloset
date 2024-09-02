@@ -13,7 +13,7 @@ import java.util.Set;
 public class ListaProductosDeseados {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Temporal(TemporalType.DATE)
     private Date date;

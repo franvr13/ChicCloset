@@ -20,35 +20,41 @@ public class SecurityConfig {
 
     private static final Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
 
-    @Autowired
-    private CustomUserDetailsService userDetailsService;
+    private final CustomUserDetailsService userDetailsService;
 
+    private final BCryptPasswordEncoder encoder;
 
-    @Autowired
-    private BCryptPasswordEncoder encoder;
+    public SecurityConfig(CustomUserDetailsService userDetailsService, BCryptPasswordEncoder encoder) {
+        this.userDetailsService = userDetailsService;
+        this.encoder = encoder;
+    }
 
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/login", "/usuarios/registro", "/css/**", "/js/**","/img/**", "/tienda", "/busqueda", "/productos","productos/**", "/", "about", "/contacto").permitAll()
-                        //.requestMatchers("/admin/**").hasRole("ADMIN")
-                        .anyRequest().authenticated()
-                )
-                .formLogin(form -> form
+
+        http.authorizeHttpRequests(customizer -> {
+
+                    customizer.requestMatchers("/login","/usuarios/registro", "/usuarios/registro/**", "/css/**", "/js/**","/img/**", "/tienda", "/busqueda", "/productos","productos/**", "/", "about", "/contacto").permitAll();
+                    customizer.requestMatchers("admin/**").hasRole("ADMIN");
+                    customizer.anyRequest().authenticated();
+                }
+
+        );
+        http.formLogin(form -> form
                         .loginPage("/login")
                         //.defaultSuccessUrl("/productos")
                         .failureUrl("/login?error=true")
                         .permitAll()
-                )
-                .logout(logout -> logout
+        );
+
+        http.logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/")
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID")
                         .permitAll()
-                );
+        );
 
         return http.build();
     }
