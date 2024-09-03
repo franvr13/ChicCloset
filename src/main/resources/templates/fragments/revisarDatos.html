@@ -59,11 +59,9 @@
                 <h3 class="card-title">Dirección de Envío</h3>
             </div>
             <div class="card-body">
-                <p><strong>Nombre:</strong> <span th:text="${pedido.usuarioPedido.detalle.Nombre}"></span></p>
-                <p><strong>Email:</strong> <span th:text="${pedido.usuarioPedido.email}"></span></p>
-                <p><strong>Dirección:</strong> <span th:text="${pedido.usuarioPedido.detalle.Direccion}"></span></p>
-                <p><strong>Ciudad:</strong> <span th:text="${pedido.usuarioPedido.detalle.Ciudad}"></span></p>
-                <p><strong>País:</strong> <span th:text="${pedido.usuarioPedido.detalle.Pais}"></span></p>
+                <p><strong>Nombre:</strong> <span th:text="${pedido.usuarioPedido.detalle.fullname}"></span></p>
+                <p><strong>Dirección:</strong> <span th:text="${pedido.usuarioPedido.detalle.address}"></span></p>
+                <p><strong>Pais:</strong> <span th:text="${pedido.usuarioPedido.detalle.country}"></span></p>
             </div>
         </div>
     </div>

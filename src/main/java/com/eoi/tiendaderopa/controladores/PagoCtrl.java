@@ -61,7 +61,6 @@ public class PagoCtrl {
     public String ºmostrarFormularioPago(
             @RequestParam("idcarrito") long idcarrito,
             @RequestParam("name") String name,
-            @RequestParam("email") String email,
             @RequestParam("tel") String tel,
             @RequestParam("country") Integer country,
             @RequestParam("city") String city,
@@ -79,7 +78,6 @@ public class PagoCtrl {
 
 
         model.addAttribute("name", name);
-        model.addAttribute("email", email);
         model.addAttribute("tel", tel);
         model.addAttribute("country", country);
         model.addAttribute("city", city);
@@ -96,6 +94,7 @@ public class PagoCtrl {
             detalles = new DetallesUsuario();
             detalles.setUsuario(usuario);
         }
+
         detalles.setFullname(name);
         detalles.setPhonenumber(tel);
         detalles.setAddress(address + " " + city);
@@ -115,7 +114,7 @@ public class PagoCtrl {
 
 
         final Pedido finalPedido = pedido;
-        // Vamos a recorrer el Array de productos del carrito
+        //recorrer array de productos del carrito
         productos.forEach(productoCarrito ->  {
             ItemPedido itemPedido = new ItemPedido();
             itemPedido.setCantidad(productoCarrito.getQuantity());
@@ -131,7 +130,6 @@ public class PagoCtrl {
     @GetMapping("/elegirMetodoPago")
     public String elegirMetodoPago(Model model){
         List<MetodoPago> metodosPago = new ArrayList<>();
-        //TODO - Hacer que filtre esta búsqueda por el usuario logeado (con el principal)
         metodosPago = repoMetodoPago.findAll();
         model.addAttribute("metodosPago",metodosPago);
         return "elegirMetodoPago";

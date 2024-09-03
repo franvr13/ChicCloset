@@ -40,6 +40,8 @@ public class DetallesUsuario implements Serializable {
     @Column(name = "country")
     private Integer country;
 
+    private String ciudad;
+
     @NotBlank
     @Column(name = "address", length = 255)
     private String address;
