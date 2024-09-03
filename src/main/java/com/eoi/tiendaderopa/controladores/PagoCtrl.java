@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -51,13 +52,19 @@ public class PagoCtrl {
     }
 
     @PostMapping("/iniciarVenta")
-    public String mostrarFormularioEnvio(Model model , @RequestParam("idcarrito") String idcarrito) {
+    public String mostrarFormularioEnvio(Model model , @RequestParam("idcarrito") String idcarrito, @AuthenticationPrincipal UserDetails userDetails) {
         model.addAttribute("idcarrito", idcarrito);
+        Usuario usuario = repoUsuario.findByEmail(userDetails.getUsername());
+        DetallesUsuario detalles = usuario.getDetalle();
+        if (detalles == null) {
+            detalles = new DetallesUsuario(); // Evitar NPE en la vista
+        }
+        model.addAttribute("detalles", detalles);
         return "datosFacturacion";
     }
 
 
-    @PostMapping("/datosFacturacion")
+    @GetMapping("/datosFacturacion")
     public String ºmostrarFormularioPago(
             @RequestParam("idcarrito") long idcarrito,
             @RequestParam("name") String name,
@@ -67,6 +74,7 @@ public class PagoCtrl {
             @RequestParam("address") String address,
             Model model,
             @AuthenticationPrincipal UserDetails userDetails,
+            RedirectAttributes redirectAttributes,
             HttpSession session)
     {
         String sessionToken = (String) session.getAttribute("sessionToken");
@@ -77,23 +85,28 @@ public class PagoCtrl {
         }
 
 
-        model.addAttribute("name", name);
+
+        /*model.addAttribute("name", name);
         model.addAttribute("tel", tel);
         model.addAttribute("country", country);
         model.addAttribute("city", city);
-        model.addAttribute("address", address);
+        model.addAttribute("address", address)*/
 
         List<ProductoCarrito> productos = new ArrayList<>();
         Carrito carrito = repoCarrito.findById(idcarrito).get();
         productos = carrito.getListaProductosCarrito();
 
-        //guardar detalles envio
+
         Usuario usuario = repoUsuario.findByEmail(userDetails.getUsername());
         DetallesUsuario detalles = usuario.getDetalle();
-        if (detalles == null) {
-            detalles = new DetallesUsuario();
-            detalles.setUsuario(usuario);
+        if (detalles != null) {
+            model.addAttribute("detalles", detalles);
         }
+        else {
+            detalles = new DetallesUsuario();
+        }
+
+        redirectAttributes.addFlashAttribute("detalles", detalles);
 
         detalles.setFullname(name);
         detalles.setPhonenumber(tel);

@@ -36,6 +36,14 @@ public class ADMINPedidoCtrl {
     }
 
 
+    @GetMapping("")
+    public String listarPedidos(Model model) {
+        List<Pedido> pedidos = srvcPedido.buscarEntidades();
+        model.addAttribute("pedidos", pedidos);
+        return "admin/pedidos";
+    }
+
+
     @GetMapping("/detalles/{id}")
     public String mostrarDetallesPedido(@PathVariable("id") int id, Model model) {
         Optional<Pedido> pedido = repoPedido.findById(id);
