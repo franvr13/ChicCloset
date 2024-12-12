@@ -1,49 +1,72 @@
-# Chic Closet
+## Argumentación Técnica del Proyecto ##
 
-Proyecto personal para Máster Programación Java EOI 2024.
+# Introducción Técnica.
 
-# INTRODUCCIÓN
+El proyecto consiste en una tienda de ropa completamente online, diseñada para aplicar y perfeccionar habilidades adquiridas durante el curso, así como para explorar nuevas oportunidades en el desarrollo de software. Elegimos el mercado de la moda debido a su amplia audiencia y constante demanda, en especial con el auge de las compras online. Nuestro enfoque fue construir una solución funcional, escalable y técnicamente sólida, que sirviera tanto como experiencia de aprendizaje como base para proyectos futuros.
 
-- La siguiente iniciativa ha sido creada por el Grupo 2, formado por 4 personas, como proyecto final para el
-bootcamp de Java impartido por la EOI de abril a septiembre del 2024. A lo largo de
-los meses de curso se ha vertido todo el conocimiento adquirido en la creación de la
-siguiente aplicación web de venta de ropa combinando los conocimientos adquiridos
-sobre Java, POO (Programación Orientada a Objetos), Maven, Hibernate, Springboot,
-JDBC (Java Database Connectivity), JPA, Thymeleaf, MySQL, HTMLS5, CSS y Bootstrap.
+# Diseño Funcional.
 
-# OBJETIVO DEL PROYECTO 
+El desarrollo de la aplicación comenzó con la identificación y priorización de funcionalidades clave. Estas se clasificaron en funciones esenciales y secundarias para garantizar que el proyecto pudiera cumplir con sus objetivos en el tiempo estipulado. Las funcionalidades básicas incluyeron:
 
-- La idea del proyecto es crear una aplicación web para una tienda de ropa online que
-permita a los usuarios explorar, buscar y comprar diversos productos de moda,
-incluyendo funciones como: navegación por categorías, búsqueda de productos,
-gestión de carrito de compras y realización de pagos.
+# Usuarios finales:
 
-- El público objetivo es la franja demográfica de personas jóvenes de todos los géneros
-interesadas en el punto de convergencia entre la última moda y el depórte, también
-conocido como leisurewear, por lo que se ofrece un amplio rango de categorías para
-que los usuarios puedan escoger.
+- Visualización detallada de productos.
+- Filtros avanzados por talla y color.
+- Carrito de compras persistente por sesión.
+- Proceso de registro y cambio de idioma.
 
-# PROCESO DE FLUJOS
+# Administradores:
 
-- EN DESARROLLO...
+- Gestión de productos (creación, edición, eliminación).
+- Gestión de usuarios y pedidos.
+- Restricción de accesos a funciones críticas mediante roles.
+- Se establecieron flujos de trabajo bien definidos para guiar el desarrollo y asegurar una implementación ordenada.
 
-# ROADMAP
+# Diseño Técnico y Tecnologías.
 
-- EN DESARROLLO...
+Para construir el proyecto, se emplearon herramientas modernas y prácticas que permitieron asegurar un desarrollo eficiente y organizado:
 
-# MANUAL DE LA APLIACACIÓN WEB
+# Front-End:
 
-- EN DESARROLLO...
+- Tecnologías: HTML5, CSS, JavaScript, y Bootstrap.
+- Integración con Back-End: Uso del motor de plantillas Thymeleaf, que permite la integración eficiente de datos en vistas dinámicas.
 
-# MANUAL DE LA APLICACIÓN WEB
+#Back-End:
 
-- EN DESARROLLO...
+- Lenguaje: Java, con soporte de Spring Boot para automatización de configuraciones y servicios robustos.
+- Persistencia: MySQL gestionado con JPA (Java Persistence API) para realizar operaciones CRUD y mapear objetos Java a tablas de base de datos.
+- Herramientas adicionales: MySQL Workbench para diseño de esquemas relacionales.
 
-# CONCLUSIONES
+# Gestión del Código:
 
-- EN DESARROLLO...
+- Plataforma: GitHub/GitDesktop/Gitbash.
+- Resolución de Conflictos: Visual Studio.
+- Metodologías: Uso de herramientas como Jira y Miro para aplicar metodologías ágiles (SCRUM).
 
-# INSTALACIÓN 
+# Despliegue y Entorno:
+
+- Docker: Creación de un entorno SQL para mantener consistencia entre diferentes configuraciones.
+- Seguridad: Configuración de roles y permisos a través de Spring Security.
+- Funcionalidades Técnicas Destacadas
+- Filtros por Talla y Color: Los filtros dinámicos se implementaron con métodos de servicio que obtienen tallas y colores directamente de la base de datos. Estos filtros, combinados con paginación mediante PageRequest, aseguran una experiencia de usuario optimizada y escalable.
+
+# Carrito de Compras:
+
+Persistente a nivel de sesión, implementado mediante sessionToken.
+Gestión avanzada de productos en el carrito: actualizaciones automáticas de cantidades o adiciones de nuevos productos según el estado actual del carrito.
+
+# Seguridad:
+
+- Autenticación obligatoria para procesos críticos como pagos.
+- Restricción de acceso basada en roles, configurada a nivel de controlador.
+- Proyecciones y Mejoras Futuras
+
+# En versiones futuras, planeamos incluir:
+
+Mercado circular: Una funcionalidad que permitirá a los usuarios revender productos previamente adquiridos, reutilizando los metadatos del producto para simplificar el proceso.
+Optimización del código: Reorganización de archivos y consolidación de funciones similares para mejorar la eficiencia y mantenibilidad.
+Nuevas funcionalidades: Incorporación de listas de favoritos y un historial de búsqueda para mejorar la experiencia del usuario.
+Este enfoque técnico no solo permitió la culminación exitosa del proyecto, sino que también sentó las bases para futuras iteraciones y funcionalidades más avanzadas. La combinación de herramientas modernas, buenas prácticas de desarrollo y metodologías ágiles aseguró que nuestro equipo pudiera superar desafíos y entregar una solución práctica y bien estructurada.
 
 Para proceder a la instalación y ejecución de la aplicación, debemos seguir los siguientes pasos:
 
@@ -52,7 +75,7 @@ Para proceder a la instalación y ejecución de la aplicación, debemos seguir l
 
 <img src="src/main/resources/img/desarrollo.png">
 
-# EJECUCIÓN 
+# Ejecución. 
 
 - Arrancar el proyecto con el perfil "Desarrollo" activado.
 - Entar a http://localhost:8080/ con un navegador.
